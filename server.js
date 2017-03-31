@@ -14,7 +14,7 @@ var slapp = Slapp({
   convo_store: ConvoStore(),
   context: Context()
 })
-
+console.log(slapp.verify_token)
 
 var HELP_TEXT = `
 I will respond to the following messages:
