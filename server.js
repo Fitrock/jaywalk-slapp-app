@@ -42,6 +42,12 @@ slapp
       // sends next event from user to this route, passing along state
       .route('how-are-you', { greeting: text })
   })
+  .message('hi', ['direct_mention', 'direct_message'], (msg, text) => {
+    msg
+      .say(`${text}, how are you?`)
+      // sends next event from user to this route, passing along state
+      .route('how-are-you', { greeting: text })
+  })
   .route('how-are-you', (msg, state) => {
     var text = (msg.body.event && msg.body.event.text) || ''
 
