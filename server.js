@@ -132,8 +132,8 @@ slapp.command('/getSnap', (msg)=>{
     if (!err && res.statusCode == 200) {
     console.log(body);
   }
-    msg.say(body)
-  
+    msg.say(`Here's what you've told me so far: \`\`\`${JSON.stringify(body)}\`\`\``)
+
   })
 })
 
