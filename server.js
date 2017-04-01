@@ -4,6 +4,7 @@ const express = require('express')
 const Slapp = require('slapp')
 const ConvoStore = require('slapp-convo-beepboop')
 const Context = require('slapp-context-beepboop')
+const request  =require('request')
 
 // use `PORT` env var on Beep Boop - default to 3000 locally
 var port = process.env.PORT || 3000
@@ -36,12 +37,6 @@ slapp.message('help', ['mention', 'direct_message'], (msg) => {
 // "Conversation" flow that tracks state - kicks off when user says hi, hello or hey
 slapp
   .message('^(hi|hello|hey)$', ['direct_mention', 'direct_message'], (msg, text) => {
-    msg
-      .say(`${text}, how are you?`)
-      // sends next event from user to this route, passing along state
-      .route('how-are-you', { greeting: text })
-  })
-  .message('hi', ['direct_mention', 'direct_message'], (msg, text) => {
     msg
       .say(`${text}, how are you?`)
       // sends next event from user to this route, passing along state
@@ -122,6 +117,33 @@ slapp.message('.*', ['direct_mention', 'direct_message'], (msg) => {
 slapp.command('/test', (msg)=>{
   msg.say('test works')
 })
+
+// db query for id 1500
+var host = "https://api-cms-fitrock.kinetise.com/api/kinetise/v2/projects/199a5286a75bd6a4bddd37c6c62ee310/tables/1/rows?id=1800&access_token=NGU1MzYxYTA1NGNlZDk2NjdlYzQ0OGU4N2Y3M2E5NTNhM2I2NTY0OThkODU5YjVmZDZjMjhmZjY1ZDI5OGFjZg"
+
+var options = {
+  headers:{
+    accept: '*/*'
+  }
+
+}
+slapp.command('/getSnap', (msg)=>{
+  request(host, function(err,res,body){
+    if (!err && res.statusCode == 200) {
+    console.log(body);
+  }else{
+    msg.say(body)
+  }
+
+  })
+})
+
+
+/*
+
+*/
+
+
 
 // attach Slapp to express server
 var server = slapp.attachToExpress(express())
