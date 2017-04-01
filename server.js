@@ -14,7 +14,6 @@ var slapp = Slapp({
   convo_store: ConvoStore(),
   context: Context()
 })
-console.log(slapp.verify_token)
 
 var HELP_TEXT = `
 I will respond to the following messages:
@@ -117,6 +116,11 @@ slapp.message('.*', ['direct_mention', 'direct_message'], (msg) => {
   if (Math.random() < 0.4) {
     msg.say([':wave:', ':pray:', ':raised_hands:'])
   }
+})
+
+// '/' commands
+slapp.command('/test', (msg)=>{
+  msg.say('test works')
 })
 
 // attach Slapp to express server
