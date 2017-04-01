@@ -131,10 +131,9 @@ slapp.command('/getSnap', (msg)=>{
   request(host, function(err,res,body){
     if (!err && res.statusCode == 200) {
     console.log(body);
-  }else{
-    msg.say(body)
   }
-
+    msg.say(body)
+  
   })
 })
 
