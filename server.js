@@ -176,10 +176,10 @@ request(host, function(err,res,body){
   body = JSON.parse(body)
     console.log(typeof body)
 
-  title = body[0].title
-  description= body[0].description
-  picture=body[0].picture
-  address=body[0].address
+  title = JSON.stringify(body[0].title)
+  description= JSON.stringify(body[0].description)
+  picture=JSON.stringify(body[0].picture)
+  address=JSON.stringify(body[0].address)
     console.log(title,description,picture,address)
     console.log(body);
 
