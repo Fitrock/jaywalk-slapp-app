@@ -119,7 +119,7 @@ slapp.command('/test', (msg)=>{
 })
 
 // db query for id 1500
-var host = "https://api-cms-fitrock.kinetise.com/api/kinetise/v2/projects/199a5286a75bd6a4bddd37c6c62ee310/tables/1/rows?id=1156&access_token=NGU1MzYxYTA1NGNlZDk2NjdlYzQ0OGU4N2Y3M2E5NTNhM2I2NTY0OThkODU5YjVmZDZjMjhmZjY1ZDI5OGFjZg"
+var host = "https://api-cms-fitrock.kinetise.com/api/kinetise/v2/projects/199a5286a75bd6a4bddd37c6c62ee310/tables/1/rows?id=1196&access_token=NGU1MzYxYTA1NGNlZDk2NjdlYzQ0OGU4N2Y3M2E5NTNhM2I2NTY0OThkODU5YjVmZDZjMjhmZjY1ZDI5OGFjZg"
 
 var options = {
   headers:{
