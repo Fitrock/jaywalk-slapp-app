@@ -173,7 +173,6 @@ request(host, function(err,res,body){
     if (!err && res.statusCode == 200) {
     // console.log(body);
   }
-  console.log(typeof body)
   body = JSON.parse(body)
     console.log(typeof body)
 
@@ -182,6 +181,7 @@ request(host, function(err,res,body){
   picture=body.picture
   address=body.address
     console.log(title,description,picture,address)
+    console.log(body);
 
     msg.say(`Here is the object your requested: `,title,description,picture,address)
 
