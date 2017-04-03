@@ -173,6 +173,7 @@ request(host, function(err,res,body){
     if (!err && res.statusCode == 200) {
     // console.log(body);
   }
+  body = ${JSON.stringify(body)}
   title = body.title
   description= body.description
   picture=body.picture
