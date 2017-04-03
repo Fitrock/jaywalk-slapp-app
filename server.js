@@ -177,7 +177,7 @@ request(host, function(err,res,body){
     console.log(typeof body)
 body=body[0]
     console.log(typeof body)
-    console.log(tbody)
+    console.log(body)
 
   // title = body.title
   // description= body.description
