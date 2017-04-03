@@ -184,7 +184,7 @@ body=body[0]
   // picture=body.picture
   // address=body.address
 
-    msg.say(`Here is the object you requested: `)
+    msg.say(`Here is the object you requested: `+body.title)
 
   })
 })
