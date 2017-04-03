@@ -144,7 +144,7 @@ request(host, function(err,res,body){
     if (!err && res.statusCode == 200) {
     console.log(body);
   }
-    msg.say(`Here is the object your requested: \`\`\`${JSON.stringify(body)}\`\`\``)
+    msg.say(`Here is the object you requested: \`\`\`${JSON.stringify(body)}\`\`\``)
 
   })
 })
@@ -176,14 +176,14 @@ request(host, function(err,res,body){
   body = JSON.parse(body)
     console.log(typeof body)
 
-  title = body.title
-  description= body.description
-  picture=body.picture
-  address=body.address
+  title = body[0].title
+  description= body[0].description
+  picture=body[0].picture
+  address=body[0].address
     console.log(title,description,picture,address)
     console.log(body);
 
-    msg.say(`Here is the object your requested: `,title,description,picture,address)
+    msg.say(`Here is the object you requested: `,title,description,picture,address)
 
   })
 })
