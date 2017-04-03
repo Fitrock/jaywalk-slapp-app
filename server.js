@@ -175,11 +175,11 @@ request(host, function(err,res,body){
   }
   body = JSON.parse(body)
     console.log(typeof body)
-
-  title = JSON.stringify(body[0].title)
-  description= JSON.stringify(body[0].description)
-  picture=JSON.stringify(body[0].picture)
-  address=JSON.stringify(body[0].address)
+body=body[0]
+  title = body.title
+  description= body.description
+  picture=body.picture
+  address=body.address
 
     msg.say(`Here is the object you requested: `,title,description,picture,address)
 
