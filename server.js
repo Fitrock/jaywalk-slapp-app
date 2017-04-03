@@ -149,7 +149,34 @@ request(host, function(err,res,body){
   })
 })
 
+slapp.command('/getSnaptest', (msg, text)=>{
+  msg
+    .say('type an id number')
+    .route('getid', { id: text })
+  })
+  .route('getid', (msg, state) => {
+    var text = msg.body.event.text || ''
 
+    // user may not have typed text as their next action, ask again and re-route
+    if (!text) {
+      return msg
+        .say("Whoops, I'm still waiting to hear and id.")
+        .say('type an id number')
+        .route('getid', state)
+    }
+
+    // add their response to state
+    state.status = text
+    var host = "https://api-cms-fitrock.kinetise.com/api/kinetise/v2/projects/199a5286a75bd6a4bddd37c6c62ee310/tables/1/rows?id="+text+"&access_token=NGU1MzYxYTA1NGNlZDk2NjdlYzQ0OGU4N2Y3M2E5NTNhM2I2NTY0OThkODU5YjVmZDZjMjhmZjY1ZDI5OGFjZg"
+
+request(host, function(err,res,body){
+    if (!err && res.statusCode == 200) {
+    console.log(body);
+  }
+    msg.say(`Here is the object your requested: \`\`\`${JSON.stringify(body.title)}\`\`\``)
+
+  })
+})
 
 
 /*
