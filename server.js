@@ -180,8 +180,6 @@ request(host, function(err,res,body){
   description= JSON.stringify(body[0].description)
   picture=JSON.stringify(body[0].picture)
   address=JSON.stringify(body[0].address)
-    console.log(title,description,picture,address)
-    console.log(body);
 
     msg.say(`Here is the object you requested: `,title,description,picture,address)
 
