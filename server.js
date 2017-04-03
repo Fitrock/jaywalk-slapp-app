@@ -174,7 +174,7 @@ request(host, function(err,res,body){
     // console.log(body);
   }
   console.log(typeof body)
-  body = JSON.stringify(body)
+  body = JSON.parse(body)
     console.log(typeof body)
 
   title = body.title
