@@ -171,13 +171,14 @@ slapp.command('/getSnaptest', (msg, text)=>{
     var title,description,picture,address
 request(host, function(err,res,body){
     if (!err && res.statusCode == 200) {
-    console.log(body);
+    // console.log(body);
   }
-  console.log(body)
   title = body.title
   description= body.description
   picture=body.picture
   address=body.address
+    console.log(title,description,picture,address)
+
     msg.say(`Here is the object your requested: `,title,description,picture,address)
 
   })
