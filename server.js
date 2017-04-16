@@ -163,6 +163,7 @@ request(host, function(err,res,body){
     console.log(body);
   }
     body = JSON.parse(body)
+    console.log(res,body)
     body=body[0]
     if(body.title !== ''){
       msg.say(`I found a deal for you: `+body.title+ ' '+body.description+' '+body.picture+ ' '+ body.address)
