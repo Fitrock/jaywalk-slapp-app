@@ -126,19 +126,19 @@ slapp.command('/getSnap', (msg, text)=>{
     text: '',
     attachments: [
       {
-        text: 'Are you sure?',
-        fallback: 'Are you sure?',
+        text: 'Where do you want to Jaywalk to?',
+        fallback: 'Where to today?',
         callback_id: 'doit_confirm_callback',
         actions: [
-          { name: 'answer', text: 'Yes', type: 'button', value: 'yes' },
-          { name: 'answer', text: 'No', type: 'button', value: 'no' }
+          { name: 'answer', text: 'id:1500', type: 'button', value: 1500 },
+          { name: 'answer', text: 'id:1600', type: 'button', value: 1600 }
         ]
       }]
     })
   .route('getid', { id: text })
   })
   .route('getid', (msg, state) => {
-    var text = msg.body.event.text || ''
+    var text = msg.body.actions[0].value || ''
 
     // user may not have typed text as their next action, ask again and re-route
     if (!text) {
