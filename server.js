@@ -135,9 +135,9 @@ slapp.command('/getSnap', (msg, text)=>{
         ]
       }]
     })
-  .route('getid', { id: text })
+  .route('getid1', { id: text })
   })
-  .route('getid', (msg, state) => {
+  .route('getid1', (msg, state) => {
     var text = msg.body.actions[0].value || ''
 
     // user may not have typed text as their next action, ask again and re-route
