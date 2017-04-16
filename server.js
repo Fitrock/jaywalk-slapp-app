@@ -130,27 +130,33 @@ slapp.command('/getSnap', (msg, text)=>{
         fallback: 'Where to today?',
         callback_id: 'doit_confirm_callback',
         actions: [
-          { name: 'answer', text: 'id:1500', type: 'button', value: 1500 },
-          { name: 'answer', text: 'id:1600', type: 'button', value: 1600 }
+          { name: 'answer', text: 'Suprise Me!', type: 'button', value: (Math.floor(Math.random() * 1400)+200) },
+          { name: 'answer', text: 'Random Tag', type: 'button', value: Math.floor(Math.random() * 44) }
         ]
       }]
     })
   .route('getid1', { id: text })
   })
   .route('getid1', (msg, state) => {
-    var text = msg.body.actions[0].value || ''
+    var randSnap = msg.body.actions[0].value || ''
+    var randTag = msg.body.actions[0].value || ''
 
     // user may not have typed text as their next action, ask again and re-route
-    if (!text) {
+    if (!randSnap || !randTag) {
       return msg
-        .say("Whoops, I'm still waiting to hear and id.")
-        .say('type an id number')
-        .route('getid', state)
+        .say("Whoops, you just have to pick a button...")
+        .say('Click a button!')
+        .route('getid1', state)
     }
 
     // add their response to state
     state.status = text
-    var host = "https://api-cms-fitrock.kinetise.com/api/kinetise/v2/projects/199a5286a75bd6a4bddd37c6c62ee310/tables/1/rows?id="+text+"&access_token=NGU1MzYxYTA1NGNlZDk2NjdlYzQ0OGU4N2Y3M2E5NTNhM2I2NTY0OThkODU5YjVmZDZjMjhmZjY1ZDI5OGFjZg"
+    var host;
+    if(randSnap){
+      host = "https://api-cms-fitrock.kinetise.com/api/kinetise/v2/projects/199a5286a75bd6a4bddd37c6c62ee310/tables/1/rows?id="+text+"&access_token=NGU1MzYxYTA1NGNlZDk2NjdlYzQ0OGU4N2Y3M2E5NTNhM2I2NTY0OThkODU5YjVmZDZjMjhmZjY1ZDI5OGFjZg"
+    } else {
+      host = "https://api-cms-fitrock.kinetise.com/api/kinetise/v2/projects/199a5286a75bd6a4bddd37c6c62ee310/tables/5/rows?id="+text+"&access_token=NGU1MzYxYTA1NGNlZDk2NjdlYzQ0OGU4N2Y3M2E5NTNhM2I2NTY0OThkODU5YjVmZDZjMjhmZjY1ZDI5OGFjZg"
+    }
 
 request(host, function(err,res,body){
     if (!err && res.statusCode == 200) {
@@ -158,7 +164,11 @@ request(host, function(err,res,body){
   }
     body = JSON.parse(body)
     body=body[0]
-    msg.say(`Here is the object you requested: `+body.title+ ' '+body.description+' '+body.picture+ ' '+ body.address)
+    if(randSnap){
+      msg.say(`I found a deal for you: `+body.title+ ' '+body.description+' '+body.picture+ ' '+ body.address)
+    } else {
+      msg.say(`Hashtag: `+body.id+ ' '+body.name)
+    }
   })
 })
 
