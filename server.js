@@ -164,7 +164,7 @@ request(host, function(err,res,body){
   }
     body = JSON.parse(body)
     body=body[0]
-    if(randSnap !== ''){
+    if(body.title !== ''){
       msg.say(`I found a deal for you: `+body.title+ ' '+body.description+' '+body.picture+ ' '+ body.address)
     } else {
       msg.say(`Hashtag: `+body.id+ ' '+body.name)
