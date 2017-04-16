@@ -122,8 +122,20 @@ slapp.command('/test', (msg)=>{
 
 slapp.command('/getSnap', (msg, text)=>{
   msg
-    .say('type an id number')
-    .route('getid', { id: text })
+  .say({
+    text: '',
+    attachments: [
+      {
+        text: 'Are you sure?',
+        fallback: 'Are you sure?',
+        callback_id: 'doit_confirm_callback',
+        actions: [
+          { name: 'answer', text: 'Yes', type: 'button', value: 'yes' },
+          { name: 'answer', text: 'No', type: 'button', value: 'no' }
+        ]
+      }]
+    })
+  .route('getid', { id: text })
   })
   .route('getid', (msg, state) => {
     var text = msg.body.event.text || ''
