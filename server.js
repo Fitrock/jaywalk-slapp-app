@@ -131,7 +131,7 @@ slapp.command('/getSnap', (msg, text)=>{
         callback_id: 'doit_confirm_callback',
         actions: [
           { name: 'answer', text: 'Suprise Me!', type: 'button', value: (Math.floor(Math.random() * 1400)+200) },
-          { name: 'answer', text: 'Random Tag', type: 'button', value: Math.floor(Math.random() * 44) }
+          // { name: 'answer', text: 'Random Tag', type: 'button', value: Math.floor(Math.random() * 44) }
         ]
       }]
     })
@@ -165,7 +165,7 @@ request(host, function(err,res,body){
     body = JSON.parse(body)
     console.log(err)
     body=body[0]
-    if(body.title !== ''){
+    if(body.title !== undefined){
       msg.say(`I found a deal for you: `+body.title+ ' '+body.description+' '+body.picture+ ' '+ body.address)
     } else {
       msg.say(`Hashtag: `+body.id+ ' '+body.name)
