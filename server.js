@@ -150,7 +150,7 @@ slapp.command('/getSnap', (msg, text)=>{
     }
 
     var host;
-    if(randSnap){
+    if(randSnap !== ''){
       state.status = randSnap
       host = "https://api-cms-fitrock.kinetise.com/api/kinetise/v2/projects/199a5286a75bd6a4bddd37c6c62ee310/tables/1/rows?id="+randSnap+"&access_token=NGU1MzYxYTA1NGNlZDk2NjdlYzQ0OGU4N2Y3M2E5NTNhM2I2NTY0OThkODU5YjVmZDZjMjhmZjY1ZDI5OGFjZg"
     } else {
@@ -164,7 +164,7 @@ request(host, function(err,res,body){
   }
     body = JSON.parse(body)
     body=body[0]
-    if(randSnap){
+    if(randSnap !== ''){
       msg.say(`I found a deal for you: `+body.title+ ' '+body.description+' '+body.picture+ ' '+ body.address)
     } else {
       msg.say(`Hashtag: `+body.id+ ' '+body.name)
