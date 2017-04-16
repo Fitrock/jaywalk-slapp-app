@@ -156,8 +156,9 @@ request(host, function(err,res,body){
     if (!err && res.statusCode == 200) {
     console.log(body);
   }
-    msg.say(`Here is the object you requested: \`\`\`${JSON.stringify(body)}\`\`\``)
-
+    body = JSON.parse(body)
+    body=body[0]
+    msg.say(`Here is the object you requested: `+body.title+ ' '+body.description+' '+body.picture+ ' '+ body.address)
   })
 })
 
