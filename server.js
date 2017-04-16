@@ -171,7 +171,7 @@ request(host, function(err,res,body){
     }
   })
 })
-
+/*
 slapp.command('/getSnaptest', (msg, text)=>{
   msg
     .say('type an id number')
@@ -207,7 +207,7 @@ body=body[0]
 
   })
 })
-
+*/
 
 /*
 
