@@ -15,7 +15,7 @@ var slapp = Slapp({
   convo_store: ConvoStore(),
   context: Context()
 })
-
+console.log(process.env)
 var HELP_TEXT = `
 I will respond to the following messages:
 \`help\` - to see this message.
