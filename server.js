@@ -120,7 +120,7 @@ slapp.command('/test', (msg)=>{
 
 
 
-slapp.command('/getSnap', (msg, text)=>{
+slapp.command('/jaywalk', (msg, text)=>{
   msg
   .say({
     text: '',
