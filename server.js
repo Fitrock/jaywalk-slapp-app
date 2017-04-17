@@ -180,7 +180,7 @@ slapp.command('/jaywalk', (msg, text)=>{
 
 request(host, function(err,res,body){
     if (!err && res.statusCode == 200) {
-    console.log(body);
+    // console.log(body);
   }
     body = JSON.parse(body)
     console.log(err)
@@ -188,7 +188,7 @@ request(host, function(err,res,body){
     let lat = body.latitude
     let lng = body.longitude
     let r = getRadius(lat,lng)
-    console.log(...r)
+    console.log(...r.lat,...r.lng)
     // console.log(radius.forEach(x=>{return JSON.stringify(x)}))
     // console.log(lat,lng,radius)
     if(body.title !== undefined){
