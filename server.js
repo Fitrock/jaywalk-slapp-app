@@ -192,7 +192,7 @@ request(host, function(err,res,body){
     // console.log(radius.forEach(x=>{return JSON.stringify(x)}))
     // console.log(lat,lng,radius)
     if(body.title !== undefined){
-      msg.say(`I found a deal for you: ${body.title}\n${body.description}\n${body.picture}\n${body.address}\nradius: ${...r}`)
+      msg.say(`I found a deal for you: ${body.title}\n${body.description}\n${body.picture}\n${body.address}\nradius: ${r[0]} ${r[1]} ${r[2]} ${r[3]} ${r[4]} ${r[5]} `)
     } else {
       msg.say(`Hashtag: ${body.id} ${body.name}`)
     }
