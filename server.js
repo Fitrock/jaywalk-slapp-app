@@ -187,10 +187,11 @@ request(host, function(err,res,body){
     body=body[0]
     let lat = body.latitude
     let lng = body.longitude
-    let radius = getRadius(lat,lng)
+    let r = getRadius(lat,lng)
+    // radius.forEach(x)=>{return x}
     console.log(lat,lng,radius)
     if(body.title !== undefined){
-      msg.say(`I found a deal for you: ${body.title} ${body.description} ${body.picture} ${body.address} ${radius.forEach(x)=>{return x}}`)
+      msg.say(`I found a deal for you: ${body.title} ${body.description} ${body.picture} ${body.address} ${r[0]} ${r[1]} ${r[2]} ${r[3]} ${r[4]} ${r[5]}`)
     } else {
       msg.say(`Hashtag: ${body.id} ${body.name}`)
     }
