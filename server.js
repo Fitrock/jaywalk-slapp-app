@@ -11,11 +11,31 @@ var port = process.env.PORT || 3000
 
 var slapp = Slapp({
   // Beep Boop sets the SLACK_VERIFY_TOKEN env var
-  app_token: process.env.SLACK_VERIFY_TOKEN,
+  verify_token: process.env.SLACK_VERIFY_TOKEN,
   convo_store: ConvoStore(),
   context: Context()
 })
-console.log(process.env)
+/*
+radius function
+*/
+let radius = 500.0  // 0.5km or 2.2 mile total diameter
+let numPoints = 6
+function getRadius(lat, lng){
+  let circlePoints = []
+    for(let i=0;i< numPoints;i++){
+      angle = Math.PI * 2 * i / numPoints
+      console.log(Math.PI)
+      dx = radius * Math.cos(angle)
+      dy = radius * Math.sin(angle)
+      point = {}
+      point['lat'] = lat + (180 / Math.PI) * (dy / 6378137)
+      point['lng'] = lng + (180 / Math.PI) * (dx / 6378137) / Math.cos(lat * Math.PI / 180)
+      circlePoints.push(point)
+  }
+  return circlePoints
+}
+
+
 var HELP_TEXT = `
 I will respond to the following messages:
 \`help\` - to see this message.
@@ -165,10 +185,13 @@ request(host, function(err,res,body){
     body = JSON.parse(body)
     console.log(err)
     body=body[0]
+    let lat = body.latitude
+    let lng = body.longitude
+    let radius = getRadius(lat,lng)
     if(body.title !== undefined){
-      msg.say(`I found a deal for you: `+body.title+ ' '+body.description+' '+body.picture+ ' '+ body.address)
+      msg.say(`I found a deal for you: ${body.title} ${body.description} ${body.picture} ${body.address} ${radius}`)
     } else {
-      msg.say(`Hashtag: `+body.id+ ' '+body.name)
+      msg.say(`Hashtag: ${body.id} ${body.name}`)
     }
   })
 })
