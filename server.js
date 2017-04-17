@@ -188,7 +188,7 @@ request(host, function(err,res,body){
     let lat = body.latitude
     let lng = body.longitude
     let r = getRadius(lat,lng)
-    console.log(...radius)
+    console.log(...r)
     // console.log(radius.forEach(x=>{return JSON.stringify(x)}))
     // console.log(lat,lng,radius)
     if(body.title !== undefined){
