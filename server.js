@@ -138,7 +138,7 @@ slapp.command('/test', (msg)=>{
   msg.say('test works')
 })
 
-
+let randomNum = (Math.floor(Math.random() * 1400)+200)
 
 slapp.command('/jaywalk', (msg, text)=>{
   msg
@@ -150,7 +150,7 @@ slapp.command('/jaywalk', (msg, text)=>{
         fallback: 'Where to today?',
         callback_id: 'doit_confirm_callback',
         actions: [
-          { name: 'answer', text: 'Suprise Me!', type: 'button', value: (Math.floor(Math.random() * 1400)+200) },
+          { name: 'answer', text: 'Suprise Me!', type: 'button', value: randomNum },
           // { name: 'answer', text: 'Random Tag', type: 'button', value: Math.floor(Math.random() * 44) }
         ]
       }]
@@ -158,6 +158,7 @@ slapp.command('/jaywalk', (msg, text)=>{
   .route('getid', { id: text })
   })
   .route('getid', (msg, state) => {
+    console.log(randomNum)
     var randSnap = msg.body.actions[0].value || ''
     var randTag = msg.body.actions[0].value || ''
 
