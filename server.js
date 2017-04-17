@@ -26,9 +26,9 @@ function getRadius(lat, lng){
       let angle = Math.PI * 2 * i / numPoints
       let dx = radius * Math.cos(angle)
       let dy = radius * Math.sin(angle)
-      let point = {}
-      point['lat'] = lat + (180 / Math.PI) * (dy / 6378137)
-      point['lng'] = lng + (180 / Math.PI) * (dx / 6378137) / Math.cos(lat * Math.PI / 180)
+      let point = []
+      point[0] = lat + (180 / Math.PI) * (dy / 6378137)
+      point[1] = lng + (180 / Math.PI) * (dx / 6378137) / Math.cos(lat * Math.PI / 180)
       circlePoints.push(point)
   }
   return circlePoints
@@ -188,7 +188,7 @@ request(host, function(err,res,body){
     let lat = body.latitude
     let lng = body.longitude
     let r = getRadius(lat,lng)
-    console.log(...r.lat,...r.lng)
+    console.log(...r)
     // console.log(radius.forEach(x=>{return JSON.stringify(x)}))
     // console.log(lat,lng,radius)
     if(body.title !== undefined){
