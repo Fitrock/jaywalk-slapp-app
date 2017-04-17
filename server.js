@@ -24,7 +24,6 @@ function getRadius(lat, lng){
   let circlePoints = []
     for(let i=0;i< numPoints;i++){
       let angle = Math.PI * 2 * i / numPoints
-      console.log(Math.PI)
       let dx = radius * Math.cos(angle)
       let dy = radius * Math.sin(angle)
       let point = {}
@@ -191,7 +190,7 @@ request(host, function(err,res,body){
     let radius = getRadius(lat,lng)
     console.log(lat,lng,radius)
     if(body.title !== undefined){
-      msg.say(`I found a deal for you: ${body.title} ${body.description} ${body.picture} ${body.address} ${radius}`)
+      msg.say(`I found a deal for you: ${body.title} ${body.description} ${body.picture} ${body.address} ${radius.forEach(x){return x}}`)
     } else {
       msg.say(`Hashtag: ${body.id} ${body.name}`)
     }
