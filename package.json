@@ -19,6 +19,7 @@
   "homepage": "https://github.com/BeepBoopHQ/starter-slapp-app#readme",
   "dependencies": {
     "express": "^4.14.0",
+    "firebase": "^3.7.8",
     "nodemon": "^1.11.0",
     "request": "^2.81.0",
     "slapp": "^2.1.0",

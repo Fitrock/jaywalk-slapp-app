@@ -5,6 +5,7 @@ const Slapp = require('slapp')
 const ConvoStore = require('slapp-convo-beepboop')
 const Context = require('slapp-context-beepboop')
 const request  =require('request')
+const firebase = require('firebase')
 
 // use `PORT` env var on Beep Boop - default to 3000 locally
 var port = process.env.PORT || 3000
@@ -15,6 +16,21 @@ var slapp = Slapp({
   convo_store: ConvoStore(),
   context: Context()
 })
+
+/*
+Firebase
+*/
+var config = {
+  apiKey: "AIzaSyD5JZLxrwPRWO5Wq02GMo7V4Yxsc_pQsO8",
+  authDomain: "jaywalk-8a738.firebaseapp.com",
+  databaseURL: "https://jaywalk-8a738.firebaseio.com",
+  projectId: "jaywalk-8a738",
+  storageBucket: "jaywalk-8a738.appspot.com",
+  messagingSenderId: "1042841275273"
+};
+firebase.initializeApp(config);
+let db = firebase.database()
+let snaps = db.ref("snaps")
 /*
 radius function
 */
@@ -137,7 +153,7 @@ slapp.command('/test', (msg)=>{
   msg.say('test works')
 })
 let randomNum
-
+let testSnapLocation = getRadius(35.5420586,-77.055535) //test: snap #1055
 slapp.command('/jaywalk', (msg, text)=>{
 randomNum = (Math.floor(Math.random() * 1400)+200)
 
@@ -169,35 +185,49 @@ randomNum = (Math.floor(Math.random() * 1400)+200)
         .say('Click a button!')
         .route('getid1', state)
     }
-
-    var host;
-    if(randSnap !== ''){
-      state.status = randSnap
-      host = "https://api-cms-fitrock.kinetise.com/api/kinetise/v2/projects/199a5286a75bd6a4bddd37c6c62ee310/tables/1/rows?id="+randSnap+"&access_token=NGU1MzYxYTA1NGNlZDk2NjdlYzQ0OGU4N2Y3M2E5NTNhM2I2NTY0OThkODU5YjVmZDZjMjhmZjY1ZDI5OGFjZg"
-    } else {
-      state.status = randTag
-      host = "https://api-cms-fitrock.kinetise.com/api/kinetise/v2/projects/199a5286a75bd6a4bddd37c6c62ee310/tables/5/rows/get-table?access_token=NGU1MzYxYTA1NGNlZDk2NjdlYzQ0OGU4N2Y3M2E5NTNhM2I2NTY0OThkODU5YjVmZDZjMjhmZjY1ZDI5OGFjZg"
-    }
-
-request(host, function(err,res,body){
-    if (!err && res.statusCode == 200) {
-    // console.log(body);
-  }
-    body = JSON.parse(body)
-    console.log(err)
-    body=body[0]
-    let lat = body.latitude
-    let lng = body.longitude
-    let r = getRadius(lat,lng)
-    console.log(...r)
-    // console.log(radius.forEach(x=>{return JSON.stringify(x)}))
-    // console.log(lat,lng,radius)
-    if(body.title !== undefined){
-      msg.say(`I found a deal for you: ${body.title}\n${body.description}\n${body.picture}\n${body.address}\nradius: ${r[0]} ${r[1]} ${r[2]} ${r[3]} ${r[4]} ${r[5]} `)
-    } else {
-      msg.say(`Hashtag: ${body.id} ${body.name}`)
-    }
+let snapLat = snaps
+  .orderByChild('lat')
+  .startAt(testSnapLocation[5].lat+"-") // "-"makes a string for query
+  .endAt(testSnapLocation[1].lat+"-")
+  .once('value')
+  .then(function(snap){
+    snap.forEach(function(data){
+      if(data.val().lng<=testSnapLocation[0].lng && data.val().lng>=testSnapLocation[3].lng){
+        console.log(data.val().title)
+        let body = data.val()
+        msg.say(`I found a deal for you: ${body.title}\n${body.description}\n${body.picture}\n${body.address}\nradius: ${r[0]} ${r[1]} ${r[2]} ${r[3]} ${r[4]} ${r[5]} `)
+      }
+    })
   })
+//     var host;
+//     if(randSnap !== ''){
+//       state.status = randSnap
+//       host = "https://api-cms-fitrock.kinetise.com/api/kinetise/v2/projects/199a5286a75bd6a4bddd37c6c62ee310/tables/1/rows?id="+randSnap+"&access_token=NGU1MzYxYTA1NGNlZDk2NjdlYzQ0OGU4N2Y3M2E5NTNhM2I2NTY0OThkODU5YjVmZDZjMjhmZjY1ZDI5OGFjZg"
+//     } else {
+//       state.status = randTag
+//       host = "https://api-cms-fitrock.kinetise.com/api/kinetise/v2/projects/199a5286a75bd6a4bddd37c6c62ee310/tables/5/rows/get-table?access_token=NGU1MzYxYTA1NGNlZDk2NjdlYzQ0OGU4N2Y3M2E5NTNhM2I2NTY0OThkODU5YjVmZDZjMjhmZjY1ZDI5OGFjZg"
+//     }
+
+// request(host, function(err,res,body){
+//     if (!err && res.statusCode == 200) {
+//     // console.log(body);
+//   }
+
+//     body = JSON.parse(body)
+//     console.log(err)
+//     body=body[0]
+//     let lat = body.latitude
+//     let lng = body.longitude
+//     let r = getRadius(lat,lng)
+//     console.log(...r)
+//     // console.log(radius.forEach(x=>{return JSON.stringify(x)}))
+//     // console.log(lat,lng,radius)
+//     if(body.title !== undefined){
+//       msg.say(`I found a deal for you: ${body.title}\n${body.description}\n${body.picture}\n${body.address}\nradius: ${r[0]} ${r[1]} ${r[2]} ${r[3]} ${r[4]} ${r[5]} `)
+//     } else {
+//       msg.say(`Hashtag: ${body.id} ${body.name}`)
+//     }
+//   })
 })
 
 
