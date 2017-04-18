@@ -136,10 +136,10 @@ slapp.message('.*', ['direct_mention', 'direct_message'], (msg) => {
 slapp.command('/test', (msg)=>{
   msg.say('test works')
 })
-
+let randomNum
 
 slapp.command('/jaywalk', (msg, text)=>{
-let randomNum = (Math.floor(Math.random() * 1400)+200)
+randomNum = (Math.floor(Math.random() * 1400)+200)
 
   msg
   .say({
