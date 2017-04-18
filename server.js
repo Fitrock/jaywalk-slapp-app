@@ -185,6 +185,7 @@ randomNum = (Math.floor(Math.random() * 1400)+200)
         .say('Click a button!')
         .route('getid1', state)
     }
+let body = null
 let snapLat = snaps
   .orderByChild('lat')
   .startAt(testSnapLocation[5].lat+"-") // "-"makes a string for query
@@ -195,10 +196,12 @@ let snapLat = snaps
       if(data.val().lng<=testSnapLocation[0].lng && data.val().lng>=testSnapLocation[3].lng){
         console.log(data.val().title)
         let body = data.val()
-        msg.say(`I found a deal for you: ${body.title}\n${body.description}\n${body.picture}\n${body.address}\nradius: ${r[0]} ${r[1]} ${r[2]} ${r[3]} ${r[4]} ${r[5]} `)
+        return body
       }
     })
   })
+  msg.say(`I found a deal for you: ${body.title}\n${body.description}\n${body.picture}\n${body.address}\nradius: ${r[0]} ${r[1]} ${r[2]} ${r[3]} ${r[4]} ${r[5]} `)
+
 //     var host;
 //     if(randSnap !== ''){
 //       state.status = randSnap

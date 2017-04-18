@@ -1,0 +1,13 @@
+{
+  "rules": {
+    ".read": true,
+    ".write": "auth != null",
+    "users": {
+    	".indexOn": ["user_id","email"]
+    },
+    "snaps":{
+    	".indexOn": ["title","lat","lng"],
+        ".read":true
+    }
+  }
+}
