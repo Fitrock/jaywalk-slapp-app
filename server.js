@@ -153,7 +153,6 @@ slapp.command('/test', (msg)=>{
   msg.say('test works')
 })
 let randomNum
-let testSnapLocation = getRadius(35.5420586,-77.055535) //test: snap #1055
 slapp.command('/jaywalk', (msg, text)=>{
 randomNum = (Math.floor(Math.random() * 1400)+200)
 
@@ -197,7 +196,7 @@ let snapLat = snaps
       if(data.val().lng<=testSnapLocation[0].lng && data.val().lng>=testSnapLocation[3].lng){
         console.log(data.val().title)
         let body = data.val()
-  msg.say(`I found a deal for you: ${body.title}\n${body.description}\n${body.picture}\n${body.address}\nradius: ${r[0]} ${r[1]} ${r[2]} ${r[3]} ${r[4]} ${r[5]} `)
+  msg.say(`I found a deal for you: ${body.title}\n${body.description}\n${body.picture}\n${body.address}\n`)
       }
     })
   })
