@@ -18,7 +18,7 @@ var slapp = Slapp({
 /*
 radius function
 */
-let radius = 500.0  // 0.5km or 2.2 mile total diameter
+let radius = 3200.0  // 3.2km or 4 mile total diameter
 let numPoints = 6
 function getRadius(lat, lng){
   let circlePoints = []
