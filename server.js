@@ -43,8 +43,8 @@ function getRadius(lat, lng){
       let dx = radius * Math.cos(angle)
       let dy = radius * Math.sin(angle)
       let point = []
-      point[0] = lat + (180 / Math.PI) * (dy / 6378137)
-      point[1] = lng + (180 / Math.PI) * (dx / 6378137) / Math.cos(lat * Math.PI / 180)
+      point['lat'] = lat + (180 / Math.PI) * (dy / 6378137)
+      point['lng'] = lng + (180 / Math.PI) * (dx / 6378137) / Math.cos(lat * Math.PI / 180)
       circlePoints.push(point)
   }
   return circlePoints
@@ -196,7 +196,7 @@ let snapLat = snaps
       if(data.val().lng<=testSnapLocation[0].lng && data.val().lng>=testSnapLocation[3].lng){
         console.log(data.val().title)
         let body = data.val()
-        return body
+  msg.say(`I found a deal for you: ${body.title}\n${body.description}\n${body.picture}\n${body.address}\nradius: ${r[0]} ${r[1]} ${r[2]} ${r[3]} ${r[4]} ${r[5]} `)
       }
     })
   })
@@ -238,7 +238,6 @@ let snapLat = snaps
 /*
 
 */
-
 
 
 // attach Slapp to express server
