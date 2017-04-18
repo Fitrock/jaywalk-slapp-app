@@ -186,6 +186,7 @@ randomNum = (Math.floor(Math.random() * 1400)+200)
         .route('getid1', state)
     }
 let body
+let testSnapLocation = getRadius(35.5420586,-77.055535) //test: snap #1055
 let snapLat = snaps
   .orderByChild('lat')
   .startAt(testSnapLocation[5].lat+"-") // "-"makes a string for query
