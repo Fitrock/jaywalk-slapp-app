@@ -2,7 +2,7 @@
 const slapp  = require('../slackSetup.js').slapp
 const getRadius = require('../radius.js').getRadius
 //db imports
-const firebase    = require('./firebaseSetup.js'),
+const firebase    = require('../firebaseSetup.js'),
       db = firebase.db,
       snaps = firebase.snaps,
       tags = firebase.tags,
