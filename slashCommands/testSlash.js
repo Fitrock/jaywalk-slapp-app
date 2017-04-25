@@ -7,6 +7,7 @@ const firebase    = require('../firebaseSetup.js'),
       snaps = firebase.snaps,
       tags = firebase.tags,
       users = firebase.users
+      
 let test = function() {
   let randomNum = 0;
 
