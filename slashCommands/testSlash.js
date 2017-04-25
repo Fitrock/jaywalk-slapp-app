@@ -31,9 +31,11 @@ let test = function() {
           ]
         }]
       })
-
+      .route('getid', {
+        id: text
+      })
   })
-  .route('getid', (msg, state) => {
+  .route('requestToDatabase', (msg, state) => {
     console.log(randomNum)
     var randSnap = msg.body.actions[0].value || ''
     var randTag = msg.body.actions[0].value || ''
@@ -43,7 +45,7 @@ let test = function() {
       return msg
         .say("Whoops, you just have to pick a button...")
         .say('Click a button!')
-        .route('getid1', state)
+        .route('requestToDatabase', state)
     }
     let body
     let testSnapLocation = getRadius(39.752764, -104.877743) //test: snap #1055
