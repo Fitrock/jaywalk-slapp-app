@@ -16,7 +16,7 @@ function getRadius(lat, lng){
   }
   return circlePoints
 }
-
+// 0-5 points: starts 
 module.exports = {
   getRadius: getRadius
 }

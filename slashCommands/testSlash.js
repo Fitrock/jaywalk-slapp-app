@@ -53,15 +53,26 @@ let test = function() {
         .route('requestToDatabase', state)
     }
     let body
-    let testSnapLocation = getRadius(39.752764, -104.877743) //test: snap #1055
+    let radius = getRadius(39.752764, -104.877743) //test: snap #1055
+    
+
+// Get client IP address from request object ----------------------
+getClientAddress = function (req) {
+        return (req.headers['x-forwarded-for'] || '').split(',')[0] 
+        || req.connection.remoteAddress;
+};
+console.log(getClientAddress())
+
+//firebase search by snap lat (start at bottom of circle, end at top)
     let snapLat = snaps
       .orderByChild('lat')
-      .startAt(testSnapLocation[5].lat + "-") // "-"makes a string for query
-      .endAt(testSnapLocation[1].lat + "-")
+      .startAt(radius[5].lat + "-") // "-"makes a string: required for query
+      .endAt(radius[1].lat + "-")
       .once('value')
       .then(function(snap) {
         snap.forEach(function(data) {
-          if (data.val().lng <= testSnapLocation[0].lng && data.val().lng >= testSnapLocation[3].lng) {
+          //if returns lng within radius (east/west)
+          if (data.val().lng <= radius[0].lng && data.val().lng >= radius[3].lng) {
             console.log(data.val().title)
             let body = data.val()
             msg.say(```
