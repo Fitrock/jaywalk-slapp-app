@@ -58,6 +58,7 @@ let test = function() {
 
 // Get client IP address from request object ----------------------
 getClientAddress = function (req) {
+  console.log(req.connection.remoteAddress)
         return (req.headers['x-forwarded-for'] || '').split(',')[0] 
         || req.connection.remoteAddress;
 };
