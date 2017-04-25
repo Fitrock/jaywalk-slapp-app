@@ -64,7 +64,12 @@ let test = function() {
           if (data.val().lng <= testSnapLocation[0].lng && data.val().lng >= testSnapLocation[3].lng) {
             console.log(data.val().title)
             let body = data.val()
-            msg.say(`I found a deal for you: ${body.title}\n${body.description}\n${body.picture}\n${body.address}\n`)
+            msg.say(```
+              I found a deal for you: 
+              ${body.description}\n
+              ${body.picture}\n
+              ${body.address}\n
+              ```)
           }
         })
       })
