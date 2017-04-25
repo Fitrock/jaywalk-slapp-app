@@ -3,14 +3,12 @@
 const express     = require('express')
 const request     = require('request')
 
-//firebase setup
-const firebase    = require('./firebaseSetup.js')
-
-// slapp setup
+/******************************
+slack imports
+*******************************/
 const slapp       = require('./slackSetup.js').slapp
-
-//jaywalk slack commands
 const slashCommands = require('./slashCommands/slashIndex.js')
+const botConvos   = require('./botConvos/convoIndex.js')
 
 /******************************
 console.log testing area
