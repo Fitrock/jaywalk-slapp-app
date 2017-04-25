@@ -26,8 +26,13 @@ let test = function() {
               text: 'Suprise Me!',
               type: 'button',
               value: randomNum
+            },
+            {
+              name: 'answer',
+              text: 'copy of button',
+              type: 'button',
+              value: randomNum
             }
-            // { name: 'answer', text: 'Random Tag', type: 'button', value: Math.floor(Math.random() * 44) }
           ]
         }]
       })
