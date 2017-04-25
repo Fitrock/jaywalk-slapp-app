@@ -31,9 +31,7 @@ let test = function() {
           ]
         }]
       })
-      .route('getid', {
-        id: text
-      })
+
   })
   .route('getid', (msg, state) => {
     console.log(randomNum)

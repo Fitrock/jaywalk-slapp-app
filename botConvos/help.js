@@ -19,5 +19,5 @@ let help = function(){
 	})
 }
 module.exports = {
-	help: help
+	help: help()
 }
