@@ -52,7 +52,6 @@ let jaywalk  = function() {
     //     .say('Click a button!')
     //     .route('getid1', state)
     // }
-    let body
     let testSnapLocation
 
     if(answer == 'boomtown'){
@@ -71,6 +70,8 @@ let jaywalk  = function() {
       .endAt(testSnapLocation[1].lat + "-")
       .once('value')
       .then(function(snap) {
+        let body
+        let count = 0
         snap.forEach(function(data) {
           //if returns lng within radius (east/west)
           if (data.val().lng <= radius[0].lng && data.val().lng >= radius[3].lng  && count <4) {
