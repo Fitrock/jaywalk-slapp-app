@@ -87,12 +87,12 @@ let test = function() {
               // ${body.description}\n
               // ${body.picture}\n
               // ${body.address}\n`
-              attachments: [{
+              // attachments: [{
                 text: `Deal ${count}: \n
                             ${body.description}\n
                             ${body.picture}\n
                             ${body.address}\n`
-              }] //end attachments
+              // }] //end attachments
             }) //end msg.say
           } //end if (lng checker)
         }) //end foreach
