@@ -54,9 +54,9 @@ let jaywalk  = function() {
     let testSnapLocation
 
     if(answer == 'boom'){
-      let testSnapLocation = getRadius(39.758451,-105.007625) //test: snap #1055
+      testSnapLocation = getRadius(39.758451,-105.007625) //test: snap #1055
     }else if(answer == 'we'){
-      let testSnapLocation = getRadius(40.018689, -105.279993) //test: snap #1055
+      testSnapLocation = getRadius(40.018689, -105.279993) //test: snap #1055
     }
     let snapLat = snaps
       .orderByChild('lat')
