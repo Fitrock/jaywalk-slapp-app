@@ -74,30 +74,30 @@ let test = function() {
       .endAt(radius[1].lat + "-")
       .once('value')
       .then(function(snap) {
-          let body
-          let count = 0
-          snap.forEach(function(data) {
-            //if returns lng within radius (east/west)
-            if (data.val().lng <= radius[0].lng && data.val().lng >= radius[3].lng  && count <3) {
-              // console.log(data.val().title)
-              let body = data.val()
-                count ++
-              msg.say(
-                // `I found a deal for you: 
-                // ${body.description}\n
-                // ${body.picture}\n
-                // ${body.address}\n`
-                  attachments: [{
-                  text: `Deal ${count}: \n
-                              ${body.description}\n
-                              ${body.picture}\n
-                              ${body.address}\n`
-                  }] //end attachments
-              } //end if (lng checker)
+        let body
+        let count = 0
+        snap.forEach(function(data) {
+          //if returns lng within radius (east/west)
+          if (data.val().lng <= radius[0].lng && data.val().lng >= radius[3].lng  && count <3) {
+            // console.log(data.val().title)
+            let body = data.val()
+              count ++
+            msg.say(
+              // `I found a deal for you: 
+              // ${body.description}\n
+              // ${body.picture}\n
+              // ${body.address}\n`
+              attachments: [{
+                text: `Deal ${count}: \n
+                            ${body.description}\n
+                            ${body.picture}\n
+                            ${body.address}\n`
+              }] //end attachments
             ) //end msg.say
-          }) //end foreach
+          } //end if (lng checker)
+        }) //end foreach
       }) //end .then(snap)
-    }) //end .route('requestToDatabase')
+  }) //end .route('requestToDatabase')
 }
 module.exports = {
   test:test()
