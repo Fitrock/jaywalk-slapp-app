@@ -77,10 +77,11 @@ let jaywalk  = function() {
           if (data.val().lng <= radius[0].lng && data.val().lng >= radius[3].lng  && count <4) {
             // console.log(data.val().title)
             let body = data.val()
+            let thisCount = count
             count ++
             let callback = function(picUrl){
               msg.say({
-                  text: `Deal ${count}: \n
+                  text: `Deal ${thisCount}: \n
                               ${body.description}\n
                               ${picUrl}\n
                               ${body.address}\n`
