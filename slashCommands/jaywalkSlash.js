@@ -90,11 +90,7 @@ let jaywalk  = function() {
             count ++
             let callback = function(picUrl){
               msg.say({
-                  text: `Deal 
-                  ${thisCount}: \n
-                  ${body.description}\n
-                  ${picUrl}\n
-                  ${body.address}\n`
+                  text: `Deal ${thisCount}: \n${body.description}\n${picUrl}\n${body.address}\n`
               }) //end msg.say
             }
             tinyurl.shorten(body.picture, function(res) {
