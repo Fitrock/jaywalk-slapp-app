@@ -15,6 +15,8 @@ const firebase    = require('../firebaseSetup.js'),
 let jaywalk  = function() {
   let randomNum = 0;
   slapp.command('/jaywalk', (msg, text) => {
+    let state = { requested: Date.now() }
+
     randomNum = (Math.floor(Math.random() * 1400) + 200)
 
     msg
@@ -39,7 +41,7 @@ let jaywalk  = function() {
           ]
         }]
       })
-        .route('getDbinfo', state, 60)        
+        .route('getDbinfo', state, 60) //expires after 60 sec       
   })
   .route('getDbinfo', (msg, state) => {
     let answer = msg.body.actions[0].value
