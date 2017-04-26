@@ -102,10 +102,7 @@ let test = function() {
             count ++
             let callback = function(picUrl){
               msg.say({
-                  text: `Deal ${count}: \n
-                              ${body.description}\n
-                              ${picUrl}\n
-                              ${body.address}\n`
+                  text: ```Deal ${count}: \n ${body.description}\n ${picUrl}\n ${body.address}\n```
               }) //end msg.say
             }
             tinyurl.shorten(body.picture, function(res) {

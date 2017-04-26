@@ -60,14 +60,13 @@ let jaywalk  = function() {
     //     .route('getid1', state)
     // }
     let radius
-//itms://itunes.apple.com/us/app/jaywalk-walk-get-deals/id1171719157?mt=8
     if(answer == 'boomtown'){
       radius = getRadius(39.758451,-105.007625) //test: snap #1055
     }else if(answer == 'wework'){
       radius = getRadius(40.018689, -105.279993) //test: snap #1055
     }else if(answer == 'app'){
        // return open("itms-apps://itunes.apple.com/us/app/jaywalk-walk-get-deals/id1171719157?mt=8")
-
+       return msg.say("That doesn't work yet...")
     }else{ //handle error
       return msg
         .say("Whoops, you just have to pick a button...")
@@ -91,16 +90,16 @@ let jaywalk  = function() {
             count ++
             let callback = function(picUrl){
               msg.say({
-                  text: `Deal ${thisCount}: \n
-                              ${body.description}\n
-                              ${picUrl}\n
-                              ${body.address}\n`
+                  text: `Deal 
+                  ${thisCount}: \n
+                  ${body.description}\n
+                  ${picUrl}\n
+                  ${body.address}\n`
               }) //end msg.say
             }
             tinyurl.shorten(body.picture, function(res) {
               callback(res)
             })
-
           } //end if (lng checker)
         }) //end foreach
       }) //end .then
