@@ -39,3 +39,10 @@ var deviceIPV6 = deviceIp.en1[0].address
 // module.exports = {
     
 // }
+const tinyurl = require('tinyurl')
+tinyurl.shorten('http://google.com', function(res) {
+    console.log(res); //Returns a shorter version of http://google.com - http://tinyurl.com/2tx 
+});
+
+
+

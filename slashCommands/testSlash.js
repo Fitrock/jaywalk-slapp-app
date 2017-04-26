@@ -1,7 +1,7 @@
 'use strict'
 const slapp = require('../slackSetup.js').slapp
 const getRadius = require('../radius.js').getRadius
-const TinyURL = require('tinyurl');
+const tinyurl = require('tinyurl');
  
 
 //db imports
@@ -91,11 +91,10 @@ let test = function() {
             let body = data.val()
             let picUrl
               count ++
-              TinyURL.shorten(body.picture, function(res) {
+              tinyurl.shorten(body.picture, function(res) {
                 picUrl = res
               });
             msg.say({
-        
                 text: `Deal ${count}: \n
                             ${body.description}\n
                             ${picUrl}\n
