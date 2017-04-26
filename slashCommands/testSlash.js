@@ -82,7 +82,7 @@ let test = function() {
             // console.log(data.val().title)
             let body = data.val()
               count ++
-            msg.say({}
+            msg.say({
               // `I found a deal for you: 
               // ${body.description}\n
               // ${body.picture}\n
