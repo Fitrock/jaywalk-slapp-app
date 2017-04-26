@@ -93,13 +93,15 @@ let test = function() {
               count ++
               tinyurl.shorten(body.picture, function(res) {
                 picUrl = res
-              });
-            msg.say({
-                text: `Deal ${count}: \n
-                            ${body.description}\n
-                            ${picUrl}\n
-                            ${body.address}\n`
-            }) //end msg.say
+              })
+              .then(
+                msg.say({
+                    text: `Deal ${count}: \n
+                                ${body.description}\n
+                                ${picUrl}\n
+                                ${body.address}\n`
+                }) //end msg.say
+              )
           } //end if (lng checker)
         }) //end foreach
       }) //end .then(snap)
