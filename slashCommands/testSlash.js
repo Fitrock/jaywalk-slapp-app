@@ -90,7 +90,7 @@ let test = function() {
             // console.log(data.val().title)
             let body = data.val()
             count ++
-            function callback(picUrl){
+            let callback = function(picUrl){
               msg.say({
                   text: `Deal ${count}: \n
                               ${body.description}\n
@@ -98,7 +98,7 @@ let test = function() {
                               ${body.address}\n`
               }) //end msg.say
             }
-            tinyurl.shorten(body.picture, function(res,callback) {
+            tinyurl.shorten(body.picture, function(res) {
               callback(res)
             })
 
