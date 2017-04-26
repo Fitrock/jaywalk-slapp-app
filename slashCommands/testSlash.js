@@ -42,7 +42,7 @@ let test = function() {
           ]
         }]
       })
-      .route('getid', {
+      .route('requestToDatabase', {
         id: text
       })
   })
