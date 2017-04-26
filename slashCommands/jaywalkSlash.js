@@ -42,7 +42,7 @@ let jaywalk  = function() {
               name: 'answer',
               text: 'Download App',
               type: 'button',
-              value:  href='itms-apps://itunes.apple.com/us/app/jaywalk-walk-get-deals/id1171719157?mt=8'
+              value:  'app'
 
             }
           ]
@@ -66,7 +66,7 @@ let jaywalk  = function() {
     }else if(answer == 'wework'){
       radius = getRadius(40.018689, -105.279993) //test: snap #1055
     }else if(answer == 'app'){
-// itms-apps://itunes.apple.com/us/app/jaywalk-walk-get-deals/id1171719157?mt=8
+      window.location.href = "itms-apps://itunes.apple.com/us/app/jaywalk-walk-get-deals/id1171719157?mt=8"
 
     }else{ //handle error
       return msg
