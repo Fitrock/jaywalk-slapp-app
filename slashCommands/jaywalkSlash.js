@@ -39,9 +39,7 @@ let jaywalk  = function() {
           ]
         }]
       })
-        .route('getDbinfo', {
-          id: text
-        })        
+        .route('getDbinfo', state, 60)        
   })
   .route('getDbinfo', (msg, state) => {
     let answer = msg.body.actions[0].value
