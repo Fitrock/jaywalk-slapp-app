@@ -1,6 +1,9 @@
 'use strict'
 const slapp = require('../slackSetup.js').slapp
 const getRadius = require('../radius.js').getRadius
+const TinyURL = require('tinyurl');
+ 
+
 //db imports
 const firebase    = require('../firebaseSetup.js'),
       db = firebase.db,
@@ -25,20 +28,26 @@ let test = function() {
               name: 'answer',
               text: 'Eventually gets current ip geolocation',
               type: 'button',
-              value: randomNum
+              value: ''
             },
             {
               name: 'answer2',
               text: 'Eventually hardcoded lat/lng of business',
               type: 'button',
-              value: randomNum //
+              value: ''
             },
             {
               name: 'answer3',
               text: 'Sends to app download',
               type: 'button',
-              value: randomNum //
-            }       
+              value: ''
+            },
+            {
+              name: 'answer3',
+              text: 'randomNum',
+              type: 'button',
+              value: randomNum
+            }        
           ]
         }]
       })
@@ -48,16 +57,15 @@ let test = function() {
   })
   .route('requestToDatabase', (msg, state) => {
     console.log(randomNum)
-    var randSnap = msg.body.actions[0].value || ''
-    var randTag = msg.body.actions[0].value || ''
-
+    // var randSnap = msg.body.actions[0].value || ''
+    // var randTag = msg.body.actions[0].value || ''
     // user may not have typed text as their next action, ask again and re-route
-    if (!randSnap || !randTag) {
-      return msg
-        .say("Whoops, you just have to pick a button...")
-        .say('Click a button!')
-        .route('requestToDatabase', state)
-    }
+    // if (!randSnap || !randTag) {
+    //   return msg
+    //     .say("Whoops, you just have to pick a button...")
+    //     .say('Click a button!')
+    //     .route('requestToDatabase', state)
+    // }
 
     /*
       function to get client ip and convert to geolocation goes here
@@ -81,12 +89,16 @@ let test = function() {
           if (data.val().lng <= radius[0].lng && data.val().lng >= radius[3].lng  && count <3) {
             // console.log(data.val().title)
             let body = data.val()
+            let picUrl
               count ++
+              TinyURL.shorten(body.picture, function(res) {
+                picUrl = res
+              });
             msg.say({
         
                 text: `Deal ${count}: \n
                             ${body.description}\n
-                            ${body.picture}\n
+                            ${picUrl}\n
                             ${body.address}\n`
             }) //end msg.say
           } //end if (lng checker)
