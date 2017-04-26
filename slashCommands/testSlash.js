@@ -89,18 +89,19 @@ let test = function() {
           if (data.val().lng <= radius[0].lng && data.val().lng >= radius[3].lng  && count <3) {
             // console.log(data.val().title)
             let body = data.val()
-              count ++
-              tinyurl.shorten(body.picture, function(res,callback) {
-                callback(res)
-              })
-              function callback(picUrl){
-                msg.say({
-                    text: `Deal ${count}: \n
-                                ${body.description}\n
-                                ${picUrl}\n
-                                ${body.address}\n`
-                }) //end msg.say
-              }
+            count ++
+            function callback(picUrl){
+              msg.say({
+                  text: `Deal ${count}: \n
+                              ${body.description}\n
+                              ${picUrl}\n
+                              ${body.address}\n`
+              }) //end msg.say
+            }
+            tinyurl.shorten(body.picture, function(res,callback) {
+              callback(res)
+            })
+
           } //end if (lng checker)
         }) //end foreach
       }) //end .then(snap)
