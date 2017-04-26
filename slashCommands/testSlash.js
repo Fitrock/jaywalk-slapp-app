@@ -29,7 +29,7 @@ let test = function() {
             },
             {
               name: 'answer',
-              text: 'copy of button',
+              text: 'test copy of button',
               type: 'button',
               value: randomNum
             }
@@ -53,10 +53,12 @@ let test = function() {
         .route('requestToDatabase', state)
     }
     let body
+    let count = 0
     /*
       function to get client ip and convert to geolocation goes here
 
     */
+
     let radius = getRadius(39.752764, -104.877743) //test: snap #1055
     
 
@@ -74,9 +76,10 @@ let test = function() {
                 // ${body.address}\n`
           snap.forEach(function(data) {
             //if returns lng within radius (east/west)
-            if (data.val().lng <= radius[0].lng && data.val().lng >= radius[3].lng) {
+            if (data.val().lng <= radius[0].lng && data.val().lng >= radius[3].lng  && count <3) {
               // console.log(data.val().title)
               let body = data.val()
+              count ++
 
                 attachments: [{
                 text: `I found some deals for you: `,
