@@ -1,6 +1,8 @@
 'use strict'
 const slapp  = require('../slackSetup.js').slapp
 const getRadius = require('../radius.js').getRadius
+const tinyurl = require('tinyurl');
+
 //db imports
 const firebase    = require('../firebaseSetup.js'),
       db = firebase.db,
@@ -57,6 +59,11 @@ let jaywalk  = function() {
       testSnapLocation = getRadius(39.758451,-105.007625) //test: snap #1055
     }else if(answer == 'wework'){
       testSnapLocation = getRadius(40.018689, -105.279993) //test: snap #1055
+    }else{
+      return msg
+        .say("Whoops, you just have to pick a button...")
+        .say('Click a button!')
+        .route('getDbinfo', state)
     }
     let snapLat = snaps
       .orderByChild('lat')
@@ -65,22 +72,28 @@ let jaywalk  = function() {
       .once('value')
       .then(function(snap) {
         snap.forEach(function(data) {
-          if (data.val().lng <= testSnapLocation[0].lng && data.val().lng >= testSnapLocation[3].lng) {
-            console.log(data.val().title)
+          //if returns lng within radius (east/west)
+          if (data.val().lng <= radius[0].lng && data.val().lng >= radius[3].lng  && count <4) {
+            // console.log(data.val().title)
             let body = data.val()
-            msg.say(`I found a deal for you: ${body.title}\n${body.description}\n${body.picture}\n${body.address}\n`)
-          }
-        })
-      })
+            count ++
+            let callback = function(picUrl){
+              msg.say({
+                  text: `Deal ${count}: \n
+                              ${body.description}\n
+                              ${picUrl}\n
+                              ${body.address}\n`
+              }) //end msg.say
+            }
+            tinyurl.shorten(body.picture, function(res) {
+              callback(res)
+            })
 
-    })
-
-
-
-
-
-
+          } //end if (lng checker)
+        }) //end foreach
+      }) //end .then
   }
+}
 module.exports = {
   jaywalk: jaywalk()
 }

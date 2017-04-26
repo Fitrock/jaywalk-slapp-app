@@ -59,25 +59,7 @@ let test = function() {
       })
       .route('requestToDatabase', {
         id: text
-      })
-      // if statements to route based on btn value
-      /*
-      .route('appDl', {
-        id: text
-      }) 
-      .route('boomtown', {
-        id: text
-      }) 
-      .route('ipGeo', {
-        id: text
-      })  
-      .route('random', {
-        id: text
-      }) 
-      .route('wework', {
-        id: text
-      })            
-      */     
+      })    
   })
 
   //keep .route('',blah blah)=>{
