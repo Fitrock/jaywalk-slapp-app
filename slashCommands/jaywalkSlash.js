@@ -52,12 +52,12 @@ let jaywalk  = function() {
     //     .say('Click a button!')
     //     .route('getid1', state)
     // }
-    let testSnapLocation
+    let radius
 
     if(answer == 'boomtown'){
-      testSnapLocation = getRadius(39.758451,-105.007625) //test: snap #1055
+      radius = getRadius(39.758451,-105.007625) //test: snap #1055
     }else if(answer == 'wework'){
-      testSnapLocation = getRadius(40.018689, -105.279993) //test: snap #1055
+      radius = getRadius(40.018689, -105.279993) //test: snap #1055
     }else{
       return msg
         .say("Whoops, you just have to pick a button...")
@@ -66,8 +66,8 @@ let jaywalk  = function() {
     }
     let snapLat = snaps
       .orderByChild('lat')
-      .startAt(testSnapLocation[5].lat + "-") // "-"makes a string for query
-      .endAt(testSnapLocation[1].lat + "-")
+      .startAt(radius[5].lat + "-") // "-"makes a string for query
+      .endAt(radius[1].lat + "-")
       .once('value')
       .then(function(snap) {
         let body
