@@ -37,6 +37,13 @@ let jaywalk  = function() {
               text: 'WeWork',
               type: 'button',
               value: 'wework'
+            },
+            {
+              name: 'answer',
+              text: 'Download App',
+              type: 'button',
+              value:  href='itms-apps://itunes.apple.com/us/app/jaywalk-walk-get-deals/id1171719157?mt=8'
+
             }
           ]
         }]
@@ -53,12 +60,15 @@ let jaywalk  = function() {
     //     .route('getid1', state)
     // }
     let radius
-
+//itms://itunes.apple.com/us/app/jaywalk-walk-get-deals/id1171719157?mt=8
     if(answer == 'boomtown'){
       radius = getRadius(39.758451,-105.007625) //test: snap #1055
     }else if(answer == 'wework'){
       radius = getRadius(40.018689, -105.279993) //test: snap #1055
-    }else{
+    }else if(answer == 'app'){
+// itms-apps://itunes.apple.com/us/app/jaywalk-walk-get-deals/id1171719157?mt=8
+
+    }else{ //handle error
       return msg
         .say("Whoops, you just have to pick a button...")
         .say('Click a button!')
