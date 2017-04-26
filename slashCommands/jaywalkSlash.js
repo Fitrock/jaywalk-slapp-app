@@ -24,32 +24,40 @@ let jaywalk  = function() {
           callback_id: 'doit_confirm_callback',
           actions: [{
               name: 'answer',
-              text: 'Suprise Me!',
+              text: 'Boomtown',
               type: 'button',
-              value: randomNum
+              value: 'boomtown'
+            },
+            {
+              name: 'answer',
+              text: 'WeWork',
+              type: 'button',
+              value: 'wework'
             }
-            // { name: 'answer', text: 'Random Tag', type: 'button', value: Math.floor(Math.random() * 44) }
           ]
         }]
       })
-      .route('getid', {
-        id: text
-      })
+      if(msg.body.actions[0].value=='boomtown'){
+        .route('boom', {
+          id: text
+        })        
+      } else if(msg.body.actions[0].value=='wework'){
+        .route('we', {
+          id: text
+        })
+      }
   })
-  .route('getid', (msg, state) => {
-    console.log(randomNum)
-    var randSnap = msg.body.actions[0].value || ''
-    var randTag = msg.body.actions[0].value || ''
+  .route('boom', (msg, state) => {
 
     // user may not have typed text as their next action, ask again and re-route
-    if (!randSnap || !randTag) {
-      return msg
-        .say("Whoops, you just have to pick a button...")
-        .say('Click a button!')
-        .route('getid1', state)
-    }
+    // if (!randSnap || !randTag) {
+    //   return msg
+    //     .say("Whoops, you just have to pick a button...")
+    //     .say('Click a button!')
+    //     .route('getid1', state)
+    // }
     let body
-    let testSnapLocation = getRadius(39.752764, -104.877743) //test: snap #1055
+    let testSnapLocation = getRadius(40.018689, -105.279993) //test: snap #1055
     let snapLat = snaps
       .orderByChild('lat')
       .startAt(testSnapLocation[5].lat + "-") // "-"makes a string for query
@@ -66,9 +74,39 @@ let jaywalk  = function() {
       })
 
     })
+  .route('we', (msg, state) => {
+
+    // user may not have typed text as their next action, ask again and re-route
+    // if (!randSnap || !randTag) {
+    //   return msg
+    //     .say("Whoops, you just have to pick a button...")
+    //     .say('Click a button!')
+    //     .route('getid1', state)
+    // }
+    let body
+    let testSnapLocation = getRadius(39.758451,-105.007625) //test: snap #1055
+    let snapLat = snaps
+      .orderByChild('lat')
+      .startAt(testSnapLocation[5].lat + "-") // "-"makes a string for query
+      .endAt(testSnapLocation[1].lat + "-")
+      .once('value')
+      .then(function(snap) {
+        snap.forEach(function(data) {
+          if (data.val().lng <= testSnapLocation[0].lng && data.val().lng >= testSnapLocation[3].lng) {
+            console.log(data.val().title)
+            let body = data.val()
+            msg.say(`I found a deal for you: ${body.title}\n${body.description}\n${body.picture}\n${body.address}\n`)
+          }
+        })
+      })
+
+    })
+
+
+
+
+
   }
-
-
 module.exports = {
   jaywalk: jaywalk()
 }

@@ -31,19 +31,25 @@ let test = function() {
               value: ''
             },
             {
-              name: 'answer2',
-              text: 'Eventually hardcoded lat/lng of business',
+              name: 'answer',
+              text: 'WeWork',
               type: 'button',
-              value: ''
+              value: 'wework'
             },
             {
-              name: 'answer3',
+              name: 'answer',
+              text: 'Boomtown',
+              type: 'button',
+              value: 'boomtown'
+            },
+            {
+              name: 'answer',
               text: 'Sends to app download',
               type: 'button',
               value: ''
             },
             {
-              name: 'answer3',
+              name: 'answer',
               text: 'randomNum',
               type: 'button',
               value: randomNum
@@ -54,7 +60,29 @@ let test = function() {
       .route('requestToDatabase', {
         id: text
       })
+      // if statements to route based on btn value
+      /*
+      .route('appDl', {
+        id: text
+      }) 
+      .route('boomtown', {
+        id: text
+      }) 
+      .route('ipGeo', {
+        id: text
+      })  
+      .route('random', {
+        id: text
+      }) 
+      .route('wework', {
+        id: text
+      })            
+      */     
   })
+
+  //keep .route('',blah blah)=>{
+  // variable that pulls in route.js file
+  // }
   .route('requestToDatabase', (msg, state) => {
     console.log(randomNum)
     // var randSnap = msg.body.actions[0].value || ''
@@ -86,7 +114,7 @@ let test = function() {
         let count = 0
         snap.forEach(function(data) {
           //if returns lng within radius (east/west)
-          if (data.val().lng <= radius[0].lng && data.val().lng >= radius[3].lng  && count <3) {
+          if (data.val().lng <= radius[0].lng && data.val().lng >= radius[3].lng  && count <4) {
             // console.log(data.val().title)
             let body = data.val()
             count ++
