@@ -83,16 +83,11 @@ let test = function() {
             let body = data.val()
               count ++
             msg.say({
-              // `I found a deal for you: 
-              // ${body.description}\n
-              // ${body.picture}\n
-              // ${body.address}\n`
-              // attachments: [{
+        
                 text: `Deal ${count}: \n
                             ${body.description}\n
                             ${body.picture}\n
                             ${body.address}\n`
-              // }] //end attachments
             }) //end msg.say
           } //end if (lng checker)
         }) //end foreach
