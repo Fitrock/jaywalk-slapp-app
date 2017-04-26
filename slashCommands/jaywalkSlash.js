@@ -67,7 +67,7 @@ let jaywalk  = function() {
     }else if(answer == 'wework'){
       radius = getRadius(40.018689, -105.279993) //test: snap #1055
     }else if(answer == 'app'){
-      open("itms-apps://itunes.apple.com/us/app/jaywalk-walk-get-deals/id1171719157?mt=8")
+       return open("itms-apps://itunes.apple.com/us/app/jaywalk-walk-get-deals/id1171719157?mt=8")
 
     }else{ //handle error
       return msg
