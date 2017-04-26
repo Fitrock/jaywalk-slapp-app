@@ -93,7 +93,7 @@ let jaywalk  = function() {
           } //end if (lng checker)
         }) //end foreach
       }) //end .then
-  }
+  })
 }
 module.exports = {
   jaywalk: jaywalk()
