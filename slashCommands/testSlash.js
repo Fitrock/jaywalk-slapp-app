@@ -23,16 +23,22 @@ let test = function() {
           callback_id: 'doit_confirm_callback',
           actions: [{
               name: 'answer',
-              text: 'Suprise Me!',
+              text: 'Eventually gets current ip geolocation',
               type: 'button',
               value: randomNum
             },
             {
-              name: 'answer',
-              text: 'test copy of button',
+              name: 'answer2',
+              text: 'Eventually hardcoded lat/lng of business',
               type: 'button',
-              value: randomNum
-            }
+              value: randomNum //
+            },
+            {
+              name: 'answer3',
+              text: 'Sends to app download',
+              type: 'button',
+              value: randomNum //
+            }       
           ]
         }]
       })
@@ -52,8 +58,7 @@ let test = function() {
         .say('Click a button!')
         .route('requestToDatabase', state)
     }
-    let body
-    let count = 0
+
     /*
       function to get client ip and convert to geolocation goes here
 
@@ -69,40 +74,28 @@ let test = function() {
       .endAt(radius[1].lat + "-")
       .once('value')
       .then(function(snap) {
-        msg.say(
-                // `I found a deal for you: 
-                // ${body.description}\n
-                // ${body.picture}\n
-                // ${body.address}\n`
+          let body
+          let count = 0
           snap.forEach(function(data) {
             //if returns lng within radius (east/west)
             if (data.val().lng <= radius[0].lng && data.val().lng >= radius[3].lng  && count <3) {
               // console.log(data.val().title)
               let body = data.val()
-              count ++
-
-                attachments: [{
-                text: `I found some deals for you: `,
-                // fallback: 'Where to today?',
-                // callback_id: 'doit_confirm_callback',
-                actions: [{
-                    name: 'answer',
-                    text: ``,
-                    type: 'text',
-                    value: randomNum
-                    },
-                    {
-                      name: 'answer',
-                      text: 'copy of button',
-                      type: 'button',
-                      value: randomNum
-                    }
-                  ]
-                }] //end attachments
-            } //end if (lng checker)
+                count ++
+              msg.say(
+                // `I found a deal for you: 
+                // ${body.description}\n
+                // ${body.picture}\n
+                // ${body.address}\n`
+                  attachments: [{
+                  text: `Deal ${count}: \n
+                              ${body.description}\n
+                              ${body.picture}\n
+                              ${body.address}\n`
+                  }] //end attachments
+              } //end if (lng checker)
+            ) //end msg.say
           }) //end foreach
-        ) //end msg.say
-
       }) //end .then(snap)
     }) //end .route('requestToDatabase')
 }
