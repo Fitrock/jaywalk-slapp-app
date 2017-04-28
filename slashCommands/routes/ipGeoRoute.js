@@ -1,6 +1,6 @@
 'use strict'
 const slapp = require('../../slackSetup.js').slapp
-const getRadius = require('../../.radius.js').getRadius
+const getRadius = require('../../radius.js').getRadius
 const tinyurl = require('tinyurl');
  
 
@@ -80,7 +80,7 @@ function ipGeo() {
       }) //end foreach
     }) //end .then(snap)
     console.log('might need to return msg', msg)
-}) //end ipGeo()
+} //end ipGeo()
 
 module.exports = {
   ipGeo: ipGeo
