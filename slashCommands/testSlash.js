@@ -60,12 +60,6 @@ browser v slack app
             },
             {
               name: 'answer',
-              text: 'randomNum',
-              type: 'button',
-              value: randomNum
-            },
-            {
-              name: 'answer',
               text: 'findMe',
               type: 'button',
               value: 'findMe'
