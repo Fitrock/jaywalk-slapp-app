@@ -11,7 +11,7 @@ const firebase    = require('../../firebaseSetup.js'),
       tags = firebase.tags,
       users = firebase.users
 
-export function hardcodedLocation (lat,lng){
+function hardcodedLocation (lat,lng){
     //firebase search by snap lat (start at bottom of circle, end at top)
     let radius = getRadius(39.758451,-105.007625) //test: snap #1055
 
@@ -42,3 +42,7 @@ export function hardcodedLocation (lat,lng){
         }) //end foreach
       }) //end .then(snap)
 } // end hardcodedLocation()
+
+module.exports = {
+  hardcodedLocation: hardcodedLocation
+}

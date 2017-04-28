@@ -81,3 +81,7 @@ function ipGeo() {
     }) //end .then(snap)
     console.log('might need to return msg', msg)
 }) //end ipGeo()
+
+module.exports = {
+  ipGeo: ipGeo
+}
