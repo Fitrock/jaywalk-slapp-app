@@ -29,9 +29,18 @@ function hardcodedLocation (lat,lng){
             // console.log(data.val().title)
             let body = data.val()
             count ++
+            let thisCount = count
             let callback = function(picUrl){
               msg.say({
-                  text: `Deal ${count}: \n ${body.description}\n ${picUrl}\n ${body.address}\n`
+                  text: ''
+                  attachments:[{
+                    title: `${body.description}`
+                    color: 'good',
+                    image_url: `${picUrl}`,
+                    thumb_url: `${picUrl}`
+                    text: `${body.address}`,
+                    footer:`Jaywalk: ${thisCount}`
+                  }]
               }) //end msg.say
             }
             tinyurl.shorten(body.picture, function(res) {
