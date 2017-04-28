@@ -71,9 +71,7 @@ browser v slack app
   })
   .route('requestToDatabase', (msg, state) => {
     let answer = msg.body.actions[0].value
-    var ipMaybe = request('//www.geoplugin.net/json.gp?jsoncallback=?', function(data) {
-  console.log(JSON.stringify(data, null, 2));
-});
+
     if(answer == 'boomtown'){
       hardcodedLocation(39.758451,-105.007625) //(lat,lng) of boomtown
     }else if(answer == 'wework'){
@@ -90,7 +88,10 @@ browser v slack app
       */
        return msg.say("That doesn't work yet...")
     }else if(answer == 'ipGeo'){
-      ipGeo()
+      // ipGeo()
+        var ipMaybe = request('//www.geoplugin.net/json.gp?jsoncallback=?', function(data) {
+          console.log(JSON.stringify(data, null, 2));
+        });
     }else{ //handle error
       return msg
         .say("Whoops, you just have to pick a button...")
