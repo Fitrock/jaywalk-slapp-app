@@ -34,10 +34,10 @@ function hardcodedLocation (lat,lng){
               msg.say({
                   text: '',
                   attachments:[{
-                    title: `${body.description}`
+                    title: `${body.description}`,
                     color: 'good',
                     image_url: `${picUrl}`,
-                    thumb_url: `${picUrl}`
+                    thumb_url: `${picUrl}`,
                     text: `${body.address}`,
                     footer:`Jaywalk: ${thisCount}`
                   }]
