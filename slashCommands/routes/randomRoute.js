@@ -12,6 +12,8 @@ const firebase    = require('../firebaseSetup.js'),
       users = firebase.users
 
 .route('random', (msg, state) => {
+  let randomNum = (Math.floor(Math.random() * 1400) + 200)
+
   console.log(randomNum)
   // var randSnap = msg.body.actions[0].value || ''
   // var randTag = msg.body.actions[0].value || ''

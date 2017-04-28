@@ -2,7 +2,10 @@
 const slapp = require('../slackSetup.js').slapp
 const getRadius = require('../radius.js').getRadius
 const tinyurl = require('tinyurl');
- 
+
+// route functions
+const hardcodedLocation = require('./routes/hardcodedGeoRoute.js')
+const ipGeo = require('./routes/ipGeoRoute.js')
 
 //db imports
 const firebase    = require('../firebaseSetup.js'),
@@ -13,7 +16,13 @@ const firebase    = require('../firebaseSetup.js'),
       
 let test = function() {
   let randomNum = 0;
+  let state = { requested: Date.now() }
+/*
+ifs to determine desktop v mobile
+&&
+browser v slack app
 
+*/
   slapp.command('/test', (msg, text) => {
     randomNum = (Math.floor(Math.random() * 1400) + 200)
 
@@ -28,7 +37,7 @@ let test = function() {
               name: 'answer',
               text: 'Eventually gets current ip geolocation',
               type: 'button',
-              value: ''
+              value: 'ipGeo'
             },
             {
               name: 'answer',
@@ -46,7 +55,7 @@ let test = function() {
               name: 'answer',
               text: 'Sends to app download',
               type: 'button',
-              value: ''
+              value: 'app'
             },
             {
               name: 'answer',
@@ -57,61 +66,36 @@ let test = function() {
           ]
         }]
       })
-      .route('requestToDatabase', {
-        id: text
-      })    
+      .route('requestToDatabase', state, 60)    
   })
-
-  //keep .route('',blah blah)=>{
-  // variable that pulls in route.js file
-  // }
   .route('requestToDatabase', (msg, state) => {
-    console.log(randomNum)
-    // var randSnap = msg.body.actions[0].value || ''
-    // var randTag = msg.body.actions[0].value || ''
-    // user may not have typed text as their next action, ask again and re-route
-    // if (!randSnap || !randTag) {
-    //   return msg
-    //     .say("Whoops, you just have to pick a button...")
-    //     .say('Click a button!')
-    //     .route('requestToDatabase', state)
-    // }
+    let answer = msg.body.actions[0].value
+    var ipMaybe = request(('//www.geoplugin.net/json.gp?jsoncallback=?', function(data) {
+  console.log(JSON.stringify(data, null, 2));
+});
+    if(answer == 'boomtown'){
+      hardcodedLocation(39.758451,-105.007625) //(lat,lng) of boomtown
+    }else if(answer == 'wework'){
+      hardcodedLocation(40.018689, -105.279993) //test: snap #1055
+    }else if(answer == 'app'){
+      /*
+      let device = //variable from device
+        if(device == ios){
+         // return open("itms-apps://itunes.apple.com/us/app/jaywalk-walk-get-deals/id1171719157?mt=8")
 
-    /*
-      function to get client ip and convert to geolocation goes here
-
-    */
-
-    let radius = getRadius(39.752764, -104.877743) //test: snap #1055
-    
-
-    //firebase search by snap lat (start at bottom of circle, end at top)
-    let snapLat = snaps
-      .orderByChild('lat')
-      .startAt(radius[5].lat + "-") // "-"makes a string: required for query
-      .endAt(radius[1].lat + "-")
-      .once('value')
-      .then(function(snap) {
-        let body
-        let count = 0
-        snap.forEach(function(data) {
-          //if returns lng within radius (east/west)
-          if (data.val().lng <= radius[0].lng && data.val().lng >= radius[3].lng  && count <4) {
-            // console.log(data.val().title)
-            let body = data.val()
-            count ++
-            let callback = function(picUrl){
-              msg.say({
-                  text: ```Deal ${count}: \n ${body.description}\n ${picUrl}\n ${body.address}\n```
-              }) //end msg.say
-            }
-            tinyurl.shorten(body.picture, function(res) {
-              callback(res)
-            })
-
-          } //end if (lng checker)
-        }) //end foreach
-      }) //end .then(snap)
+        } else if(device == android){
+  
+        }
+      */
+       return msg.say("That doesn't work yet...")
+    }else if(answer == 'ipGeo'){
+      ipGeo()
+    }else{ //handle error
+      return msg
+        .say("Whoops, you just have to pick a button...")
+        .say('Click a button!')
+        .route('requestToDatabase', state, 60)
+    }
   }) //end .route('requestToDatabase')
 }
 module.exports = {

@@ -17,7 +17,6 @@ let jaywalk  = function() {
   slapp.command('/jaywalk', (msg, text) => {
     let state = { requested: Date.now() }
 
-    randomNum = (Math.floor(Math.random() * 1400) + 200)
 
     msg
       .say({

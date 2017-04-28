@@ -1,34 +1,52 @@
 'use strict'
-const slapp = require('../slackSetup.js').slapp
-const getRadius = require('../radius.js').getRadius
+const slapp = require('../../slackSetup.js').slapp
+const getRadius = require('../../.radius.js').getRadius
 const tinyurl = require('tinyurl');
  
 
 //db imports
-const firebase    = require('../firebaseSetup.js'),
+const firebase    = require('../../firebaseSetup.js'),
       db = firebase.db,
       snaps = firebase.snaps,
       tags = firebase.tags,
       users = firebase.users
-
-.route('ipGeo', (msg, state) => {
-  console.log(randomNum)
-  // var randSnap = msg.body.actions[0].value || ''
-  // var randTag = msg.body.actions[0].value || ''
-  // user may not have typed text as their next action, ask again and re-route
-  // if (!randSnap || !randTag) {
-  //   return msg
-  //     .say("Whoops, you just have to pick a button...")
-  //     .say('Click a button!')
-  //     .route('requestToDatabase', state)
-  // }
-
+function getClientIp(){
   /*
+run in client's browser
+
+var options = {
+  enableHighAccuracy: true,
+  timeout: 5000,
+  maximumAge: 0
+};
+
+function success(pos) {
+  var crd = pos.coords;
+//pos returns altitude,Accuracy,heading,latitude,longitude,speed
+
+  console.log('Your current position is:');
+  console.log(`Latitude : ${crd.latitude}`);
+  console.log(`Longitude: ${crd.longitude}`);
+  console.log(`More or less ${crd.accuracy} meters.`);
+};
+
+function error(err) {
+  console.warn(`ERROR(${err.code}): ${err.message}`);
+};
+
+navigator.geolocation.getCurrentPosition(success, error, options);
+  */
+   /*
     function to get client ip and convert to geolocation goes here
 
   */
-
-  let radius = getRadius(39.752764, -104.877743) //test: snap #1055
+  //geoplugin to run in client's slack and return json to backend
+  //http://www.geoplugin.net/json.gp
+  return [lat,lng]
+}
+function ipGeo() {
+  let latLng =  getClientIp()
+  let radius = getRadius(latLng[0], latLng[1]) //returned from getClientIp()
   
 
   //firebase search by snap lat (start at bottom of circle, end at top)
@@ -48,7 +66,7 @@ const firebase    = require('../firebaseSetup.js'),
           count ++
           let callback = function(picUrl){
             msg.say({
-                text: `Deal ${count}: \n
+                text: `Deal ${(count+1)}: \n
                             ${body.description}\n
                             ${picUrl}\n
                             ${body.address}\n`
@@ -61,4 +79,5 @@ const firebase    = require('../firebaseSetup.js'),
         } //end if (lng checker)
       }) //end foreach
     }) //end .then(snap)
-}) //end .route('requestToDatabase') 
+    console.log('might need to return msg', msg)
+}) //end ipGeo()
