@@ -90,8 +90,11 @@ browser v slack app
     }else if(answer == 'ipGeo'){
       // ipGeo()
         var ipMaybe = request('//www.geoplugin.net/json.gp?jsoncallback=?', function(data) {
-          console.log(JSON.stringify(data, null, 2));
+          callback(data)
         });
+        function callback (data){
+          console.log(JSON.stringify(data, null, 2));
+        }
     }else{ //handle error
       return msg
         .say("Whoops, you just have to pick a button...")
