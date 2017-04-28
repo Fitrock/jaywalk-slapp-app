@@ -90,7 +90,7 @@ browser v slack app
     }else if(answer == 'ipGeo'){
       // ipGeo()
         let callback =function (data){
-          console.log(JSON.stringify(data, null, 2));
+          msg.say(JSON.stringify(data, null, 2));
         }
         request('//www.geoplugin.net/json.gp?jsoncallback=?', function(data) {
           callback(data)
