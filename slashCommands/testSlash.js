@@ -70,7 +70,7 @@ browser v slack app
   })
   .route('requestToDatabase', (msg, state) => {
     let answer = msg.body.actions[0].value
-    var ipMaybe = request(('//www.geoplugin.net/json.gp?jsoncallback=?', function(data) {
+    var ipMaybe = request('//www.geoplugin.net/json.gp?jsoncallback=?', function(data) {
   console.log(JSON.stringify(data, null, 2));
 });
     if(answer == 'boomtown'){
