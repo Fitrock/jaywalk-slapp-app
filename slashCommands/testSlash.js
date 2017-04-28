@@ -63,7 +63,13 @@ browser v slack app
               text: 'randomNum',
               type: 'button',
               value: randomNum
-            }        
+            },
+            {
+              name: 'answer',
+              text: 'findMe',
+              type: 'button',
+              value: 'findMe'
+            }      
           ]
         }]
       })
@@ -91,7 +97,7 @@ browser v slack app
       // ipGeo()
       let callback =function(err,res){
       console.log(err,res)
-      msg.say(JSON.stringify(res))
+      msg.say(JSON.stringify(res),"this is slack's server location...")
       }
 
       request.get({
@@ -99,6 +105,10 @@ browser v slack app
         json:true}
         , callback);
 
+    }else if(answer == 'findMe'){
+      msg
+      .say("GeoSlack")
+      .route('handleGeoLoc', state, 60) 
     }else{ //handle error
       return msg
         .say("Whoops, you just have to pick a button...")
@@ -106,6 +116,9 @@ browser v slack app
         .route('requestToDatabase', state, 60)
     }
   }) //end .route('requestToDatabase')
+  .route('handleGeoLoc',(msg,state) =>{
+
+  }) //end .route( handleGeoLoc
 }
 module.exports = {
   test:test()
