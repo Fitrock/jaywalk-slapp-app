@@ -32,7 +32,7 @@ function hardcodedLocation (lat,lng){
             let thisCount = count
             let callback = function(picUrl){
               msg.say({
-                  text: ''
+                  text: '',
                   attachments:[{
                     title: `${body.description}`
                     color: 'good',
