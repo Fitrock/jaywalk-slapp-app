@@ -91,6 +91,7 @@ browser v slack app
       // ipGeo()
       let callback =function(err,res){
       console.log(err,res)
+      msg.say(JSON.stringify(res))
       }
 
       request.get({
