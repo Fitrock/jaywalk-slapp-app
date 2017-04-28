@@ -34,7 +34,7 @@ browser v slack app
           text: 'Where do you want to Jaywalk to?',
           fallback: 'Where to today?',
           callback_id: 'doit_confirm_callback',
-          color: 'danger',
+          color: 'good',
           actions: [{
               name: 'answer',
               text: 'Eventually gets current ip geolocation',

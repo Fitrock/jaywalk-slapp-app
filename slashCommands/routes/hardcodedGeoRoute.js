@@ -35,7 +35,7 @@ function hardcodedLocation (lat,lng, msg, state){
                   text: '',
                   attachments:[{
                     title: `${body.description}`,
-                    color: 'good',
+                    color: 'warning',
                     image_url: `${picUrl}`,
                     thumb_url: `${picUrl}`,
                     text: `${body.address}`,

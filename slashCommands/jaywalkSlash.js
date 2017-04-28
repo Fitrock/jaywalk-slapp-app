@@ -25,6 +25,7 @@ let jaywalk  = function() {
           text: 'Where do you want to Jaywalk to?',
           fallback: 'Where to today?',
           callback_id: 'doit_confirm_callback',
+          color: 'good',
           actions: [{
               name: 'answer',
               text: 'Boomtown',
@@ -89,7 +90,16 @@ let jaywalk  = function() {
             count ++
             let callback = function(picUrl){
               msg.say({
-                  text: 'Deal: '+ thisCount + '\n'+ body.description +'\n'+picUrl+'\n'+body.address
+                  text: '',
+                  attachments:[{
+                    title: `${body.description}`,
+                    title_link: `https://s.walkto.co/pin/${body.id}`,
+                    color: 'warning',
+                    image_url: `${picUrl}`,
+                    thumb_url: `${picUrl}`,
+                    text: `${body.address} ${body.id}`,
+                    footer:`Jaywalk: ${thisCount}`
+                  }]
               }) //end msg.say
             }
             tinyurl.shorten(body.picture, function(res) {
