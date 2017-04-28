@@ -97,7 +97,7 @@ let jaywalk  = function() {
                     color: 'warning',
                     image_url: `${picUrl}`,
                     thumb_url: `${picUrl}`,
-                    text: `${body.address} ${JSON.stringify(body)}`,
+                    text: `${body.address} ${body.snap_id}`,
                     footer:`Jaywalk: ${thisCount}`
                   }]
               }) //end msg.say
