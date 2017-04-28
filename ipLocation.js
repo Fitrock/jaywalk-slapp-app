@@ -4,7 +4,6 @@ Geolocation
 const express = require('express')
 const request = require('request')
 const where	= require('node-where')
-
 const app = express()
 
 var os = require('os');
@@ -39,7 +38,6 @@ var deviceIPV6 = deviceIp.en1[0].address
 // module.exports = {
     
 // }
-
 
 
 

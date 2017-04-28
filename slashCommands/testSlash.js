@@ -89,12 +89,14 @@ browser v slack app
        return msg.say("That doesn't work yet...")
     }else if(answer == 'ipGeo'){
       // ipGeo()
-        let callback =function (data){
-          msg.say(JSON.stringify(data, null, 2));
-        }
-        request('//www.geoplugin.net/json.gp?jsoncallback=?', function(data) {
-          callback(data)
-        });
+      let callback =function(err,res){
+      console.log(err,res)
+      }
+
+      request.get({
+        uri:'http://www.geoplugin.net/json.gp',
+        json:true}
+        , callback);
 
     }else{ //handle error
       return msg
