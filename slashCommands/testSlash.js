@@ -34,6 +34,7 @@ browser v slack app
           text: 'Where do you want to Jaywalk to?',
           fallback: 'Where to today?',
           callback_id: 'doit_confirm_callback',
+          color: 'danger',
           actions: [{
               name: 'answer',
               text: 'Eventually gets current ip geolocation',
@@ -73,9 +74,9 @@ browser v slack app
     let answer = msg.body.actions[0].value
 
     if(answer == 'boomtown'){
-      hardcodedLocation(39.758451,-105.007625) //(lat,lng) of boomtown
+      hardcodedLocation(39.758451,-105.007625, msg, state) //(lat,lng) of boomtown
     }else if(answer == 'wework'){
-      hardcodedLocation(40.018689, -105.279993) //test: snap #1055
+      hardcodedLocation(40.018689, -105.279993, msg, state) //test: snap #1055
     }else if(answer == 'app'){
       /*
       let device = //variable from device
