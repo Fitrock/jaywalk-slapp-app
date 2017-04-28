@@ -5,7 +5,7 @@ const tinyurl = require('tinyurl');
 const request = require('request')
 
 // route functions
-const hardcodedLocation = require('./routes/hardcodedGeoRoute.js')
+const hardcodedLocation = require('./routes/hardcodedGeoRoute.js').hardcodedLocation
 const ipGeo = require('./routes/ipGeoRoute.js')
 
 //db imports
