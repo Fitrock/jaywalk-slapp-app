@@ -93,7 +93,7 @@ let jaywalk  = function() {
                   text: '',
                   attachments:[{
                     title: `${body.description}`,
-                    title_link: `https://s.walkto.co/pin/${body.id}`,
+                    title_link: `https://s.walkto.co/pin/${body.snap_id}`,
                     color: 'warning',
                     image_url: `${picUrl}`,
                     thumb_url: `${picUrl}`,
