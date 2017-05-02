@@ -88,7 +88,7 @@ browser v slack app
   
         }
       */
-       return msg.say("<itms-apps://itunes.apple.com/us/app/jaywalk-walk-get-deals/id1171719157?mt=8|iPhone><|Android>")
+       return msg.say("<itms-apps://itunes.apple.com/us/app/jaywalk-walk-get-deals/id1171719157?mt=8|iPhone><market://play.google.com/store/apps/details?id=com.kinetise.appb3e241f4c2ebeba41965ba16c05b2eba&hl=en_GB|![](../jaywalkIcon.jpg?raw=true)>")
     }else if(answer == 'ipGeo'){
       // ipGeo()
       let callback =function(err,res){
@@ -103,7 +103,7 @@ browser v slack app
 
     }else if(answer == 'findMe'){
       msg
-      .say('https://jaywalk-geo.herokuapp.com/geoloc.htm')//https://jaywalk-geo.herokuapp.com/geoloc.htm
+      .say('<https://jaywalk-geo.herokuapp.com/geoloc.htm|Find me>')//https://jaywalk-geo.herokuapp.com/geoloc.htm
       .route('handleGeoLoc', state, 60) 
     }else{ //handle error
       return msg
