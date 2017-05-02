@@ -88,7 +88,8 @@ browser v slack app
   
         }
       */
-      return msg.say({        
+      return msg.say({  
+        text: "",      
         attachments: [{
           text: '<itms-apps://itunes.apple.com/us/app/jaywalk-walk-get-deals/id1171719157?mt=8|iPhone>',
           callback_id: 'doit_confirm_callback',
