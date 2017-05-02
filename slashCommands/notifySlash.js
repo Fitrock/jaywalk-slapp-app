@@ -2,6 +2,7 @@
 const slapp  = require('../slackSetup.js').slapp
 const getRadius = require('../radius.js').getRadius
 const tinyurl = require('tinyurl');
+const request = require('request')
 
 //db imports
 const firebase    = require('../firebaseSetup.js'),
@@ -69,11 +70,28 @@ let notify  = function() {
     //     .say('Click a button!')
     //     .route('getid1', state)
     // }
-    let radius
     if(answer == 'breakfast'){
-      msg.say({
-        text: `this will set auto suggestions day-day @ 7:30am`
-      })
+      let callback =function(err,res){
+      console.log(err,res)
+      msg.say(JSON.stringify(res))
+     
+      }
+
+      request.post({
+        "url":'https://beepboophq.com/api/v1/chronos/tasks',
+        "payload": {
+          "greeting": "hello",
+          "list": [{
+              "one": 1
+          }],
+          "object": {
+              "two": 2
+          }
+        },
+        "schedule": "0 * * * * *"},
+        "expires": "2017-06-01T23:00:00Z"
+        , callback);
+  
       // radius = getRadius(39.758451,-105.007625) //test: snap #1055
     }else if(answer == 'lunch'){
       msg.say({

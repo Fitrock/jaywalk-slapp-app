@@ -36,11 +36,18 @@ browser v slack app
           fallback: 'Where to today?',
           callback_id: 'doit_confirm_callback',
           color: 'good',
-          actions: [{
+          actions: [
+          // {
+          //     name: 'answer',
+          //     text: 'Eventually gets current ip geolocation',
+          //     type: 'button',
+          //     value: 'ipGeo'
+          //   },
+          {
               name: 'answer',
-              text: 'Eventually gets current ip geolocation',
+              text: 'Where are you?',
               type: 'button',
-              value: 'ipGeo'
+              value: 'address'
             },
             {
               name: 'answer',
@@ -116,6 +123,10 @@ browser v slack app
     }else if(answer == 'findMe'){
       msg
       .say('<https://jaywalk-geo.herokuapp.com/geoloc.htm|Find me>')//https://jaywalk-geo.herokuapp.com/geoloc.htm
+      .route('handleGeoLoc', state, 60) 
+    }else if(answer == 'address'){
+      msg
+      .say('')//https://jaywalk-geo.herokuapp.com/geoloc.htm
       .route('handleGeoLoc', state, 60) 
     }else{ //handle error
       return msg
