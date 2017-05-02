@@ -56,7 +56,7 @@ browser v slack app
             },
             {
               name: 'answer',
-              text: 'Sends to app download',
+              text: 'Download app',
               type: 'button',
               value: 'app'
             },
@@ -88,8 +88,17 @@ browser v slack app
   
         }
       */
-      let appStore = ![](https://goo.gl/images/famYEL)
-       return msg.say(`<itms-apps://itunes.apple.com/us/app/jaywalk-walk-get-deals/id1171719157?mt=8|iPhone><market://play.google.com/store/apps/details?id=com.kinetise.appb3e241f4c2ebeba41965ba16c05b2eba&hl=en_GB|${appStore}>`)
+      return msg.say({        
+        attachments: [{
+          text: '<itms-apps://itunes.apple.com/us/app/jaywalk-walk-get-deals/id1171719157?mt=8|iPhone>',
+          callback_id: 'doit_confirm_callback',
+          color: 'good',
+        },{
+          text: '<market://play.google.com/store/apps/details?id=com.kinetise.appb3e241f4c2ebeba41965ba16c05b2eba&hl=en_GB|Android>',
+          callback_id: 'doit_confirm_callback',
+          color: 'good',
+        }]
+      })
     }else if(answer == 'ipGeo'){
       // ipGeo()
       let callback =function(err,res){
