@@ -97,7 +97,7 @@ let notify  = function() {
 
         console.log(response);
         console.log(body);
-        msg.say(JSON.stringify(response))
+        msg.say(response.toString())
       });
 
   
