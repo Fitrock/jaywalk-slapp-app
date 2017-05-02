@@ -88,9 +88,9 @@ let notify  = function() {
               "two": 2
           }
         },
-        "schedule": "0 * * * * *"},
-        "expires": "2017-06-01T23:00:00Z"
-        , callback);
+        "schedule": "0 * * * * *",
+          "expires": "2017-06-01T23:00:00Z"
+      },callback);
   
       // radius = getRadius(39.758451,-105.007625) //test: snap #1055
     }else if(answer == 'lunch'){
