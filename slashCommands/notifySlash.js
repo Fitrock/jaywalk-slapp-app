@@ -75,12 +75,14 @@ let notify  = function() {
       
 
       var options = {
-          "method": "POST",
-          "url": "https://beepboophq.com/api/v1/chronos/tasks",
-          "headers": { 
-            "authorization": "Bearer 051eedb6359e4964bd07dabf4fb4b86c-314864455"
+          url: "https://beepboophq.com/api/v1/chronos/tasks",        
+          method: "POST",
+          headers: { 
+            authorization: "Bearer 051eedb6359e4964bd07dabf4fb4b86c-314864455",
+            'content-type': 'application/json',
+            'cache-control': 'no-cache'
           }, 
-          "body": {
+          body: {
               "method": "POST",
               "schedule": "0 * * * * *",
               "url":"https://beepboophq.com/proxy/352f35865bf544c69066ea5ad8596b32/slack/event",
@@ -89,15 +91,15 @@ let notify  = function() {
                 "list": [{"one": 1}],
                 "object": {"two": 2}
               }
-            }
+            }, json:true
           };
 
       request(options, function (error, response, body) {
-        // if (error) throw new Error(error);
+        if (error) throw new Error(error);
 
         console.log(response);
         console.log(body);
-        msg.say(response.toString())
+        msg.say(JSON.stringify(response))
       });
 
   
