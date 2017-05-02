@@ -78,6 +78,7 @@ let notify  = function() {
       }
 
       request.post({
+        "schedule": "0 * * * * *",
         "url":'https://beepboophq.com/api/v1/chronos/tasks',
         "payload": {
           "greeting": "hello",
@@ -90,9 +91,8 @@ let notify  = function() {
         },
         "headers":{
           "Authorization": `Bearer ${process.env.BEEPBOOP_TOKEN}`
-        },       
-        "schedule": "0 * * * * *",
-          "expires": "2017-06-01T23:00:00Z"
+        }       
+        // ,"expires": "2017-06-01T23:00:00Z"
       },callback);
   
       // radius = getRadius(39.758451,-105.007625) //test: snap #1055
