@@ -88,10 +88,8 @@ let notify  = function() {
               "two": 2
           }
         },
-        "headers":{
-          "Authorization: Bearer 051eedb6359e4964bd07dabf4fb4b86c-314864455" 
-        },
-        "schedule": "0 * * * * *",
+          "Authorization": `Bearer ${process.env.BEEPBOOP_TOKEN}`,
+        },        "schedule": "0 * * * * *",
           "expires": "2017-06-01T23:00:00Z"
       },callback);
   
