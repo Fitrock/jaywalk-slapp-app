@@ -78,9 +78,9 @@ let notify  = function() {
           method: 'POST',
           url: 'https://beepboophq.com/api/v1/chronos/tasks',
           headers: { 
-            'cache-control': 'no-cache',
-            'authorization': 'Bearer 051eedb6359e4964bd07dabf4fb4b86c-314864455' 
-          }, body: {
+            authorization: 'Bearer 051eedb6359e4964bd07dabf4fb4b86c-314864455' 
+          }, 
+          body: {
               "method": "POST",
               "schedule": "0 * * * * *",
               "url":"https://beepboophq.com/proxy/352f35865bf544c69066ea5ad8596b32/slack/event",
@@ -95,8 +95,9 @@ let notify  = function() {
       request(options, function (error, response, body) {
         // if (error) throw new Error(error);
 
+        console.log(response);
         console.log(body);
-        msg.say(JSON.stringify(body))
+        msg.say(JSON.stringify(response))
       });
 
   
