@@ -71,29 +71,34 @@ let notify  = function() {
     //     .route('getid1', state)
     // }
     if(answer == 'breakfast'){
-      let callback =function(err,res){
-      console.log(err,res)
-      msg.say(JSON.stringify(res))
-     
-      }
+    
+      
 
-      request.post({
-        "schedule": "0 * * * * *",
-        "url":'https://beepboophq.com/api/v1/chronos/tasks',
-        "payload": {
-          "greeting": "hello",
-          "list": [{
-              "one": 1
-          }],
-          "object": {
-              "two": 2
-          }
-        },
-        "headers":{
-          "Authorization": `Bearer ${process.env.BEEPBOOP_TOKEN}`
-        }       
-        // ,"expires": "2017-06-01T23:00:00Z"
-      },callback);
+      var options = {
+          method: 'POST',
+          url: 'https://beepboophq.com/api/v1/chronos/tasks',
+          headers: { 
+            'cache-control': 'no-cache',
+            'authorization': 'Bearer 051eedb6359e4964bd07dabf4fb4b86c-314864455' 
+          }, body: {
+              "method": "POST",
+              "schedule": "0 * * * * *",
+              "url":"https://beepboophq.com/proxy/352f35865bf544c69066ea5ad8596b32/slack/event",
+              "payload":{
+                "greeting": "hello",
+                "list": [{"one": 1}],
+                "object": {"two": 2}
+              }
+            }
+          };
+
+      request(options, function (error, response, body) {
+        if (error) throw new Error(error);
+
+        console.log(body);
+        msg.say(JSON.stringify(body))
+      });
+
   
       // radius = getRadius(39.758451,-105.007625) //test: snap #1055
     }else if(answer == 'lunch'){
