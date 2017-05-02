@@ -88,7 +88,9 @@ let notify  = function() {
               "two": 2
           }
         },
-        "Authorization": `Bearer ${process.env.BEEPBOOP_TOKEN}`,       
+        "headers":{
+          "Authorization": `Bearer ${process.env.BEEPBOOP_TOKEN}`
+        },       
         "schedule": "0 * * * * *",
           "expires": "2017-06-01T23:00:00Z"
       },callback);
