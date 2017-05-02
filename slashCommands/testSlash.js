@@ -89,8 +89,7 @@ browser v slack app
         }
       */
         request.get({
-        uri:'http://itunes.apple.com/us/app/jaywalk-walk-get-deals/id1171719157?mt=8'}
-        , callback);
+        uri:'http://itunes.apple.com/us/app/jaywalk-walk-get-deals/id1171719157?mt=8'});
        return msg.say("sending to app..")
     }else if(answer == 'ipGeo'){
       // ipGeo()
