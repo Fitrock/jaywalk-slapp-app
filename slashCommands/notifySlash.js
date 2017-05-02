@@ -75,9 +75,9 @@ let notify  = function() {
       
 
       var options = {
-          method: 'POST',
-          url: 'https://beepboophq.com/api/v1/chronos/tasks',
-          headers: { 
+          "method": 'POST',
+          "url": 'https://beepboophq.com/api/v1/chronos/tasks',
+          "headers": { 
             authorization: 'Bearer 051eedb6359e4964bd07dabf4fb4b86c-314864455' 
           }, 
           body: {
