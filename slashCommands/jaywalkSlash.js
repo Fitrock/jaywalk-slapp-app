@@ -10,7 +10,7 @@ const firebase    = require('../firebaseSetup.js'),
       tags = firebase.tags,
       users = firebase.users
 
-  
+
 
 let jaywalk  = function() {
   let randomNum = 0;

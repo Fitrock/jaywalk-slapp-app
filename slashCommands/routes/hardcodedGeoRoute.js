@@ -2,7 +2,8 @@
 const slapp = require('../../slackSetup.js').slapp
 const getRadius = require('../../radius.js').getRadius
 const tinyurl = require('tinyurl');
- 
+const routeFuncs = require('./routesIndex.js')
+
 
 //db imports
 const firebase    = require('../../firebaseSetup.js'),
@@ -42,11 +43,11 @@ function hardcodedLocation (lat,lng, msg, state){
                     footer:`Jaywalk: ${thisCount}`
                   }]
               }) //end msg.say
+              .route('relaventAsk', (msg,state),60)
             }
             tinyurl.shorten(body.picture, function(res) {
               callback(res)
             })
-
           } //end if (lng checker)
         }) //end foreach
       }) //end .then(snap)

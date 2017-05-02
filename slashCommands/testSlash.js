@@ -7,6 +7,7 @@ const request = require('request')
 // route functions
 const hardcodedLocation = require('./routes/hardcodedGeoRoute.js').hardcodedLocation
 const ipGeo = require('./routes/ipGeoRoute.js')
+const routeFuncs = require('./routes/routesIndex.js')
 
 //db imports
 const firebase    = require('../firebaseSetup.js'),
@@ -102,7 +103,7 @@ browser v slack app
 
     }else if(answer == 'findMe'){
       msg
-      .say("GeoSlack")
+      .say('https://jaywalk-geo.herokuapp.com/geoloc.htm')//https://jaywalk-geo.herokuapp.com/geoloc.htm
       .route('handleGeoLoc', state, 60) 
     }else{ //handle error
       return msg
@@ -114,6 +115,9 @@ browser v slack app
   .route('handleGeoLoc',(msg,state) =>{
 
   }) //end .route( handleGeoLoc
+  .route('relaventAsk', (msg,state) => {
+    routeFuncs.relaventAsk(msg,state)
+  })//end .route(relaventAsk)
 }
 module.exports = {
   test:test()

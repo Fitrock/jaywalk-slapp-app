@@ -2,8 +2,11 @@
 
 const tinyurl = require('tinyurl');
  
+function appDl(){
 
+}
   /*
+
 function to determine if using destop or mobile
   */
   /*
@@ -14,3 +17,7 @@ function to determine if using destop or mobile
 // !important find if there is a way to check if user owns app
 // if mobile{button to send to correct app dl location or 
 // if desktop{qr code & directions}
+
+module.exports ={
+	appDl: appDl
+}
