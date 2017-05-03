@@ -19,16 +19,18 @@ console.log testing area
 *******************************/
 // console.log(firebase.users)
 
-slapp.event('link_shared', (msg) => {
-  let token = msg.meta.bot_token
-  let timestamp = msg.body.event.item.ts
-  let channel = msg.body.event.item.channel
-  slapp.client.reactions.add({token, name: 'smile', channel, timestamp}, (err) => {
-    if (err) console.log('Error adding reaction', err)
-  })
-  msg.say('link reaction works')
+// slapp.event('link_shared', (msg) => {
+//   let token = msg.meta.bot_token
+//   let timestamp = msg.body.event.item.ts
+//   let channel = msg.body.event.item.channel
+//   slapp.client.reactions.add({token, name: 'smile', channel, timestamp}, (err) => {
+//     if (err) console.log('Error adding reaction', err)
+//   })
+//   msg.say('link reaction works')
+// })
+slapp.message('testbot', (msg) =>{
+  msg.isBot()
 })
-
 
 // attach Slapp to express server
 const server = slapp.attachToExpress(express())

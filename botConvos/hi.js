@@ -8,6 +8,9 @@ let hi = function(){
     .message('^(hi|hello|hey)$', ['direct_mention', 'direct_message'], (msg, text) => {
       msg
         .say(`${text}, how are you?`)
+ 
+        .isBot()
+
         // sends next event from user to this route, passing along state
         .route('how-are-you', { greeting: text })
     })

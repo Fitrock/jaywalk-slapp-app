@@ -76,10 +76,10 @@ browser v slack app
           ]
         }]
       })
-      // .route('requestToDatabase', state, 60)    
+      .route('requestToDatabase', state, 60)    
   })
-slapp.action('test_callback', 'answer', (msg, value) => {
-  msg.respond(msg.body.response_url, `${value} is a good choice!`)
+// slapp.action('test_callback', 'answer', (msg, value) => {
+//   msg.respond(msg.body.response_url, `${value} is a good choice!`)
 })
 
   .route('requestToDatabase', (msg, state) => {
