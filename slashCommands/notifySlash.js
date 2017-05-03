@@ -84,7 +84,7 @@ let notify  = function() {
           }, 
           body: {
               "method": "POST",
-              "schedule": "* 15 * * * *",
+              "schedule": "* * * * * *",
               "url":"https://hooks.slack.com/services/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",
               "payload":{
                 "text": "text"
