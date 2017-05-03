@@ -85,7 +85,7 @@ let notify  = function() {
           body: {
               "method": "POST",
               "schedule": "* 15 * * * *",
-              "url":"https://beepboophq.com/proxy/352f35865bf544c69066ea5ad8596b32/slack/command",
+              "url":"",
               "payload":{
                 "greeting": "/test"
               }
