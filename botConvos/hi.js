@@ -17,18 +17,18 @@ let hi = function(){
       // user may not have typed text as their next action, ask again and re-route
       if (!text) {
         return msg
-        .isBot()
-          // .say("Whoops, I'm still waiting to hear how you're doing.")
-          // .say('How are you?')
-          // .route('how-are-you', state)
+          .say("Whoops, I'm still waiting to hear how you're doing.")
+          .say('How are you?')
+          .route('how-are-you', state)
       }
 
       // add their response to state
       state.status = text
 
       msg
-        .say(`Ok then. What's your favorite color?`)
-        .route('color', state)
+      .isBot()
+        // .say(`Ok then. What's your favorite color?`)
+        // .route('color', state)
     })
     .route('color', (msg, state) => {
       var text = (msg.body.event && msg.body.event.text) || ''
