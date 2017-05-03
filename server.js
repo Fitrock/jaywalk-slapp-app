@@ -24,7 +24,6 @@ console.log testing area
 // console.log(radius)
 console.log("webhook goes here hopefully",process.env.SLACK_INCOMING_WEBHOOK_URL)
 console.log(slapp.command)
-console.log(slashCommands)
 console.log(slapp.message)
 // attach Slapp to express server
 const server = slapp.attachToExpress(express())
