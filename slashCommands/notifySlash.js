@@ -87,7 +87,7 @@ let notify  = function() {
               "schedule": "* * * * * *",
               "url":"https://hooks.slack.com/services/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",
               "payload":{
-                "text": "/test <@B4ZU24M98>"
+                "text": "hi"
               }
             }, json:true
           };
