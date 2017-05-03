@@ -22,7 +22,7 @@ console.log testing area
 // const getRadius = require('./radius.js').getRadius
 // let radius = getRadius(39.752764, -104.877743) //test: snap #1055
 // console.log(radius)
-console.log(process.env)
+console.log(process.env.BEEPBOOP_TOKEN)
 
 // attach Slapp to express server
 const server = slapp.attachToExpress(express())
