@@ -78,19 +78,15 @@ let notify  = function() {
           url: "https://beepboophq.com/api/v1/chronos/tasks",        
           method: "POST",
           headers: { 
-            authorization: "Bearer 051eedb6359e4964bd07dabf4fb4b86c-314864455",
+            authorization: "Bearer "+process.env.BEEPBOOP_TOKEN,
             'content-type': 'application/json',
             'cache-control': 'no-cache'
           }, 
           body: {
               "method": "POST",
               "schedule": "0 * * * * *",
-              "url":"https://beepboophq.com/proxy/352f35865bf544c69066ea5ad8596b32/slack/event",
-              "payload":{
-                "greeting": "hello",
-                "list": [{"one": 1}],
-                "object": {"two": 2}
-              }
+              "url":"https://beepboophq.com/proxy/352f35865bf544c69066ea5ad8596b32/slack/command",
+              "payload": "/test",
             }, json:true
           };
 
