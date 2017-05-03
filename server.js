@@ -23,8 +23,7 @@ console.log testing area
 // let radius = getRadius(39.752764, -104.877743) //test: snap #1055
 // console.log(radius)
 console.log("webhook goes here hopefully",process.env.SLACK_INCOMING_WEBHOOK_URL)
-console.log(slapp.command())
-console.log(slapp.message())
+// console.log(slapp.command())
 // attach Slapp to express server
 const server = slapp.attachToExpress(express())
 const port = process.env.PORT || 3000
