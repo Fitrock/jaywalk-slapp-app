@@ -19,11 +19,17 @@ console.log testing area
 *******************************/
 // console.log(firebase.users)
 
-// const getRadius = require('./radius.js').getRadius
-// let radius = getRadius(39.752764, -104.877743) //test: snap #1055
-// console.log(radius)
-console.log("webhook goes here hopefully",process.env.SLACK_INCOMING_WEBHOOK_URL)
-// console.log(slapp.command())
+slapp.event('link_shared', (msg) => {
+  let token = msg.meta.bot_token
+  let timestamp = msg.body.event.item.ts
+  let channel = msg.body.event.item.channel
+  slapp.client.reactions.add({token, name: 'smile', channel, timestamp}, (err) => {
+    if (err) console.log('Error adding reaction', err)
+  })
+  msg.say('link reaction works')
+})
+
+
 // attach Slapp to express server
 const server = slapp.attachToExpress(express())
 const port = process.env.PORT || 3000
