@@ -34,7 +34,7 @@ browser v slack app
         attachments: [{
           text: 'Where do you want to Jaywalk to?',
           fallback: 'Where to today?',
-          callback_id: 'doit_confirm_callback',
+          callback_id: 'test_callback',
           color: 'good',
           actions: [
           // {
@@ -76,8 +76,12 @@ browser v slack app
           ]
         }]
       })
-      .route('requestToDatabase', state, 60)    
+      // .route('requestToDatabase', state, 60)    
   })
+slapp.action('test_callback', 'answer', (msg, value) => {
+  msg.respond(msg.body.response_url, `${value} is a good choice!`)
+})
+
   .route('requestToDatabase', (msg, state) => {
     let answer = msg.body.actions[0].value
 
