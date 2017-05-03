@@ -80,7 +80,7 @@ browser v slack app
   })
 // slapp.action('test_callback', 'answer', (msg, value) => {
 //   msg.respond(msg.body.response_url, `${value} is a good choice!`)
-})
+// })
 
   .route('requestToDatabase', (msg, state) => {
     let answer = msg.body.actions[0].value
