@@ -87,16 +87,56 @@ let notify  = function() {
               "schedule": "* * * * * *",
               "url":"https://hooks.slack.com/services/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",
               "payload":{
-                "text": "/test"
-              }
+        attachments: [{
+          text: 'Where do you want to Jaywalk to?',
+          fallback: 'Where to today?',
+          callback_id: 'doit_confirm_callback',
+          color: 'good',
+          actions: [
+          // {
+          //     name: 'answer',
+          //     text: 'Eventually gets current ip geolocation',
+          //     type: 'button',
+          //     value: 'ipGeo'
+          //   },
+          {
+              name: 'answer',
+              text: 'identity',
+              type: 'button',
+              value: 'identity'
+            },
+            {
+              name: 'answer',
+              text: 'WeWork',
+              type: 'button',
+              value: 'wework'
+            },
+            {
+              name: 'answer',
+              text: 'Boomtown',
+              type: 'button',
+              value: 'boomtown'
+            },
+            {
+              name: 'answer',
+              text: 'Download app',
+              type: 'button',
+              value: 'app'
+            },
+            {
+              name: 'answer',
+              text: 'findMe',
+              type: 'button',
+              value: 'findMe'
+            }      
+          ]
+        }]              }
             }, json:true
           };
 
       request(options, function (error, response, body) {
         if (error) throw new Error(error);
 
-        console.log(response);
-        console.log(body);
         msg.say(JSON.stringify(response))
       });
 

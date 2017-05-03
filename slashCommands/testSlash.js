@@ -45,7 +45,7 @@ browser v slack app
           //   },
           {
               name: 'answer',
-              text: 'Where are you?',
+              text: 'identity',
               type: 'button',
               value: 'address'
             },
