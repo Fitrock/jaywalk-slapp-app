@@ -28,9 +28,8 @@ console.log testing area
 //   })
 //   msg.say('link reaction works')
 // })
-slapp.message('testbot', (msg) =>{
-  msg.isBot()
-})
+
+
 
 // attach Slapp to express server
 const server = slapp.attachToExpress(express())

@@ -26,9 +26,8 @@ let hi = function(){
       state.status = text
 
       msg
-      .isBot()
-        // .say(`Ok then. What's your favorite color?`)
-        // .route('color', state)
+        .say(`Ok then. What's your favorite color?`)
+        .route('color', state)
     })
     .route('color', (msg, state) => {
       var text = (msg.body.event && msg.body.event.text) || ''

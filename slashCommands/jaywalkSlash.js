@@ -3,6 +3,9 @@ const slapp  = require('../slackSetup.js').slapp
 const getRadius = require('../radius.js').getRadius
 const tinyurl = require('tinyurl');
 
+const hardcodedLocation = require('./routes/hardcodedGeoRoute.js').hardcodedLocation
+
+
 //db imports
 const firebase    = require('../firebaseSetup.js'),
       db = firebase.db,
@@ -40,10 +43,22 @@ let jaywalk  = function() {
             },
             {
               name: 'answer',
+              text: 'Suprise Me',
+              type: 'button',
+              value: 'suprise'
+            },
+            {
+              name: 'answer',
               text: 'Download App',
               type: 'button',
               value:  'app'
 
+            },
+            {
+              name: 'answer',
+              text: 'Setup',
+              type: 'button',
+              value: 'setup'
             }
           ]
         }]
@@ -61,12 +76,25 @@ let jaywalk  = function() {
     // }
     let radius
     if(answer == 'boomtown'){
-      radius = getRadius(39.758451,-105.007625) //test: snap #1055
+      // get team_id =>stored location(lat,lng) => ask if they are at that location
+      // if no => enter address, zip, or business name
+      hardcodedLocation(39.758451,-105.007625, msg, state) //(lat,lng) of boomtown
     }else if(answer == 'wework'){
-      radius = getRadius(40.018689, -105.279993) //test: snap #1055
+      hardcodedLocation(40.018689, -105.279993, msg, state) //test: snap #1055
     }else if(answer == 'app'){
-       // return open("itms-apps://itunes.apple.com/us/app/jaywalk-walk-get-deals/id1171719157?mt=8")
-       return msg.say("That doesn't work yet...")
+      return msg.say({  
+        text: "",      
+        attachments: [{
+          text: '<itms-apps://itunes.apple.com/us/app/jaywalk-walk-get-deals/id1171719157?mt=8|iPhone>',
+          callback_id: 'doit_confirm_callback',
+          thumb_url: 'https://goo.gl/images/famYEL',
+          color: 'good'
+        },{
+          text: '<market://play.google.com/store/apps/details?id=com.kinetise.appb3e241f4c2ebeba41965ba16c05b2eba&hl=en_GB|Android>',
+          callback_id: 'doit_confirm_callback',
+          color: 'good'
+        }]
+      })
     }else{ //handle error
       return msg
         .say("Whoops, you just have to pick a button...")

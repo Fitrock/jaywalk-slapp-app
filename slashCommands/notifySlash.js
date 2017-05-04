@@ -11,14 +11,37 @@ const firebase    = require('../firebaseSetup.js'),
       tags = firebase.tags,
       users = firebase.users
 
-  
+let options = {
+          url: "https://beepboophq.com/api/v1/chronos/tasks",        
+          method: "POST",
+          headers: { 
+            authorization: "Bearer "+process.env.BEEPBOOP_TOKEN,
+            'content-type': 'application/json',
+            'cache-control': 'no-cache'
+          }, 
+          body: {
+              "method": "POST",
+              "schedule": "",
+              "url":"https://hooks.slack.com/services/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",
+              "payload":{
+                "text": ""
+              }
+            }, json:true
+          };
+
+function setCron(options,answer,time){
+  options.body.payload.text = `If you would like ${answer} suggestions type /${answer}`
+  request(options, function (error, response, body) {
+    if (error) throw new Error(error);
+    // msg.say(JSON.stringify(response))
+    msg.say(`${answer} set at ${time}`)
+  });
+}
 
 let notify  = function() {
   let randomNum = 0;
   slapp.command('/jaywalkNotify', (msg, text) => {
     let state = { requested: Date.now() }
-
-
     msg
       .say({
         text: '',
@@ -30,31 +53,31 @@ let notify  = function() {
               name: 'answer',
               text: 'Coffee Spots',
               type: 'button',
-              value: 'breakfast'
+              value: 'Breakfast'
             },
             {
               name: 'answer',
               text: 'Lunch',
               type: 'button',
-              value: 'lunch'
+              value: 'Lunch'
             },
             {
               name: 'answer',
               text: 'Dinner',
               type: 'button',
-              value:  'dinner'
+              value:  'Dinner'
             },
             {
               name: 'answer',
               text: 'Happy Hour',
               type: 'button',
-              value: 'hh'
+              value: 'Happy Hour'
             },
             {
               name: 'answer',
               text: 'Weekend fun',
               type: 'button',
-              value:  'party'
+              value:  'Local Bar'
             }            
           ]
         }]
@@ -70,56 +93,40 @@ let notify  = function() {
     //     .say('Click a button!')
     //     .route('getid1', state)
     // }
-    if(answer == 'breakfast'){
-    
-      
-
-      var options = {
-          url: "https://beepboophq.com/api/v1/chronos/tasks",        
-          method: "POST",
-          headers: { 
-            authorization: "Bearer "+process.env.BEEPBOOP_TOKEN,
-            'content-type': 'application/json',
-            'cache-control': 'no-cache'
-          }, 
-          body: {
-              "method": "POST",
-              "schedule": "* * * * * *",
-              "url":"https://hooks.slack.com/services/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",
-              "payload":{
-                "text": "hi"
-              }
-            }, json:true
-          };
-
-      request(options, function (error, response, body) {
-        if (error) throw new Error(error);
-
-        msg.say(JSON.stringify(response))
-      });
-
-  
-      // radius = getRadius(39.758451,-105.007625) //test: snap #1055
-    }else if(answer == 'lunch'){
-      msg.say({
-        text: `this will set auto suggestions day-day @ 11:30am`
-      })
-      // radius = getRadius(40.018689, -105.279993) //test: snap #1055
-    }else if(answer == 'dinner'){
-      msg.say({
-        text: `this will set auto suggestions day-day @ 5:30pm`
-      })
-       // return open("itms-apps://itunes.apple.com/us/app/jaywalk-walk-get-deals/id1171719157?mt=8")
-    }else if(answer == 'hh'){
-      msg.say({
-        text: `this will set auto suggestions day-day @ 4:30pm`
-      })
-       // return open("itms-apps://itunes.apple.com/us/app/jaywalk-walk-get-deals/id1171719157?mt=8")
-    }else if(answer == 'party'){
-      msg.say({
-        text: `this will set auto suggestions day-day @ 8:00pm`
-      })
-       // return open("itms-apps://itunes.apple.com/us/app/jaywalk-walk-get-deals/id1171719157?mt=8")
+    if(answer == 'Breakfast'){
+// posts a /command VV - needs a stable auth token though
+// https://slack.com/api/chat.command?token=xoxp-72951567362-161234057782-169954154770-3be4727d4a5086453d9f42c5bb2af872&channel=C4T6LKUP7&command=%2Ftest&as_user=true&pretty=1
+// https://slack.com/api/chat.command?token=xoxp-72951567362-161234057782-178935658950-f3ba1bd9902f7494344d472e1f123882&channel=C4T6LKUP7&command=%2Ftest&pretty=1
+     
+    //need to handle timezones.... 
+      /*
+      ! Based on UTC time (GMT +06:00:00) or utc is denver+6hours
+        min 0-59
+        hour 0-23
+        day of month 1-31
+        month 1-12
+        day of week 0-6 (sun-sat)
+        year 2016-9999
+      */
+      options.body.schedule = "0 13 * * 1-5 *" // mon-fri @ 7:00am gmt
+      let time = "mon-fri @ 7:00am gmt"
+      setCron(options,answer,time)
+    }else if(answer == 'Lunch'){
+      options.body.schedule = "30 17 * * 1-5 *" // mon-fri @ 11:30am gmt
+      let time = "mon-fri @ 11:30am gmt"
+      setCron(options,answer,time)
+    }else if(answer == 'Dinner'){
+      options.body.schedule = "30 23 * * 1-5 *" // mon-fri @ 5:30pm gmt
+      let time = "mon-fri @ 5:30pm gmt"
+      setCron(options,answer,time)
+    }else if(answer == 'Happy Hour'){
+      options.body.schedule = "30 22 * * 1-5 *" // mon-fri @ 4:30pm gmt
+      let time = "mon-fri @ 4:30pm gmt"
+      setCron(options,answer,time)
+    }else if(answer == 'Local Bar'){
+      options.body.schedule = "0 02 * * 0,5,6 *" // thurs-sat @ 8:00pm gmt
+      let time = "mon-fri @ 8:00pm gmt"
+      setCron(options,answer,time)
     }else{ //handle error
       return msg
         .say("Whoops, you just have to pick a button...")
