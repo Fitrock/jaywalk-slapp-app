@@ -19,8 +19,6 @@ let jaywalk  = function() {
   let randomNum = 0;
   slapp.command('/jaywalk', (msg, text) => {
     let state = { requested: Date.now() }
-
-
     msg
       .say({
         text: '',
@@ -67,16 +65,11 @@ let jaywalk  = function() {
   })
   .route('getDbinfo', (msg, state) => {
     let answer = msg.body.actions[0].value
-    // user may not have typed text as their next action, ask again and re-route
-    // if (!randSnap || !randTag) {
-    //   return msg
-    //     .say("Whoops, you just have to pick a button...")
-    //     .say('Click a button!')
-    //     .route('getid1', state)
-    // }
+
     let radius
     if(answer == 'boomtown'){
-      // get team_id =>stored location(lat,lng) => ask if they are at that location
+      // if location is not set -> set location? -> save to team_id in firebase
+      // get team_id.location(lat,lng) => ask if they are at that location
       // if no => enter address, zip, or business name
       hardcodedLocation(39.758451,-105.007625, msg, state) //(lat,lng) of boomtown
     }else if(answer == 'wework'){
