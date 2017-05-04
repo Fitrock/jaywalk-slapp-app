@@ -27,7 +27,7 @@ browser v slack app
 */
   slapp.command('/test', (msg, text) => {
     randomNum = (Math.floor(Math.random() * 1400) + 200)
-    msg.say(JSON.stringify(msg))
+    console.log(msg)
     msg
       .say({
         text: "",
