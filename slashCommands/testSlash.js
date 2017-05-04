@@ -30,7 +30,7 @@ browser v slack app
 
     msg
       .say({
-        text: msg,
+        text: JSON.stringify(msg),
         attachments: [{
           text: 'Where do you want to Jaywalk to?',
           fallback: 'Where to today?',
