@@ -28,7 +28,7 @@ let teamObj = {
   team_id: "",
   team_name: "",
   SLACK_TOKEN: "", //given at auth
-  INCOMING_WEBHOOK_URL: "", //given at auth
+  incoming_webhook: "", //given at auth
   CHANNEL_id: "",
   CHANNEL_name: "",
   notifications: [""],
@@ -40,11 +40,51 @@ let teamObj = {
   ]
 }
 let teamUsers = {
-  team_id:""
-  [
+  team_id:"",
+  users:[
     {
       USER_id: "",
       USER_name: "" //need to push additional user instead of editing this one
+    }
+  ]
+}
+/*  The notifications object will push team_id and their webhook 
+    for each notification they subscribe to. 
+    The keys for notifications are each an array of teams subscribed
+
+    This will eventually be used in another server that just runs cron
+    functions to access db at notification times and goes through array
+    foreach will send a prompt to slack channel.
+*/
+let notifications = {
+  coffee:[
+    {
+    team_id:"", //access team_id db object for stored location
+    incoming_webhook:"" //url to send info to slack
+    }
+  ],
+  lunch:[
+    {
+    team_id:"",
+    incoming_webhook:""
+    }
+  ],
+  happy_hour:[
+    {
+    team_id:"",
+    incoming_webhook:""
+    }
+  ],
+  dinner:[
+    {
+    team_id:"",
+    incoming_webhook:""
+    }
+  ],
+  bars:[
+    {
+    team_id:"",
+    incoming_webhook:""
     }
   ]
 }
