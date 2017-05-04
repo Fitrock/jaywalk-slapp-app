@@ -27,10 +27,10 @@ browser v slack app
 */
   slapp.command('/test', (msg, text) => {
     randomNum = (Math.floor(Math.random() * 1400) + 200)
-
+    msg.say(JSON.stringify(msg))
     msg
       .say({
-        text: JSON.stringify(msg),
+        text: "",
         attachments: [{
           text: 'Where do you want to Jaywalk to?',
           fallback: 'Where to today?',
