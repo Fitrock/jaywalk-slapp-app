@@ -22,7 +22,7 @@ let options = {
           body: {
               "method": "POST",
               "schedule": "",
-              "url":"https://hooks.slack.com/services/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",
+              "url":"https://hooks.slack.com/services/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",
               "payload":{
                 "text": ""
               }
@@ -93,11 +93,7 @@ let notify  = function() {
     //     .say('Click a button!')
     //     .route('getid1', state)
     // }
-    if(answer == 'Breakfast'){
-// posts a /command VV - needs a stable auth token though
-// https://slack.com/api/chat.command?token=xoxp-72951567362-161234057782-169954154770-3be4727d4a5086453d9f42c5bb2af872&channel=C4T6LKUP7&command=%2Ftest&as_user=true&pretty=1
-// https://slack.com/api/chat.command?token=xoxp-72951567362-161234057782-178935658950-f3ba1bd9902f7494344d472e1f123882&channel=C4T6LKUP7&command=%2Ftest&pretty=1
-     
+    if(answer == 'Breakfast'){    
     //need to handle timezones.... 
       /*
       ! Based on UTC time (GMT +06:00:00) or utc is denver+6hours
