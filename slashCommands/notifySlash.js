@@ -65,7 +65,7 @@ let notify  = function() {
               name: 'answer',
               text: 'Dinner',
               type: 'button',
-              value:  'Dinner'
+              value: 'Dinner'
             },
             {
               name: 'answer',
@@ -77,7 +77,7 @@ let notify  = function() {
               name: 'answer',
               text: 'Weekend fun',
               type: 'button',
-              value:  'Local Bar'
+              value: 'Local Bar'
             }            
           ]
         }]
