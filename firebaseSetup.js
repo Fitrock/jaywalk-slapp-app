@@ -25,17 +25,17 @@ var config = {
 //http://stackoverflow.com/questions/37403747/firebase-permission-denied
 
 let teamObj = {
-  team_id: "T24TZGPAN",
-  team_name: "fitrock",
+  team_id: "",
+  team_name: "",
   SLACK_TOKEN: "", //given at auth
-  INCOMING_WEBHOOK_URL: "https://hooks.slack.com/services/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", //given at auth
-  CHANNEL_id: "C4T6LKUP7",
-  CHANNEL_name: "testing-env",
+  INCOMING_WEBHOOK_URL: "", //given at auth
+  CHANNEL_id: "",
+  CHANNEL_name: "",
   notifications: [""],
   USERS: [
     {
-      USER_id: "U4R6W1PP0",
-      USER_name: "clay.code" //need to push additional user instead of editing this one
+      USER_id: "",
+      USER_name: "c" //need to push additional user instead of editing this one
     }
   ]
 }
@@ -43,15 +43,15 @@ let teamUsers = {
   team_id:""
   [
     {
-      USER_id: "U4R6W1PP0",
-      USER_name: "clay.code" //need to push additional user instead of editing this one
+      USER_id: "",
+      USER_name: "" //need to push additional user instead of editing this one
     }
   ]
 }
 
 
 
-slackDb.child(teamObj.team_id).set(teamObj)
+// slackDb.child(teamObj.team_id).set(teamObj)
 
 module.exports={
   db: db,

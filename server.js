@@ -14,8 +14,8 @@ const botConvos   = require('./botConvos/convoIndex.js')
 /******************************
 firebase imports
 *******************************/
-const firebase    = require('../firebaseSetup.js'),
-      slackDb = firebase.slackDb
+// const firebase    = require('./firebaseSetup.js'),
+//       slackDb = firebase.slackDb
 
 /******************************
 console.log testing area
