@@ -29,7 +29,7 @@ let options = {
             }, json:true
           };
 
-function setCron(options,answer,time){
+function setCron(options,answer,time,msg){
   options.body.payload.text = `If you would like ${answer} suggestions type /${answer}`
   request(options, function (error, response, body) {
     if (error) throw new Error(error);
@@ -110,23 +110,23 @@ let notify  = function() {
       */
       options.body.schedule = "0 13 * * 1-5 *" // mon-fri @ 7:00am gmt
       let time = "mon-fri @ 7:00am gmt"
-      setCron(options,answer,time)
+      setCron(options,answer,time,msg)
     }else if(answer == 'Lunch'){
       options.body.schedule = "30 17 * * 1-5 *" // mon-fri @ 11:30am gmt
       let time = "mon-fri @ 11:30am gmt"
-      setCron(options,answer,time)
+      setCron(options,answer,time,msg)
     }else if(answer == 'Dinner'){
       options.body.schedule = "30 23 * * 1-5 *" // mon-fri @ 5:30pm gmt
       let time = "mon-fri @ 5:30pm gmt"
-      setCron(options,answer,time)
+      setCron(options,answer,time,msg)
     }else if(answer == 'Happy Hour'){
       options.body.schedule = "30 22 * * 1-5 *" // mon-fri @ 4:30pm gmt
       let time = "mon-fri @ 4:30pm gmt"
-      setCron(options,answer,time)
+      setCron(options,answer,time,msg)
     }else if(answer == 'Local Bar'){
       options.body.schedule = "0 02 * * 0,5,6 *" // thurs-sat @ 8:00pm gmt
       let time = "mon-fri @ 8:00pm gmt"
-      setCron(options,answer,time)
+      setCron(options,answer,time,msg)
     }else{ //handle error
       return msg
         .say("Whoops, you just have to pick a button...")
