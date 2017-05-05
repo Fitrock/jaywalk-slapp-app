@@ -31,7 +31,7 @@ function snapsByGeo (lat,lng, msg, state){
             resultArr.push(snap)
           } //end if (lng checker)
         }) //end foreach
-        let len = resultArr
+        let len = resultArr.length
         console.log(len)
         for(let i=len;i>(len-4);i--){ //last four
           let snap = resultArr[i]
