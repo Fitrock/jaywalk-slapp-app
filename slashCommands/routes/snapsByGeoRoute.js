@@ -21,31 +21,32 @@ function snapsByGeo (lat,lng, msg, state){
       .startAt(radius[5].lat + "-") // "-"makes a string: required for query
       .endAt(radius[1].lat + "-")
       .once('value')
-      .then(function(snap) {
+      .then(function(snaps) {
         let body
         let count = 0
-        snap.forEach(function(data) {
+        let len = snaps.length
+        for(let i=len;i>=len-4;i--){
+          snap = snaps[i].val()
           //if returns lng within radius (east/west)
-          if (data.val().lng <= radius[0].lng && data.val().lng >= radius[3].lng  && count <4) {
+          if (snap.lng <= radius[0].lng && snap.lng >= radius[3].lng) {
             // console.log(data.val().title)
-            let body = data.val()
             count ++
             let thisCount = count
             let callback = function(picUrl){
               msg.say({
                   text: '',
                   attachments:[{
-                    title: `${body.description}`,
+                    title: `${snap.description}`,
                     color: 'warning',
                     image_url: `${picUrl}`,
                     thumb_url: `${picUrl}`,
-                    text: `${body.address}`,
+                    text: `${snap.address}`,
                     footer:`Jaywalk: ${thisCount}`
                   }]
               }) //end msg.say
               .route('relaventAsk', (msg,state),60)
             }
-            tinyurl.shorten(body.picture, function(res) {
+            tinyurl.shorten(snap.picture, function(res) {
               callback(res)
             })
           } //end if (lng checker)
