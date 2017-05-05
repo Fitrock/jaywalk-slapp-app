@@ -28,6 +28,8 @@ function snapsByGeo (lat,lng, msg, state){
           console.log(snap)
           //if returns lng within radius (east/west)
           if (snap.lng <= radius[0].lng && snap.lng >= radius[3].lng) {
+            console.log(snap.lng,'<',radius[0].lng)
+            console.log(snap.lng,'>',radius[3].lng)
             // console.log(data.val().title)
             count ++
             let thisCount = count
@@ -46,7 +48,7 @@ function snapsByGeo (lat,lng, msg, state){
               .route('relaventAsk', (msg,state),60)
             }
             tinyurl.shorten(snap.picture, function(res) {
-              callback(res)
+              // callback(res)
             })
           } //end if (lng checker)
         }) //end foreach
