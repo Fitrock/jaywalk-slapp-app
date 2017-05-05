@@ -138,6 +138,7 @@ let test = function() {
 // })
 
   .route('requestToDatabase', (msg, state) => {
+    answer = msg.body.actions[0].value || ""
     // if(msg.body.action==undefined){
     //   msg
     //     .say('Click a button!')
@@ -145,12 +146,10 @@ let test = function() {
     // } else{
     //   answer = msg.body.actions[0].value
     // }
-      answer = msg.body.actions[0].value || ""
 
     if(answer == 'boomtown'){
       if(1){
         // if location is not set -> set perm. location? or where are you?
-
       } else if(teamInfo.lat){ //db had location stored for team
         // msg.say({
         // text: "",
@@ -182,10 +181,11 @@ let test = function() {
         //   msg.say('still working on that')
         // }
       // }
-      
+
       // get team_id.location(lat,lng) => ask if they are at that location
       // if no => enter address, zip, or business name
-      snapsByGeo(39.758451,-105.007625, msg, state) //(lat,lng) of boomtown
+        snapsByGeo(39.758451,-105.007625, msg, state) //(lat,lng) of boomtown
+      }
     }else if(answer == 'wework'){
       snapsByGeo(40.018689, -105.279993, msg, state) //test: snap #1055
     }else if(answer == 'app'){
