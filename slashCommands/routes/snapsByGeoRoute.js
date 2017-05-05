@@ -33,6 +33,7 @@ function snapsByGeo (lat,lng, msg, state){
         }) //end foreach
 
         for(let i=count;i>(count-4);i--){ //last four
+          console.log(resultArr[i])
           let callback = function(picUrl){
             msg.say({
                 text: '',
