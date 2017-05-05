@@ -24,10 +24,10 @@ function snapsByGeo (lat,lng, msg, state){
       .then(function(snapArr) {
         let body
         let count = 0
-        let len = snapArr.length
+        let len = snapArr.val().length
         console.log(snapArr.val())
         for(let i=len;i>=len-4;i--){
-          snap = snaps[i].val()
+          snap = snapArr.val()[i]
           console.log(snap)
           //if returns lng within radius (east/west)
           if (snap.lng <= radius[0].lng && snap.lng >= radius[3].lng) {
