@@ -15,25 +15,18 @@ const firebase    = require('../../firebaseSetup.js'),
 function snapsByGeo (lat,lng, msg, state){
     //firebase search by snap lat (start at bottom of circle, end at top)
     let radius = getRadius(lat,lng) //test: snap #1055
-// console.log(radius)
+
     let snapLat = snaps
-      .orderByChild('lat')
+      .orderByChild('snap_id')
       .startAt(radius[5].lat + "-") // "-"makes a string: required for query
       .endAt(radius[1].lat + "-")
+      .limitToLast('4')
       .once('value')
-      .then(function(data) {
+      .then(function(snapObj) {
         let body
-        let snapObj = data.val()
         let count = 0
-        // let len = snapObj.val().length
-        // console.log(len)
-        // console.log(snapObj.val())
-        for(let key in snapObj){
-          if(!snapObj.hasOwnProperty(key)) continue;
-          console.log(key, snapObj[key])
-          return 0;
-          snap = snapObj.val()[i]
-          console.log(snap)
+        snapObj.forEach(function(data) {
+          let snap = data.val()
           //if returns lng within radius (east/west)
           if (snap.lng <= radius[0].lng && snap.lng >= radius[3].lng) {
             // console.log(data.val().title)
@@ -53,11 +46,11 @@ function snapsByGeo (lat,lng, msg, state){
               }) //end msg.say
               .route('relaventAsk', (msg,state),60)
             }
-            tinyurl.shorten(snap.picture, function(res) {
+            tinyurl.shorten(body.picture, function(res) {
               callback(res)
             })
           } //end if (lng checker)
-        } //end for
+        }) //end foreach
       }) //end .then(snap)
 } // end snapsByGeo()
 
