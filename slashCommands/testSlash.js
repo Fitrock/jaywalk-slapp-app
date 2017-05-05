@@ -148,7 +148,7 @@ let test = function() {
     // }
 
     if(answer == 'boomtown'){
-      if(1){
+      if(1==0){
         // if location is not set -> set perm. location? or where are you?
       } else if(teamInfo.lat){ //db had location stored for team
         // msg.say({
