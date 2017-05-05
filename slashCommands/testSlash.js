@@ -23,11 +23,54 @@ let test = function() {
 ifs to determine desktop v mobile
 &&
 browser v slack app
-
+body.
+  token: '',
+  team_id: '',
+  team_domain: '',
+  channel_id: '',
+  channel_name: '',
+  user_id: '',
+  user_name: ''
+._slapp.Slapp.client: 
+       { api: [Object],
+         auth: [Object],
+         bots: [Object],
+         channels: [Object],
+         chat: [Object],
+         dnd: [Object],
+         emoji: [Object],
+         files: [Object],
+         groups: [Object],
+         im: [Object],
+         mpim: [Object],
+         oauth: [Object],
+         reactions: [Object],
+         reminders: [Object],
+         pins: [Object],
+         rtm: [Object],
+         search: [Object],
+         stars: [Object],
+         team: [Object],
+         usergroups: [Object],
+         users: [Object] },
+.meta: 
+          { app_token: '',
+            app_user_id: '',
+            app_bot_id: '',
+            bot_token: '',
+            bot_user_id: '',
+            bot_user_name: '',
+            team_name: '',
+            team_domain: '',
+            team_resource_id: '',
+            error: undefined,
+            config: {} },
 */
   slapp.command('/test', (msg, text) => {
     randomNum = (Math.floor(Math.random() * 1400) + 200)
-    console.log(msg)
+    console.log(msg.body.team_id)
+    console.log(msg._slapp.Slapp.client.users[0])
+    console.log(msg.meta.incoming_webhook_url)
     msg
       .say({
         text: "",
@@ -84,7 +127,7 @@ browser v slack app
 
   .route('requestToDatabase', (msg, state) => {
     let answer = msg.body.actions[0].value
-
+    console.log(msg.body)
     if(answer == 'boomtown'){
       hardcodedLocation(39.758451,-105.007625, msg, state) //(lat,lng) of boomtown
     }else if(answer == 'wework'){
