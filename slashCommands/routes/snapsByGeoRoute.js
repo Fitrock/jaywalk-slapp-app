@@ -27,12 +27,11 @@ function snapsByGeo (lat,lng, msg, state){
           let snap = data.val()
           // console.log(snap)
           //if returns lng within radius (east/west)
-             console.log(snap.lng,'>',radius[0].lng,snap.lat)
-            console.log(snap.lng,'<',radius[3].lng)
+            //  console.log(snap.lng,'>',radius[0].lng,snap.lat)
+            // console.log(snap.lng,'<',radius[3].lng)
           if (snap.lng >= radius[0].lng && snap.lng <= radius[3].lng) {
             console.log(snap.lng,'>',radius[0].lng)
             console.log(snap.lng,'<',radius[3].lng)
-            // console.log(data.val().title)
             count ++
             let thisCount = count
             let callback = function(picUrl){
@@ -47,7 +46,7 @@ function snapsByGeo (lat,lng, msg, state){
                     footer:`Jaywalk: ${thisCount}`
                   }]
               }) //end msg.say
-              .route('relaventAsk', (msg,state),60)
+              // .route('relaventAsk', (msg,state),60)
             }
             tinyurl.shorten(snap.picture, function(res) {
               // callback(res)
