@@ -98,7 +98,7 @@ let test = function() {
           //     type: 'button',
           //     value: 'ipGeo'
           //   },
-          {
+            {
               name: 'answer',
               text: 'identity',
               type: 'button',
@@ -152,32 +152,35 @@ let test = function() {
         // if location is not set -> set perm. location? or where are you?
 
       } else if(teamInfo.lat){ //db had location stored for team
-        msg.say({
-        text: "",
-          attachments: [{
-            text: `Are you at ${teamInfo.location_name}?`,
-            fallback: 'Where to today?',
-            callback_id: 'test_callback',
-            color: 'good',
-            actions: 
-            [{ 
-              name: 'answer',
-              text: 'Yes',
-              type: 'button',
-              value: 'yes'
-            },{ 
-              name: 'answer',
-              text: 'no',
-              type: 'button',
-              value: 'no'
-            }]
-          }]
-        })
-        if(msg.body.actions[0].value=="yes"){
+        // msg.say({
+        // text: "",
+        //   attachments: [{
+        //     text: `Are you at ${teamInfo.location_name}?`,
+        //     fallback: 'Where to today?',
+        //     callback_id: 'yesno_callback',
+        //     color: 'good',
+        //     actions: 
+        //     [{
+        //       name: 'answer',
+        //       text: 'Yes',
+        //       type: 'button',
+        //       value: 'yes'
+        //     },{ 
+        //       name: 'answer',
+        //       text: 'No',
+        //       type: 'button',
+        //       value: 'no'
+        //     }]
+        //   }]
+        // })
+        // slapp.action('yesno_callback', 'answer', (msg, value) => {
+        //   msg.respond(msg.body.response_url, `${value} is a good choice!`)
+        // })
+        // if(msg.body.actions[0].value=="yes"){
           snapsByGeo(teamInfo.lat,teamInfo.lng, msg, state) 
-        } else {
-          msg.say('still working on that')
-        }
+        // } else {
+        //   msg.say('still working on that')
+        // }
       }
       // get team_id.location(lat,lng) => ask if they are at that location
       // if no => enter address, zip, or business name
