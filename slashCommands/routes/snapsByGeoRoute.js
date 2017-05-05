@@ -18,9 +18,9 @@ function snapsByGeo (lat,lng, msg, state){
 
     let snapLat = snaps
       .orderByChild('snap_id')
+      .limitToLast('4')
       .startAt(radius[5].lat + "-") // "-"makes a string: required for query
       .endAt(radius[1].lat + "-")
-      .limitToLast('4')
       .once('value')
       .then(function(snapObj) {
         let body
