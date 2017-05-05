@@ -30,7 +30,7 @@ return 0;
         console.log(len)
         console.log(snapObj.val())
         for(let key in snapObj){
-          if(!snapObj.hasOwnProperty(key)) continue;
+          // if(!snapObj.hasOwnProperty(key)) continue;
           console.log(key, snapObj[key])
           return 0;
           snap = snapObj.val()[i]
