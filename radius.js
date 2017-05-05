@@ -1,7 +1,7 @@
 /*
 radius function
 */
-let radius = 6200.0  // 3.2km or 4 mile total diameter
+let radius = 60200.0  // 3.2km or 4 mile total diameter
 let numPoints = 6
 function getRadius(lat, lng){
   let circlePoints = []
