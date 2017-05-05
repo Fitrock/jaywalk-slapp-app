@@ -15,7 +15,6 @@ const firebase    = require('../../firebaseSetup.js'),
 function snapsByGeo (lat,lng, msg, state){
     //firebase search by snap lat (start at bottom of circle, end at top)
     let radius = getRadius(lat,lng) //test: snap #1055
-console.log(radius)
     let snapLat = snaps
       .orderByChild('lat')
       .startAt(radius[5].lat + "-") // "-"makes a string: required for query
@@ -32,8 +31,8 @@ console.log(radius)
             console.log(count)
             count++
           if (snap.lng <= radius[0].lng && snap.lng >= radius[3].lng) {
-            console.log(snap.lng,'>',radius[0].lng)
-            console.log(snap.lng,'<',radius[3].lng)
+            console.log(snap.lng,'<',radius[0].lng)
+            console.log(snap.lng,'>',radius[3].lng)
             count ++
             let thisCount = count
             let callback = function(picUrl){
