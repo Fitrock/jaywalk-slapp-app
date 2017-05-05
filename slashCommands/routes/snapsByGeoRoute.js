@@ -32,7 +32,6 @@ function snapsByGeo (lat,lng, msg, state){
           } //end if (lng checker)
         }) //end foreach
         let len = (resultArr.length-1)
-        console.log(len)
         for(let i=len;i>(len-4);i--){ //last four
           let snap = resultArr[i]
           console.log(snap)
@@ -50,7 +49,7 @@ function snapsByGeo (lat,lng, msg, state){
             // .route('relaventAsk', (msg,state),60)
           }
           tinyurl.shorten(snap.picture, function(res) {
-            // callback(res)
+            callback(res)
           })
         } //end for
       }) //end .then(snap)
