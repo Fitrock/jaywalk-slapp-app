@@ -69,7 +69,7 @@ body.
   slapp.command('/test', (msg, text) => {
     randomNum = (Math.floor(Math.random() * 1400) + 200)
     console.log(msg.body.team_id)
-    console.log(msg._slapp.client.users[0])
+    console.log(msg._slapp)
     console.log(msg.meta.incoming_webhook_url)
     msg
       .say({
