@@ -22,7 +22,6 @@ function snapsByGeo (lat,lng, msg, state){
       .endAt(radius[1].lat + "-")
       .once('value')
       .then(function(snapObj) {
-        let body
         let count = 0
         snapObj.forEach(function(data) {
           let snap = data.val()
@@ -46,7 +45,7 @@ function snapsByGeo (lat,lng, msg, state){
               }) //end msg.say
               .route('relaventAsk', (msg,state),60)
             }
-            tinyurl.shorten(body.picture, function(res) {
+            tinyurl.shorten(snap.picture, function(res) {
               callback(res)
             })
           } //end if (lng checker)
