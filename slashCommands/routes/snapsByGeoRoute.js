@@ -21,11 +21,11 @@ function snapsByGeo (lat,lng, msg, state){
       .startAt(radius[5].lat + "-") // "-"makes a string: required for query
       .endAt(radius[1].lat + "-")
       .once('value')
-      .then(function(snaps) {
+      .then(function(snapArr) {
         let body
         let count = 0
-        let len = snaps.length
-        console.log(snaps)
+        let len = snapArr.length
+        console.log(snapArr)
         for(let i=len;i>=len-4;i--){
           snap = snaps[i].val()
           console.log(snap)
