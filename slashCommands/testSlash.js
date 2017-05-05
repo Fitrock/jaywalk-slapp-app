@@ -138,13 +138,14 @@ let test = function() {
 // })
 
   .route('requestToDatabase', (msg, state) => {
-    if(msg.body.action==undefined){
-      msg
-        .say('Click a button!')
-        .route('requestToDatabase', state, 60)
-    } else{
-      answer = msg.body.actions[0].value
-    }
+    // if(msg.body.action==undefined){
+    //   msg
+    //     .say('Click a button!')
+    //     .route('requestToDatabase', state, 60)
+    // } else{
+    //   answer = msg.body.actions[0].value
+    // }
+      answer = msg.body.actions[0].value || ""
 
     if(answer == 'boomtown'){
       if(1){

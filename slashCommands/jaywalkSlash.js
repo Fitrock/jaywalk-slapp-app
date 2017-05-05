@@ -19,12 +19,6 @@ const firebase    = require('../firebaseSetup.js'),
 let jaywalk  = function() {
   let randomNum = 0;
   slapp.command('/jaywalk', (msg, text) => {
-    /*
-
-      call to db to get team info from team_id
-
-    */
-
     let state = { requested: Date.now() }
     msg
       .say({
