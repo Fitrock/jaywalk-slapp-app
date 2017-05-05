@@ -69,7 +69,6 @@ let test = function() {
       config: {} },
   */
   slapp.command('/test', (msg, text) => {
-    randomNum = (Math.floor(Math.random() * 1400) + 200)
     teamInfo = slackDb
       .child(msg.body.team_id)
       .once("value")
@@ -141,7 +140,6 @@ let test = function() {
         .route('requestToDatabase', state, 60)
     } else{
       let answer = msg.body.actions[0].value
-
     }
 
     if(answer == 'boomtown'){
