@@ -181,7 +181,8 @@ let test = function() {
         // } else {
         //   msg.say('still working on that')
         // }
-      }
+      // }
+      
       // get team_id.location(lat,lng) => ask if they are at that location
       // if no => enter address, zip, or business name
       snapsByGeo(39.758451,-105.007625, msg, state) //(lat,lng) of boomtown
