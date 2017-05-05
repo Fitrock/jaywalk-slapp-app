@@ -29,11 +29,10 @@ function snapsByGeo (lat,lng, msg, state){
           if (snap.lng <= radius[0].lng && snap.lng >= radius[3].lng) {
             count ++
             resultArr.push(snap)
-            console.log(snap,resultArr)
           } //end if (lng checker)
         }) //end foreach
-
-        for(let i=count;i>(count-4);i--){ //last four
+        let len = resultArr
+        for(let i=len;i>(len-4);i--){ //last four
           let snap = resultArr[i]
           console.log(snap)
           let callback = function(picUrl){
