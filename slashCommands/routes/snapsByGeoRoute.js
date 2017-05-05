@@ -15,8 +15,7 @@ const firebase    = require('../../firebaseSetup.js'),
 function snapsByGeo (lat,lng, msg, state){
     //firebase search by snap lat (start at bottom of circle, end at top)
     let radius = getRadius(lat,lng) //test: snap #1055
-console.log(radius)
-return 0;
+// console.log(radius)
     let snapLat = snaps
       .orderByChild('lat')
       .startAt(radius[5].lat + "-") // "-"makes a string: required for query
@@ -30,7 +29,7 @@ return 0;
         console.log(len)
         console.log(snapObj.val())
         for(let key in snapObj){
-          // if(!snapObj.hasOwnProperty(key)) continue;
+          if(!snapObj.hasOwnProperty(key)) continue;
           console.log(key, snapObj[key])
           return 0;
           snap = snapObj.val()[i]
