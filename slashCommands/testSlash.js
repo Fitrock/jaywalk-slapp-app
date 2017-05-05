@@ -176,7 +176,7 @@ let test = function() {
         //   msg.respond(msg.body.response_url, `${value} is a good choice!`)
         // })
         // if(msg.body.actions[0].value=="yes"){
-          // snapsByGeo(teamInfo.lat,teamInfo.lng, msg, state) 
+          snapsByGeo(teamInfo.lat,teamInfo.lng, msg, state) 
         // } else {
         //   msg.say('still working on that')
         // }
@@ -184,7 +184,7 @@ let test = function() {
 
       // get team_id.location(lat,lng) => ask if they are at that location
       // if no => enter address, zip, or business name
-        snapsByGeo(39.758451,-105.007625, msg, state) //(lat,lng) of boomtown
+        // snapsByGeo(39.758451,-105.007625, msg, state) //(lat,lng) of boomtown
       }
     }else if(answer == 'wework'){
       snapsByGeo(40.018689, -105.279993, msg, state) //test: snap #1055
