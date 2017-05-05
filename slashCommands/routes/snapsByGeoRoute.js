@@ -29,6 +29,8 @@ function snapsByGeo (lat,lng, msg, state){
           //if returns lng within radius (east/west)
             //  console.log(snap.lng,'>',radius[0].lng,snap.lat)
             // console.log(snap.lng,'<',radius[3].lng)
+            console.log(count)
+            count++
           if (snap.lng >= radius[0].lng && snap.lng <= radius[3].lng) {
             console.log(snap.lng,'>',radius[0].lng)
             console.log(snap.lng,'<',radius[3].lng)
