@@ -138,7 +138,7 @@ let test = function() {
 // })
 
   .route('requestToDatabase', (msg, state) => {
-    answer = msg.body.actions[0].value || ""
+    answer = msg.body.actions[0].value
     // if(msg.body.action==undefined){
     //   msg
     //     .say('Click a button!')
@@ -148,9 +148,10 @@ let test = function() {
     // }
 
     if(answer == 'boomtown'){
-      if(1==0){
-        // if location is not set -> set perm. location? or where are you?
-      } else if(teamInfo.lat){ //db had location stored for team
+      // if(1==0){
+      //   // if location is not set -> set perm. location? or where are you?
+      // } 
+      if(teamInfo.lat){ //db had location stored for team
         // msg.say({
         // text: "",
         //   attachments: [{
