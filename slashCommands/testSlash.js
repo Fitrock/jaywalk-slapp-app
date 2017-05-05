@@ -189,7 +189,7 @@ let test = function() {
         // snapsByGeo(39.758451,-105.007625, msg, state) //(lat,lng) of boomtown
       // }
     }else if(answer == 'wework'){
-      snapsByGeo(40.018689, -105.279993, msg, state) //test: snap #1055
+      snapsByGeo(39.758451,-105.007625, msg, state) //test: snap #1055
     }else if(answer == 'app'){
       /*
       let device = //variable from device

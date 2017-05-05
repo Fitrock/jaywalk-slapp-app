@@ -68,10 +68,11 @@ let jaywalk  = function() {
     let answer = msg.body.actions[0].value
     let radius
     if(answer == 'boomtown'){
-
-      snapsByGeo(39.758451,-105.007625, msg, state) //(lat,lng) of boomtown
-    }else if(answer == 'wework'){
       snapsByGeo(40.018689, -105.279993, msg, state) //test: snap #1055
+
+    }else if(answer == 'wework'){
+      snapsByGeo(39.758451,-105.007625, msg, state) //(lat,lng) of boomtown
+      
     }else if(answer == 'app'){
       return msg.say({  
         text: "",      
