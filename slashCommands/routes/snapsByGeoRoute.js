@@ -27,7 +27,7 @@ function snapsByGeo (lat,lng, msg, state){
         let count = 0
         // let len = snapObj.val().length
         // console.log(len)
-        console.log(snapObj.val())
+        // console.log(snapObj.val())
         for(let key in snapObj){
           if(!snapObj.hasOwnProperty(key)) continue;
           console.log(key, snapObj[key])
