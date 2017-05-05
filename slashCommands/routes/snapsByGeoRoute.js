@@ -25,7 +25,7 @@ function snapsByGeo (lat,lng, msg, state){
         let body
         let count = 0
         let len = snapArr.length
-        console.log(snapArr)
+        console.log(snapArr.val())
         for(let i=len;i>=len-4;i--){
           snap = snaps[i].val()
           console.log(snap)
