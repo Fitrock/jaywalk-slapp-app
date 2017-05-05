@@ -139,9 +139,11 @@ let test = function() {
       msg
         .say('Click a button!')
         .route('requestToDatabase', state, 60)
+    } else{
+      let answer = msg.body.actions[0].value
+
     }
 
-    let answer = msg.body.actions[0].value
     if(answer == 'boomtown'){
 
       // if location is not set -> set location? -> save to team_id in firebase
