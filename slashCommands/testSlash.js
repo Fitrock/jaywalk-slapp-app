@@ -5,7 +5,7 @@ const tinyurl = require('tinyurl');
 const request = require('request')
 
 // route functions
-const hardcodedLocation = require('./routes/hardcodedGeoRoute.js').hardcodedLocation
+const snapsByGeo = require('./routes/snapsByGeoRoute.js').snapsByGeo
 const ipGeo = require('./routes/ipGeoRoute.js')
 const routeFuncs = require('./routes/routesIndex.js')
 
@@ -74,10 +74,14 @@ let test = function() {
       .child(msg.body.team_id)
       .once("value")
       .then(function(obj){
-        console.log(obj.val())
-        return obj.val()
+        if(obj.val().lat){
+          return teamInfo = obj.val()
+        } else{
+          // might make condition to change buttons displayed?
+          return teamInfo.team_id = msg.body.team_id
+        }
       })
-    console.log(msg._slapp.client.team)
+    // console.log(msg._slapp.client.channel.team)
     // console.log(msg.meta)
     msg
       .say({
@@ -143,13 +147,42 @@ let test = function() {
     }
 
     if(answer == 'boomtown'){
+      if(1){
+        // if location is not set -> set perm. location? or where are you?
 
-      // if location is not set -> set location? -> save to team_id in firebase
+      } else if(teamInfo.lat){ //db had location stored for team
+        msg.say({
+        text: "",
+          attachments: [{
+            text: `Are you at ${teamInfo.location_name}?`,
+            fallback: 'Where to today?',
+            callback_id: 'test_callback',
+            color: 'good',
+            actions: 
+            [{ 
+              name: 'answer',
+              text: 'Yes',
+              type: 'button',
+              value: 'yes'
+            },{ 
+              name: 'answer',
+              text: 'no',
+              type: 'button',
+              value: 'no'
+            }]
+          }]
+        })
+        if(msg.body.actions[0].value=="yes"){
+          snapsByGeo(teamInfo.lat,teamInfo.lng, msg, state) 
+        } else {
+          msg.say('still working on that')
+        }
+      }
       // get team_id.location(lat,lng) => ask if they are at that location
       // if no => enter address, zip, or business name
-      hardcodedLocation(39.758451,-105.007625, msg, state) //(lat,lng) of boomtown
+      snapsByGeo(39.758451,-105.007625, msg, state) //(lat,lng) of boomtown
     }else if(answer == 'wework'){
-      hardcodedLocation(40.018689, -105.279993, msg, state) //test: snap #1055
+      snapsByGeo(40.018689, -105.279993, msg, state) //test: snap #1055
     }else if(answer == 'app'){
       /*
       let device = //variable from device

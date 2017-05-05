@@ -8,4 +8,5 @@ slackcopes:
   - post
   - channels:history
   - channels:write
+# put firebase hidden info here
 # To learn everything supported in the bot.yml file, visit https://beepboophq.com/docs/article/bot-yml

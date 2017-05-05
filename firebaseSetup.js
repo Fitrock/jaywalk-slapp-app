@@ -27,6 +27,11 @@ var config = {
 let teamObj = {
   team_id: "",
   team_name: "",
+  location:"",
+  location_name:"",
+  address:"",
+  lat:"",
+  lng:"",
   slack_token: "", //given at auth
   incoming_webhook: "", //given at auth
   channel_id: "",
