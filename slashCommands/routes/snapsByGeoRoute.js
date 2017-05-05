@@ -22,14 +22,18 @@ return 0;
       .startAt(radius[5].lat + "-") // "-"makes a string: required for query
       .endAt(radius[1].lat + "-")
       .once('value')
-      .then(function(snapArr) {
+      .then(function(data) {
         let body
+        let snapObj = data.val()
         let count = 0
-        let len = snapArr.val().length
+        // let len = snapObj.val().length
         console.log(len)
-        console.log(snapArr.val())
-        for(let i=len;i>=(len-4);i--){
-          snap = snapArr.val()[i]
+        console.log(snapObj.val())
+        for(let key in snapObj){
+          if(!snapObj.hasOwnProperty(key)) continue;
+          console.log(key, snapObj[key])
+          return 0;
+          snap = snapObj.val()[i]
           console.log(snap)
           //if returns lng within radius (east/west)
           if (snap.lng <= radius[0].lng && snap.lng >= radius[3].lng) {
