@@ -21,6 +21,7 @@ let test = function() {
   let state = { requested: Date.now() }
   let teamId = ''
   let teamInfo = {}
+  let answer
   /*
   ifs to determine desktop v mobile
   &&
@@ -76,7 +77,7 @@ let test = function() {
         console.log(obj.val())
         return obj.val()
       })
-    console.log(msg._slapp.client)
+    console.log(msg._slapp.client.team)
     // console.log(msg.meta)
     msg
       .say({
@@ -138,7 +139,7 @@ let test = function() {
         .say('Click a button!')
         .route('requestToDatabase', state, 60)
     } else{
-      let answer = msg.body.actions[0].value
+      answer = msg.body.actions[0].value
     }
 
     if(answer == 'boomtown'){
