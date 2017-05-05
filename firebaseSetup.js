@@ -27,15 +27,15 @@ var config = {
 let teamObj = {
   team_id: "",
   team_name: "",
-  SLACK_TOKEN: "", //given at auth
+  slack_token: "", //given at auth
   incoming_webhook: "", //given at auth
-  CHANNEL_id: "",
-  CHANNEL_name: "",
+  channel_id: "",
+  channel_name: "",
   notifications: [""],
-  USERS: [
+  users: [
     {
-      USER_id: "",
-      USER_name: "c" //need to push additional user instead of editing this one
+      user_id: "",
+      user_name: "" //need to push additional user instead of editing this one
     }
   ]
 }
@@ -43,8 +43,9 @@ let teamUsers = {
   team_id:"",
   users:[
     {
-      USER_id: "",
-      USER_name: "" //need to push additional user instead of editing this one
+      user_id: "",
+      user_name: "", //need to push additional user instead of editing this one
+      has_app: false // based on "sign up with slack" login button on jaywalk app
     }
   ]
 }

@@ -11,7 +11,8 @@ const firebase    = require('../firebaseSetup.js'),
       db = firebase.db,
       snaps = firebase.snaps,
       tags = firebase.tags,
-      users = firebase.users
+      users = firebase.users,
+      slackDb = firebase.slackDb
 
 
 
@@ -23,7 +24,7 @@ let jaywalk  = function() {
       call to db to get team info from team_id
 
     */
-  
+
     let state = { requested: Date.now() }
     msg
       .say({
@@ -71,12 +72,9 @@ let jaywalk  = function() {
   })
   .route('getDbinfo', (msg, state) => {
     let answer = msg.body.actions[0].value
-
     let radius
     if(answer == 'boomtown'){
-      // if location is not set -> set location? -> save to team_id in firebase
-      // get team_id.location(lat,lng) => ask if they are at that location
-      // if no => enter address, zip, or business name
+
       hardcodedLocation(39.758451,-105.007625, msg, state) //(lat,lng) of boomtown
     }else if(answer == 'wework'){
       hardcodedLocation(40.018689, -105.279993, msg, state) //test: snap #1055
