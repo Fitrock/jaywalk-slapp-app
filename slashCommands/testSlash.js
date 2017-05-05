@@ -73,10 +73,9 @@ let test = function() {
       .child(msg.body.team_id)
       .once("value")
       .then(function(obj){
-        console.log(obj)
-        return obj
+        console.log(obj.val())
+        return obj.val()
       })
-    console.log(teamInfo)
     console.log(msg._slapp.client)
     // console.log(msg.meta)
     msg
