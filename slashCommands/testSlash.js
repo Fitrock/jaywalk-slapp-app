@@ -178,7 +178,7 @@ let test = function() {
         // })
         // if(msg.body.actions[0].value=="yes"){
           console.log(teamInfo)
-          snapsByGeo(teamInfo.lat,teamInfo.lng, msg, state) 
+          // snapsByGeo(teamInfo.lat,teamInfo.lng, msg, state) 
         // } else {
         //   msg.say('still working on that')
         // }
