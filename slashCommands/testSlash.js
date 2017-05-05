@@ -24,14 +24,14 @@ ifs to determine desktop v mobile
 &&
 browser v slack app
 body.
-  token: '',
+  token: '', // same as verify_token
   team_id: '',
   team_domain: '',
   channel_id: '',
   channel_name: '',
   user_id: '',
   user_name: ''
-._slapp.Slapp.client: 
+._slapp.client: 
  { api: [Object],
    auth: [Object],
    bots: [Object],
@@ -68,9 +68,9 @@ body.
 */
   slapp.command('/test', (msg, text) => {
     randomNum = (Math.floor(Math.random() * 1400) + 200)
-    console.log(msg.body.team_id)
-    console.log(msg._slapp)
-    console.log(msg.meta.incoming_webhook_url)
+    // console.log(msg.body.team_id)
+    console.log(msg._slapp.client)
+    console.log(msg.meta)
     msg
       .say({
         text: "",
