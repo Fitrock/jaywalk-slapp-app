@@ -151,7 +151,7 @@ let test = function() {
       // if(1==0){
       //   // if location is not set -> set perm. location? or where are you?
       // } 
-      if(teamInfo.lat){ //db had location stored for team
+      // if(teamInfo.lat){ //db had location stored for team
         // msg.say({
         // text: "",
         //   attachments: [{
@@ -177,6 +177,7 @@ let test = function() {
         //   msg.respond(msg.body.response_url, `${value} is a good choice!`)
         // })
         // if(msg.body.actions[0].value=="yes"){
+          console.log(teamInfo)
           snapsByGeo(teamInfo.lat,teamInfo.lng, msg, state) 
         // } else {
         //   msg.say('still working on that')
@@ -186,7 +187,7 @@ let test = function() {
       // get team_id.location(lat,lng) => ask if they are at that location
       // if no => enter address, zip, or business name
         // snapsByGeo(39.758451,-105.007625, msg, state) //(lat,lng) of boomtown
-      }
+      // }
     }else if(answer == 'wework'){
       snapsByGeo(40.018689, -105.279993, msg, state) //test: snap #1055
     }else if(answer == 'app'){

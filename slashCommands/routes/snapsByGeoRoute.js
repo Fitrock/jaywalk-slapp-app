@@ -14,7 +14,7 @@ const firebase    = require('../../firebaseSetup.js'),
 
 function snapsByGeo (lat,lng, msg, state){
     //firebase search by snap lat (start at bottom of circle, end at top)
-    let radius = getRadius(39.758451,-105.007625) //test: snap #1055
+    let radius = getRadius(lat,lng) //test: snap #1055
 
     let snapLat = snaps
       .orderByChild('lat')
