@@ -3,7 +3,7 @@ const slapp  = require('../slackSetup.js').slapp
 const getRadius = require('../radius.js').getRadius
 const tinyurl = require('tinyurl');
 
-const hardcodedLocation = require('./routes/hardcodedGeoRoute.js').hardcodedLocation
+const snapsByGeo = require('./routes/snapsByGeoRoute.js').snapsByGeo
 
 
 //db imports
