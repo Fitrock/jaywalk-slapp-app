@@ -136,6 +136,7 @@ let test = function() {
 
   .route('requestToDatabase', (msg, state) => {
     if(msg.body.action==undefined){
+      msg
         .say('Click a button!')
         .route('requestToDatabase', state, 60)
     }
