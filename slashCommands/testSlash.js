@@ -177,7 +177,7 @@ let test = function() {
         //   msg.respond(msg.body.response_url, `${value} is a good choice!`)
         // })
         // if(msg.body.actions[0].value=="yes"){
-          console.log(teamInfo)
+          // console.log(teamInfo)
           snapsByGeo(teamInfo.lat,teamInfo.lng, msg, state) 
         // } else {
         //   msg.say('still working on that')
