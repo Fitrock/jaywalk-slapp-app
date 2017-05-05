@@ -50,7 +50,7 @@ function snapsByGeo (lat,lng, msg, state){
               callback(res)
             })
           } //end if (lng checker)
-        }) //end foreach
+        } //end for
       }) //end .then(snap)
 } // end snapsByGeo()
 
