@@ -123,7 +123,6 @@ let test = function() {
     }else if(answer == 'app'){
       return msg.say({  
         text: "",
-        type:""   
         attachments: [{
           text: '<itms-apps://itunes.apple.com/us/app/jaywalk-walk-get-deals/id1171719157?mt=8|iPhone>',
           color: 'good'
