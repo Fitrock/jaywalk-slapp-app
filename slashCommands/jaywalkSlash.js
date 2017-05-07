@@ -112,7 +112,7 @@ let jaywalk = function() {
     // console.log(msg.body.message_ts)
     // console.log(msg.body.channel.id)
     if(msg.body.actions==undefined){
-      .route('requestToDatabase', state, 60)    
+      msg.route('requestToDatabase', state, 60)    
     }else{
       answer = msg.body.actions[0].value
       if(answer == 'app'){
