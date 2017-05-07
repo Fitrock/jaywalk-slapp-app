@@ -112,16 +112,8 @@ let test = function() {
     // console.log(msg.body.message_ts)
     // console.log(msg.body.channel.id)
     answer = msg.body.actions[0].value
-    if(answer == 'boomtown'){
-      msg.respond(msg.body.response_url, 'respond test')
-    }else if(answer == 'wework'){
-
-      msg.override({
-        text:'override'
-        })
-
-    }else if(answer == 'app'){
-      return msg.say({  
+    if(answer == 'app'){
+      return msg.respond({  
         text: "",
         attachments: [{
           text: '<itms-apps://itunes.apple.com/us/app/jaywalk-walk-get-deals/id1171719157?mt=8|iPhone>',

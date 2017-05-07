@@ -6,7 +6,7 @@ const yes = function(teamInfo,msg,state){
 
     let location = teamInfo.location_name
 
-  msg.say({
+  msg.respond({
   text: "",
     attachments: [{
       text: `Are you still at ${location}?`,

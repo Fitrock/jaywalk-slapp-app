@@ -4,7 +4,7 @@ let snapsByGeo = require('./snapsByGeoRoute.js').snapsByGeo
 
 const addressToGeo = function(teamInfo,msg,state){
   msg
-    .say({
+    .respond({
     text: "",
       attachments: [{
         title: "Where are you? Click me so I can find you or...",
