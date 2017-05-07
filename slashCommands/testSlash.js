@@ -107,14 +107,22 @@ let test = function() {
 // })
 
   .route('requestToDatabase', (msg, state) => {
-    console.log(msg.meta.verify_token)
-    console.log(msg.original_message.ts)
-    console.log(msg.meta.channel_id)
+    console.log(msg.type)
+    console.log(msg.body.token)
+    console.log(msg.body.message_ts)
+    console.log(msg.channel.id)
     answer = msg.body.actions[0].value
     if(answer == 'boomtown'){
       snapsByGeo(teamInfo.lat,teamInfo.lng, msg, state)     
     }else if(answer == 'wework'){
-      snapsByGeo(39.758451,-105.007625, msg, state) //test: snap #1055
+      msg
+        .say('Not threaded')
+        .say('Not threaded')
+        .thread()
+        .say('is threaded')
+        .say('is threaded')
+        .say('is threaded')
+
     }else if(answer == 'app'){
       return msg.say({  
         text: "",      
