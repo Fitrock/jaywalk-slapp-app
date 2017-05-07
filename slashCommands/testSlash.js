@@ -107,9 +107,9 @@ let test = function() {
 // })
 
   .route('requestToDatabase', (msg, state) => {
-    console.log(msg.type)
-    console.log(msg.body.token)
-    console.log(msg.body.message_ts)
+    // console.log(msg.type)
+    // console.log(msg.body.token)
+    // console.log(msg.body.message_ts)
     // console.log(msg.body.channel.id)
     answer = msg.body.actions[0].value
     if(answer == 'boomtown'){
