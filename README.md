@@ -8,7 +8,7 @@ Todo:
 	- ask user to respond "lunch" => if (around lunch time){ask if still at base location}
 	-if(yes){results}
 	-if(no){"Type your address, zip code, or current landmark"}
-
+- Voting Feature
 ## later
 - Determine if user is on desktop or mobile
 	- if on desktop: determine if on browser or slack app

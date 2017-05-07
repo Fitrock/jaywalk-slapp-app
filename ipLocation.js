@@ -37,7 +37,26 @@ var deviceIPV6 = deviceIp.en1[0].address
 
 // module.exports = {
     
+
+
+
+
+
+
+    
 // }
 
+    // else if(answer == 'ipGeo'){
+    //   // ipGeo()
+    //   let callback =function(err,res){
+    //   console.log(err,res)
+    //   msg.say(JSON.stringify(res),"this is slack's server location...")
+    //   }
 
+    //   request.get({
+    //     uri:'http://www.geoplugin.net/json.gp',
+    //     json:true}
+    //     , callback);
+
+    // }
 

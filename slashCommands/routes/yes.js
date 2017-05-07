@@ -1,4 +1,4 @@
-const yesno = function(location){
+const yes = function(location,msg,state){
   msg.say({
   text: "",
     attachments: [{
@@ -22,12 +22,10 @@ const yesno = function(location){
   })
 
   slapp.action('yesno_callback', 'answer', (msg, value) => {
-    let res = ''
-    (value=='yes' ? res='yes' : res="no")
-    return res
+    return (value=='yes' ? true : false)
   })
 }
 
 module.exports = {
-  yesno: yesno()
+  yes: yes
 }

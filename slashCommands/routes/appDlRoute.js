@@ -3,7 +3,16 @@
 const tinyurl = require('tinyurl');
  
 function appDl(){
-
+  return msg.say({  
+    text: "",      
+    attachments: [{
+      text: '<itms-apps://itunes.apple.com/us/app/jaywalk-walk-get-deals/id1171719157?mt=8|iPhone>',
+      color: 'good'
+    },{
+      text: '<market://play.google.com/store/apps/details?id=com.kinetise.appb3e241f4c2ebeba41965ba16c05b2eba&hl=en_GB|Android>',
+      color: 'good'
+    }]
+  })
 }
   /*
 
