@@ -97,7 +97,7 @@ let test = function() {
               value: 'app'
             },
             {
-              name: 'answer',
+              name: 'answer', //probably switching to addressToGeo
               text: 'findMe',
               type: 'button',
               value: 'findMe'

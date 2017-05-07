@@ -11,7 +11,7 @@ module.exports = {
 	relaventAsk: relaventRoute,
 	// notifTime: notifRoute,
 	snapsByGeo: snapsByGeo,
-	ipGeo: ipGeoRoute
-	addressToGeo:addressToGeo 
+	ipGeo: ipGeoRoute,
+	addressToGeo: addressToGeo 
 	// randomRoute:randomRoute
 }
