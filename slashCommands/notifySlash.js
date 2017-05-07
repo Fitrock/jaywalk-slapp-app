@@ -40,7 +40,7 @@ function setCron(options,answer,time,msg){
 
 let notify  = function() {
   let randomNum = 0;
-  msg
+  slapp
   .route('notifications',(msg,state) =>{
     msg
       .respond({
