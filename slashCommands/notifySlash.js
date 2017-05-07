@@ -38,16 +38,14 @@ function setCron(options,answer,time,msg){
   });
 }
 
-let notify  = function() {
-    msg
-      .route('notifications',(msg,state) =>{
+let notify  = function(teamInfo,msg,state) {
       msg
       .respond({
         text: '',
         attachments: [{
           text: 'What notifications do you want on this channel?',
           fallback: 'Set timed events.',
-          callback_id: 'doit_confirm_callback',
+          callback_id: 'scheduler_callback',
           actions: [{
               name: 'answer',
               text: 'Coffee Spots',
@@ -81,10 +79,9 @@ let notify  = function() {
           ]
         }]
       })
-        .route('scheduler', state, 60) //expires after 60 sec       
   })
-  .route('scheduler', (msg, state) => {
-    let answer = msg.body.actions[0].value
+  slapp.action('scheduler_callback', 'answer', (msg, value) => {
+    // msg.respond(msg.body.response_url, `${value} is a good choice!`)
     // user may not have typed text as their next action, ask again and re-route
     // if (!randSnap || !randTag) {
     //   return msg
@@ -92,7 +89,7 @@ let notify  = function() {
     //     .say('Click a button!')
     //     .route('getid1', state)
     // }
-    if(answer == 'Breakfast'){    
+    if(value == 'Breakfast'){    
     //need to handle timezones.... 
       /*
       ! Based on UTC time (GMT +06:00:00) or utc is denver+6hours
@@ -105,23 +102,23 @@ let notify  = function() {
       */
       options.body.schedule = "0 13 * * 1-5 *" // mon-fri @ 7:00am gmt
       let time = "mon-fri @ 7:00am gmt"
-      setCron(options,answer,time,msg)
-    }else if(answer == 'Lunch'){
+      setCron(options,value,time,msg)
+    }else if(value == 'Lunch'){
       options.body.schedule = "30 17 * * 1-5 *" // mon-fri @ 11:30am gmt
       let time = "mon-fri @ 11:30am gmt"
-      setCron(options,answer,time,msg)
-    }else if(answer == 'Dinner'){
+      setCron(options,value,time,msg)
+    }else if(value == 'Dinner'){
       options.body.schedule = "30 23 * * 1-5 *" // mon-fri @ 5:30pm gmt
       let time = "mon-fri @ 5:30pm gmt"
-      setCron(options,answer,time,msg)
-    }else if(answer == 'Happy Hour'){
+      setCron(options,value,time,msg)
+    }else if(value == 'Happy Hour'){
       options.body.schedule = "30 22 * * 1-5 *" // mon-fri @ 4:30pm gmt
       let time = "mon-fri @ 4:30pm gmt"
-      setCron(options,answer,time,msg)
-    }else if(answer == 'Local Bar'){
+      setCron(options,value,time,msg)
+    }else if(value == 'Local Bar'){
       options.body.schedule = "0 02 * * 0,5,6 *" // thurs-sat @ 8:00pm gmt
       let time = "mon-fri @ 8:00pm gmt"
-      setCron(options,answer,time,msg)
+      setCron(options,value,time,msg)
     }else{ //handle error
       return msg
         .say("Whoops, you just have to pick a button...")
@@ -132,7 +129,7 @@ let notify  = function() {
   })
 }
 module.exports = {
-  notify: notify()
+  notify: notify
 }
 
 
