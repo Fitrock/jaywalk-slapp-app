@@ -113,12 +113,12 @@ let test = function() {
     // console.log(msg.body.channel.id)
     answer = msg.body.actions[0].value
     if(answer == 'boomtown'){
-      snapsByGeo(teamInfo.lat,teamInfo.lng, msg, state)     
+      msg.respond(msg.body.response_url, 'respond test')
     }else if(answer == 'wework'){
 
-      msg.override(
+      msg.override({
         text:'override'
-        )
+        })
 
     }else if(answer == 'app'){
       return msg.say({  
