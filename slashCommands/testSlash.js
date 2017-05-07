@@ -79,17 +79,17 @@ let test = function() {
               type: 'button',
               value: 'address'
             },
+            // {
+            //   name: 'answer',
+            //   text: 'WeWork',
+            //   type: 'button',
+            //   value: 'wework'
+            // },
             {
               name: 'answer',
-              text: 'WeWork',
+              text: 'Settings',
               type: 'button',
-              value: 'wework'
-            },
-            {
-              name: 'answer',
-              text: 'Boomtown',
-              type: 'button',
-              value: 'boomtown'
+              value: 'settings'
             },
             {
               name: 'answer',
