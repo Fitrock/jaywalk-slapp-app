@@ -100,7 +100,6 @@ let test = function() {
           ]
         }]
       })
-      .thread()
       .route('requestToDatabase', state, 60)    
   })
 // slapp.action('test_callback', 'answer', (msg, value) => {
@@ -116,12 +115,15 @@ let test = function() {
     if(answer == 'boomtown'){
       snapsByGeo(teamInfo.lat,teamInfo.lng, msg, state)     
     }else if(answer == 'wework'){
-      msg
-        .say('is threaded')
+
+      msg.override(
+        text:'override'
+        )
 
     }else if(answer == 'app'){
       return msg.say({  
-        text: "",      
+        text: "",
+        type:""   
         attachments: [{
           text: '<itms-apps://itunes.apple.com/us/app/jaywalk-walk-get-deals/id1171719157?mt=8|iPhone>',
           color: 'good'
