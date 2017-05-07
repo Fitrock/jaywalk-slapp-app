@@ -107,7 +107,9 @@ let test = function() {
 // })
 
   .route('requestToDatabase', (msg, state) => {
-    console.log(msg)
+    console.log(msg.meta.verify_token)
+    console.log(msg.original_message.ts)
+    console.log(msg.meta.channel_id)
     answer = msg.body.actions[0].value
     if(answer == 'boomtown'){
       snapsByGeo(teamInfo.lat,teamInfo.lng, msg, state)     
