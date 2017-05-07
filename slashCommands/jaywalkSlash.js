@@ -136,7 +136,7 @@ let jaywalk = function() {
       }else if(answer == 'settings'){
         
       }else if(answer == 'notifications'){
-          msg.route('notifications', state, 60)    
+        notify(teamInfo,msg,state)
       }else{ //handle error
         return msg
           .say("Whoops, you just have to pick a button...")
