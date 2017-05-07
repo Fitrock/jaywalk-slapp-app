@@ -117,7 +117,6 @@ let test = function() {
     }else if(answer == 'wework'){
       msg
         .say('Not threaded')
-        .say('Not threaded')
         .thread()
         .say('is threaded')
         .say('is threaded')
