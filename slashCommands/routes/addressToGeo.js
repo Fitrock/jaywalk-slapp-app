@@ -2,6 +2,7 @@ const yes = require('./yes.js').yes
 const snapsByGeo = require('./snapsByGeoRoute.js').snapsByGeo
 
 const addressToGeo = function(teamInfo,msg,state){
+  console.log(teamInfo)
   let location = teamInfo.location_name
   let yesno = yes(location, msg, state)
   if(yesno == true){ //they are still at the default location
