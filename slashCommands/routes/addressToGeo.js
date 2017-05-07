@@ -8,8 +8,7 @@ const addressToGeo = function(teamInfo,msg,state){
     console.log('yes == true')
     snapsByGeo(teamInfo.lat,teamInfo.lng, msg, state)     
   } else { //they need to enter new location
-    msg
-      .route('ask_address')
+    msg.route('ask_address',state,60)
   }
     msg.route('ask_address', (msg, state) => {
       msg.say({
