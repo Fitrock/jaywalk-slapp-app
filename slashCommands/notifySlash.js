@@ -40,10 +40,10 @@ function setCron(options,answer,time,msg){
 
 let notify  = function() {
   let randomNum = 0;
-  slapp.command('/jaywalkNotify', (msg, text) => {
-    let state = { requested: Date.now() }
+  msg
+  .route('notifications',(msg,state) =>{
     msg
-      .say({
+      .respond({
         text: '',
         attachments: [{
           text: 'What notifications do you want on this channel?',

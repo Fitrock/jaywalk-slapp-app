@@ -79,12 +79,12 @@ let jaywalk = function() {
               type: 'button',
               value: 'address'
             },
-            // {
-            //   name: 'answer',
-            //   text: 'WeWork',
-            //   type: 'button',
-            //   value: 'wework'
-            // },
+            {
+              name: 'answer',
+              text: 'Notifications',
+              type: 'button',
+              value: 'notifications'
+            },
             {
               name: 'answer',
               text: 'Settings',
@@ -111,30 +111,36 @@ let jaywalk = function() {
     // console.log(msg.body.token)
     // console.log(msg.body.message_ts)
     // console.log(msg.body.channel.id)
-    answer = msg.body.actions[0].value
-    if(answer == 'app'){
-      return msg.respond({  
-        text: "",
-        attachments: [{
-          text: '<itms-apps://itunes.apple.com/us/app/jaywalk-walk-get-deals/id1171719157?mt=8|iPhone>',
-          color: 'good'
-        },{
-          text: '<market://play.google.com/store/apps/details?id=com.kinetise.appb3e241f4c2ebeba41965ba16c05b2eba&hl=en_GB|Android>',
-          color: 'good'
-        }]
-      })
-    }else if(answer == 'address'){
-      yes(teamInfo,msg,state)
-      //https://jaywalk-geo.herokuapp.com/geoloc.htm
-      // .route('handleGeoLoc', state, 60) 
-    }else if(answer == 'settings'){
-      
-    }else{ //handle error
-      return msg
-        .say("Whoops, you just have to pick a button...")
-        .say('Click a button!')
-        .route('requestToDatabase', state, 60)
-    }
+    if(msg.body.actions==undefined){
+      .route('requestToDatabase', state, 60)    
+    }else{
+      answer = msg.body.actions[0].value
+      if(answer == 'app'){
+        return msg.respond({  
+          text: "",
+          attachments: [{
+            text: '<itms-apps://itunes.apple.com/us/app/jaywalk-walk-get-deals/id1171719157?mt=8|iPhone>',
+            color: 'good'
+          },{
+            text: '<market://play.google.com/store/apps/details?id=com.kinetise.appb3e241f4c2ebeba41965ba16c05b2eba&hl=en_GB|Android>',
+            color: 'good'
+          }]
+        })
+      }else if(answer == 'address'){
+        yes(teamInfo,msg,state)
+        //https://jaywalk-geo.herokuapp.com/geoloc.htm
+        // .route('handleGeoLoc', state, 60) 
+      }else if(answer == 'settings'){
+        
+      }else if(answer == 'notifications'){
+        msg.route('notifications', state, 60)    
+      }else{ //handle error
+        return msg
+          .say("Whoops, you just have to pick a button...")
+          .say('Click a button!')
+          .route('requestToDatabase', state, 60)
+      }
+    } //end else(actions undefined checker)
   }) //end .route('requestToDatabase')
   .route('handleGeoLoc',(msg,state) =>{
   }) //end .route( handleGeoLoc
