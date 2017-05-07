@@ -12,11 +12,9 @@ const addressToGeo = function(teamInfo,msg,state){
         color: 'warning'
       }]
   })
-  slapp.action('address_geo', (msg, value) => {
-    console.log('in address_geo callback')
-    console.log(msg.body.message)
-    msg.say(msg.body.message)
-  })
+    .route('address_geo', state)
+
+
 }
 
 module.exports = {

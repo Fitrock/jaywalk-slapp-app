@@ -149,6 +149,12 @@ let test = function() {
   .route('relaventAsk', (msg,state) => {
     routeFuncs.relaventAsk(msg,state)
   })//end .route(relaventAsk)
+  .route('address_geo', (msg,state) => {
+    let text = (msg.body.event && msg.body.event.text) || ''
+    console.log('in address_geo callback')
+    console.log(text)
+    msg.say(text)
+  })
 }
 module.exports = {
   test:test()
