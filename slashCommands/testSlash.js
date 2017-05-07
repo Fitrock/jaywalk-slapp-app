@@ -151,7 +151,6 @@ let test = function() {
   })//end .route(relaventAsk)
   .route('address_geo', (msg,state) => {
     let text = (msg.body.event && msg.body.event.text) || ''
-    let whereRes
     where.is(text,function(err,result){
       if (result) {
         whereRes = result
@@ -167,9 +166,9 @@ let test = function() {
         // msg.say('Country Code: ' + result.get('countryCode'));
         // msg.say('Lat: ' + result.get('lat'));
         // msg.say('Lng: ' + result.get('lng'));
+        snapsByGeo(result.lat,result.lng,msg,state)
       }
     })
-    snapsByGeo(whereRes.lat,whereRes.lng,msg,state)
   })
 }
 module.exports = {
