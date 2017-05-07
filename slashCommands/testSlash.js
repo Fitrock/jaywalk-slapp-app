@@ -153,6 +153,8 @@ let test = function() {
     let text = (msg.body.event && msg.body.event.text) || ''
     where.is(text,function(err,result){
       if (result) {
+        let lat = result.get('lat')
+        let lng = result.get('lng')
         // msg.say('Address: ' + result.get('address'));
         // msg.say('Street Number: ' + result.get('streetNumber'));
         // msg.say('Street: ' + result.get('street'));
@@ -165,7 +167,7 @@ let test = function() {
         // msg.say('Country Code: ' + result.get('countryCode'));
         // msg.say('Lat: ' + result.get('lat'));
         // msg.say('Lng: ' + result.get('lng'));
-        snapsByGeo(result.lat,result.lng,msg,state)
+        snapsByGeo(lat,lng,msg,state)
       }
     })
   })
