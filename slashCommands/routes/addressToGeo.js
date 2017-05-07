@@ -1,3 +1,4 @@
+const slapp = require('../../slackSetup.js').slapp
 const yes = require('./yes.js').yes
 let snapsByGeo = require('./snapsByGeoRoute.js').snapsByGeo
 
@@ -7,17 +8,15 @@ const addressToGeo = function(teamInfo,msg,state){
     text: "",
       attachments: [{
         text: `Please type an address, zipcode, or business name`,
-        callback_id: 'yesno_callback',
+        callback_id: 'address_geo',
         color: 'warning'
       }]
   })
-    .route('address_geo', state)
+  slapp.action('address_geo', (msg, value) => {
 
-    msg
-    .route('address_geo', (msg, state) => {
-      var text = (msg.body.event && msg.body.event.text) || ''
-      console.log(text)
-    })
+    console.log(msg.body)
+    msg.say(msg.body)
+  })
 }
 
 module.exports = {
