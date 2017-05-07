@@ -153,7 +153,7 @@ let test = function() {
     let text = (msg.body.event && msg.body.event.text) || ''
     where.is(text,function(err,result){
       if (result) {
-        msg.say('Address: ' + result.get('address'));
+        // msg.say('Address: ' + result.get('address'));
         // msg.say('Street Number: ' + result.get('streetNumber'));
         // msg.say('Street: ' + result.get('street'));
         // msg.say('Full Street: ' + result.get('streetAddress'));
