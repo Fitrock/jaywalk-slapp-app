@@ -1,8 +1,8 @@
 const slapp = require('../../slackSetup.js').slapp
 
-
 const yes = function(teamInfo,msg,state){
   const snapsByGeo = require('./snapsByGeoRoute.js').snapsByGeo
+  const addressToGeo  = require('./addressToGeo.js').addressToGeo
 
     let location = teamInfo.location_name
 
@@ -10,7 +10,6 @@ const yes = function(teamInfo,msg,state){
   text: "",
     attachments: [{
       text: `Are you still at ${location}?`,
-      fallback: 'Where to today?',
       callback_id: 'yesno_callback',
       color: 'good',
       actions: 
@@ -32,8 +31,7 @@ const yes = function(teamInfo,msg,state){
     if(bool==true){
       snapsByGeo(teamInfo.lat,teamInfo.lng, msg, state)     
     }else{
-      // msg.route('ask_address',state,60)
-      msg.say('lets find where you are.... ')
+      addressToGeo(teamInfo,msg,state)
     }
   })
 }

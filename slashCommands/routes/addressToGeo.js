@@ -2,36 +2,22 @@ const yes = require('./yes.js').yes
 let snapsByGeo = require('./snapsByGeoRoute.js').snapsByGeo
 
 const addressToGeo = function(teamInfo,msg,state){
-  let yesno = yes(teamInfo, msg, state)
-  console.log(yesno)
-  if(yesno == true){ //they are still at the default location
-    console.log('yes == true')
-  } else { //they need to enter new location
-  }
-    msg.route('ask_address', (msg, state) => {
-      msg.say({
-      text: "",
-        attachments: [{
-          text: `Enter an address, zip, or business name`,
-          // callback_id: 'location_callback',
-          color: 'good'
-          }]
-        })
-        .route('get_address', { userEntered: text })
-      })
-    .route('get_address', (msg, state) => {
-      var text = (msg.body.event && msg.body.event.text) || ''
-      if (!text) { //handles no response
-        return msg
-          .say("Whoops, I'm still waiting to hear where you are.")
-          .route('get_address', state)
-      }
-      state.status = text
-      msg
-        .say(`Ok then. you are at ${text}`)
-    // address => geolocation
+  msg
+    .say({
+    text: "",
+      attachments: [{
+        text: `Please type an address, zipcode, or business name`,
+        callback_id: 'yesno_callback',
+        color: 'warning'
+      }]
   })
-    // .route('color', (msg, state) => {
+    .route('address_geo', state)
+
+    msg
+    .route('address_geo', (msg, state) => {
+      var text = (msg.body.event && msg.body.event.text) || ''
+      console.log(text)
+    })
 }
 
 module.exports = {

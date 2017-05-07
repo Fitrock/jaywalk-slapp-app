@@ -133,7 +133,7 @@ let test = function() {
       .say('<https://jaywalk-geo.herokuapp.com/geoloc.htm|Find me>')//https://jaywalk-geo.herokuapp.com/geoloc.htm
       .route('handleGeoLoc', state, 60) 
     }else if(answer == 'address'){
-      addressToGeo(teamInfo,msg,state)
+      yes(teamInfo,msg,state)
       //https://jaywalk-geo.herokuapp.com/geoloc.htm
       // .route('handleGeoLoc', state, 60) 
     }else{ //handle error
