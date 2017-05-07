@@ -32,8 +32,8 @@ const yes = function(teamInfo,msg,state){
     if(bool==true){
       snapsByGeo(teamInfo.lat,teamInfo.lng, msg, state)     
     }else{
-      msg.route('ask_address',state,60)
-
+      // msg.route('ask_address',state,60)
+      msg.say('lets find where you are.... ')
     }
   })
 }
