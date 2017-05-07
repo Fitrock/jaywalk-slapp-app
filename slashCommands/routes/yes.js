@@ -1,3 +1,4 @@
+const slapp = require('../../slackSetup.js').slapp
 
 const yes = function(location,msg,state){
   msg.say({
@@ -21,7 +22,7 @@ const yes = function(location,msg,state){
       }]
     }]
   })
-  .action('yesno_callback', 'answer', (msg, value) => {
+  slapp.action('yesno_callback', 'answer', (msg, value) => {
     console.log(value)
     return (value=='yes' ? true : false)
   })
