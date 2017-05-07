@@ -20,7 +20,8 @@ var config = {
   let snaps   = db.ref("snaps"),
       tags    = db.ref("tags"),
       users   = db.ref("users"),
-      slackDb = db.ref("slack")
+      slackDb = db.ref("slack"),
+      notifications = db.ref("notifications")
 // setup for production (sign in to edit)
 //http://stackoverflow.com/questions/37403747/firebase-permission-denied
 
@@ -36,7 +37,6 @@ let teamObj = {
   incoming_webhook: "", //given at auth
   channel_id: "",
   channel_name: "",
-  notifications: [""],
   users: [
     {
       user_id: "",
@@ -62,41 +62,35 @@ let teamUsers = {
     functions to access db at notification times and goes through array
     foreach will send a prompt to slack channel.
 */
-let notifications = {
-  coffee:[
-    {
-    team_id:"", //access team_id db object for stored location
-    incoming_webhook:"" //url to send info to slack
-    }
-  ],
-  lunch:[
-    {
-    team_id:"",
-    incoming_webhook:""
-    }
-  ],
-  happy_hour:[
-    {
-    team_id:"",
-    incoming_webhook:""
-    }
-  ],
-  dinner:[
-    {
-    team_id:"",
-    incoming_webhook:""
-    }
-  ],
-  bars:[
-    {
-    team_id:"",
-    incoming_webhook:""
-    }
-  ]
+
+let coffee = {
+  team_id:"T24TZGPAN", //access team_id db object for stored location
+  incoming_webhook:"123" //url to send info to slack
+}
+let lunch = {
+  team_id:"T24TZGPAN",
+  incoming_webhook:""
+}
+let happy_hour = {
+  team_id:"T24TZGPAN",
+  incoming_webhook:""
+}
+let dinner = {
+  team_id:"",
+  incoming_webhook:""
+}
+let bars = {
+  team_id:"",
+  incoming_webhook:""
 }
 
 
 
+db.ref("notifications").child('coffee').child(coffee.team_id).set(coffee)
+db.ref("notifications").child('lunch').child(lunch.team_id).set(lunch)
+// db.ref("notifications").child('coffee').child(coffee.team_id).set(coffee)
+// db.ref("notifications").child('coffee').child(coffee.team_id).set(coffee)
+// db.ref("notifications").child('coffee').child(coffee.team_id).set(coffee)
 // slackDb.child(teamObj.team_id).set(teamObj)
 
 module.exports={
@@ -104,5 +98,6 @@ module.exports={
   snaps: snaps,
   tags: tags,
   users: users,
-  slackDb: slackDb
+  slackDb: slackDb,
+  notifications: notifications
 }
