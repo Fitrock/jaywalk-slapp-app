@@ -1,5 +1,5 @@
 const yes = require('./yes.js').yes
-const snapsByGeo = require('./snapsByGeoRoute.js').snapsByGeo
+let snapsByGeo = require('./snapsByGeoRoute.js').snapsByGeo
 
 const addressToGeo = function(teamInfo,msg,state){
   let yesno = yes(teamInfo, msg, state)
