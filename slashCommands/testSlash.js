@@ -107,7 +107,7 @@ let test = function() {
 // })
 
   .route('requestToDatabase', (msg, state) => {
-    msg.say(msg)
+    console.log(msg)
     answer = msg.body.actions[0].value
     if(answer == 'boomtown'){
       snapsByGeo(teamInfo.lat,teamInfo.lng, msg, state)     
