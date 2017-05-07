@@ -1,6 +1,10 @@
 const slapp = require('../../slackSetup.js').slapp
+const snapsByGeo = require('./snapsByGeoRoute.js').snapsByGeo
 
-const yes = function(location,msg,state){
+
+const yes = function(teamInfo,msg,state){
+    let location = teamInfo.location_name
+
   msg.say({
   text: "",
     attachments: [{
@@ -23,7 +27,13 @@ const yes = function(location,msg,state){
     }]
   })
   slapp.action('yesno_callback', 'answer', (msg, value) => {
-    console.log(value=='yes' ? true : false)
+    let bool = (value=='yes' ? true : false)
+    if(bool==true){
+      snapsByGeo(teamInfo.lat,teamInfo.lng, msg, state)     
+    }else{
+      msg.route('ask_address',state,60)
+
+    }
   })
 }
 
