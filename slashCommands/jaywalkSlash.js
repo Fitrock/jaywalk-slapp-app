@@ -12,6 +12,9 @@ const routeFuncs = require('./routes/routesIndex.js')
 const yes = require('./routes/yes.js').yes
 const addressToGeo = require('./routes/addressToGeo.js').addressToGeo
 
+
+const notify = require('./notifySlash.js').notify
+
 //db imports
 const firebase    = require('../firebaseSetup.js'),
       db = firebase.db,
@@ -133,7 +136,7 @@ let jaywalk = function() {
       }else if(answer == 'settings'){
         
       }else if(answer == 'notifications'){
-        msg.route('notifications', state, 60)    
+          msg.route('notifications', state, 60)    
       }else{ //handle error
         return msg
           .say("Whoops, you just have to pick a button...")

@@ -39,10 +39,8 @@ function setCron(options,answer,time,msg){
 }
 
 let notify  = function() {
-  let randomNum = 0;
-  slapp
-  .route('notifications',(msg,state) =>{
     msg
+      .route('notifications',(msg,state) =>{
       .respond({
         text: '',
         attachments: [{
@@ -131,7 +129,6 @@ let notify  = function() {
     }
 
   })
-}
 module.exports = {
   notify: notify()
 }
