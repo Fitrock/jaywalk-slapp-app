@@ -7,9 +7,8 @@ const addressToGeo = function(teamInfo,msg,state){
     .say({
     text: "",
       attachments: [{
-        title: "Click me so I can find you",
-        title_link: 'https://jaywalk-geo.herokuapp.com/geoloc.htm',
-        text: `Where are you? (Respond with an address, zipcode, or business name)`,
+        title: "Where are you? Click me so I can find you or...",
+        text: `Respond with an address, zipcode, or business name or <https://jaywalk-geo.herokuapp.com/geoloc.htm | click here`.,
         callback_id: 'address_geo',
         color: 'warning'
       }]
