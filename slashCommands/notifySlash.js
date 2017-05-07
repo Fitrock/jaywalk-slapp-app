@@ -79,7 +79,6 @@ let notify  = function(teamInfo,msg,state) {
           ]
         }]
       })
-  })
   slapp.action('scheduler_callback', 'answer', (msg, value) => {
     // msg.respond(msg.body.response_url, `${value} is a good choice!`)
     // user may not have typed text as their next action, ask again and re-route
