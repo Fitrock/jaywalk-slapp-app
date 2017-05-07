@@ -7,6 +7,11 @@ const addressToGeo = function(teamInfo,msg,state){
   if(yesno == true){ //they are still at the default location
     snapsByGeo(teamInfo.lat,teamInfo.lng, msg, state)     
   } else { //they need to enter new location
+    msg
+      .route('ask_address')
+  }
+
+    msg.route('ask_address', (msg, state) => {
       msg.say({
       text: "",
         attachments: [{
@@ -16,7 +21,7 @@ const addressToGeo = function(teamInfo,msg,state){
           }]
         })
         .route('get_address', { userEntered: text })
-    }
+      })
     .route('get_address', (msg, state) => {
       var text = (msg.body.event && msg.body.event.text) || ''
       if (!text) { //handles no response
