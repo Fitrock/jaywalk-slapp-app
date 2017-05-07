@@ -1,3 +1,5 @@
+const slapp = require('../../slackSetup.js').slapp
+
 const yes = function(location,msg,state){
   msg.say({
   text: "",

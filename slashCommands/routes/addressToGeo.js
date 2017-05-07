@@ -10,7 +10,6 @@ const addressToGeo = function(teamInfo,msg,state){
     msg
       .route('ask_address')
   }
-
     msg.route('ask_address', (msg, state) => {
       msg.say({
       text: "",
