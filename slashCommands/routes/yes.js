@@ -23,8 +23,7 @@ const yes = function(location,msg,state){
     }]
   })
   slapp.action('yesno_callback', 'answer', (msg, value) => {
-    console.log(value)
-    return (value=='yes' ? true : false)
+    console.log(value=='yes' ? true : false)
   })
 }
 
