@@ -3,6 +3,7 @@ const slapp = require('../slackSetup.js').slapp
 const getRadius = require('../radius.js').getRadius
 const tinyurl = require('tinyurl');
 const request = require('request')
+const where = require('node-where')
 
 // route functions
 const snapsByGeo = require('./routes/snapsByGeoRoute.js').snapsByGeo
@@ -144,16 +145,28 @@ let test = function() {
     }
   }) //end .route('requestToDatabase')
   .route('handleGeoLoc',(msg,state) =>{
-
   }) //end .route( handleGeoLoc
   .route('relaventAsk', (msg,state) => {
     routeFuncs.relaventAsk(msg,state)
   })//end .route(relaventAsk)
   .route('address_geo', (msg,state) => {
     let text = (msg.body.event && msg.body.event.text) || ''
-    console.log('in address_geo callback')
-    console.log(text)
-    msg.say(text)
+    where.is(text,function(err,result){
+      if (result) {
+        msg.say('Address: ' + result.get('address'));
+        msg.say('Street Number: ' + result.get('streetNumber'));
+        msg.say('Street: ' + result.get('street'));
+        msg.say('Full Street: ' + result.get('streetAddress'));
+        msg.say('City: ' + result.get('city'));
+        msg.say('State / Region: ' + result.get('region'));
+        msg.say('State / Region Code: ' + result.get('regionCode'));
+        msg.say('Zip: ' + result.get('postalCode'));
+        msg.say('Country: ' + result.get('country'));
+        msg.say('Country Code: ' + result.get('countryCode'));
+        msg.say('Lat: ' + result.get('lat'));
+        msg.say('Lng: ' + result.get('lng'));
+      }
+    })
   })
 }
 module.exports = {

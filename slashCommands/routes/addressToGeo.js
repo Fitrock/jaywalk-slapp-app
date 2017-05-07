@@ -13,8 +13,6 @@ const addressToGeo = function(teamInfo,msg,state){
       }]
   })
     .route('address_geo', state)
-
-
 }
 
 module.exports = {
