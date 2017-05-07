@@ -41,6 +41,7 @@ function setCron(options,answer,time,msg){
 let notify  = function() {
     msg
       .route('notifications',(msg,state) =>{
+      msg
       .respond({
         text: '',
         attachments: [{
