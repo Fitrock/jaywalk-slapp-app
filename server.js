@@ -21,8 +21,10 @@ firebase imports
 console.log testing area
 *******************************/
 // console.log(firebase.users)
-
-
+// request('http://dev.jaywalk.me/api/spots/?lat=52.00000000000000000/?lng=-40.00000000000000000',function(err,res,body){
+// console.log(res.statusCode)
+// console.log(body)
+// })
 
 
 // attach Slapp to express server
