@@ -96,12 +96,6 @@ let test = function() {
               text: 'Download app',
               type: 'button',
               value: 'app'
-            },
-            {
-              name: 'answer', //probably switching to addressToGeo
-              text: 'findMe',
-              type: 'button',
-              value: 'findMe'
             }      
           ]
         }]
@@ -113,6 +107,7 @@ let test = function() {
 // })
 
   .route('requestToDatabase', (msg, state) => {
+    msg.say(msg)
     answer = msg.body.actions[0].value
     if(answer == 'boomtown'){
       snapsByGeo(teamInfo.lat,teamInfo.lng, msg, state)     
@@ -129,10 +124,6 @@ let test = function() {
           color: 'good'
         }]
       })
-    }else if(answer == 'findMe'){
-      msg
-      .say('<https://jaywalk-geo.herokuapp.com/geoloc.htm|Find me>')//https://jaywalk-geo.herokuapp.com/geoloc.htm
-      .route('handleGeoLoc', state, 60) 
     }else if(answer == 'address'){
       yes(teamInfo,msg,state)
       //https://jaywalk-geo.herokuapp.com/geoloc.htm
