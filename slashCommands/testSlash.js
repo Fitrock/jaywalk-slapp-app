@@ -100,6 +100,7 @@ let test = function() {
           ]
         }]
       })
+      .thread()
       .route('requestToDatabase', state, 60)    
   })
 // slapp.action('test_callback', 'answer', (msg, value) => {
@@ -116,10 +117,6 @@ let test = function() {
       snapsByGeo(teamInfo.lat,teamInfo.lng, msg, state)     
     }else if(answer == 'wework'){
       msg
-        .say('Not threaded')
-        .thread()
-        .say('is threaded')
-        .say('is threaded')
         .say('is threaded')
 
     }else if(answer == 'app'){
