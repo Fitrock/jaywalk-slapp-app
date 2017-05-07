@@ -1,14 +1,15 @@
 const slapp = require('../../slackSetup.js').slapp
-const snapsByGeo = require('./snapsByGeoRoute.js').snapsByGeo
 
 
 const yes = function(teamInfo,msg,state){
+  const snapsByGeo = require('./snapsByGeoRoute.js').snapsByGeo
+
     let location = teamInfo.location_name
 
   msg.say({
   text: "",
     attachments: [{
-      text: `Are you at ${location}?`,
+      text: `Are you still at ${location}?`,
       fallback: 'Where to today?',
       callback_id: 'yesno_callback',
       color: 'good',
