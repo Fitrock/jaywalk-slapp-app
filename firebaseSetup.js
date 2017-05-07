@@ -34,7 +34,7 @@ let teamObj = {
   lat:"",
   lng:"",
   slack_token: "", //given at auth
-  incoming_webhook: "", //given at auth
+  webhook: "", //given at auth
   channel_id: "",
   channel_name: "",
   users: [

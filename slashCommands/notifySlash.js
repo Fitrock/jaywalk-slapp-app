@@ -81,6 +81,7 @@ let notify  = function(teamInfo,msg,state) {
         }]
       })
   slapp.action('scheduler_callback', 'answer', (msg, value) => {
+    let team = {team_id:teamInfo.team_id,webhook:teamInfo.webhook}
     // msg.respond(msg.body.response_url, `${value} is a good choice!`)
     // user may not have typed text as their next action, ask again and re-route
     // if (!randSnap || !randTag) {
@@ -100,27 +101,27 @@ let notify  = function(teamInfo,msg,state) {
         day of week 0-6 (sun-sat)
         year 2016-9999
       */
-      notifications.child('coffee').child(coffee.team_id).set(coffee)
+      notifications.child('coffee').child(team.team_id).set(team)
       options.body.schedule = "0 13 * * 1-5 *" // mon-fri @ 7:00am gmt
       let time = "mon-fri @ 7:00am gmt"
       // setCron(options,value,time,msg)
     }else if(value == 'Lunch'){
-      notifications.child('lunch').child(lunch.team_id).set(lunch)
+      notifications.child('lunch').child(team.team_id).set(team)
       options.body.schedule = "30 17 * * 1-5 *" // mon-fri @ 11:30am gmt
       let time = "mon-fri @ 11:30am gmt"
       // setCron(options,value,time,msg)
     }else if(value == 'Dinner'){
-      notifications.child('dinner').child(dinner.team_id).set(dinner)
+      notifications.child('dinner').child(team.team_id).set(team)
       options.body.schedule = "30 23 * * 1-5 *" // mon-fri @ 5:30pm gmt
       let time = "mon-fri @ 5:30pm gmt"
       // setCron(options,value,time,msg)
     }else if(value == 'Happy Hour'){
-      notifications.child('hh').child(hh.team_id).set(hh)
+      notifications.child('hh').child(team.team_id).set(team)
       options.body.schedule = "30 22 * * 1-5 *" // mon-fri @ 4:30pm gmt
       let time = "mon-fri @ 4:30pm gmt"
       // setCron(options,value,time,msg)
     }else if(value == 'Local Bar'){
-      notifications.child('bar').child(bar.team_id).set(bar)
+      notifications.child('bar').child(team.team_id).set(team)
       options.body.schedule = "0 02 * * 0,5,6 *" // thurs-sat @ 8:00pm gmt
       let time = "mon-fri @ 8:00pm gmt"
       // setCron(options,value,time,msg)
