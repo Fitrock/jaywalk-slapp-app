@@ -129,6 +129,7 @@ let notify  = function() {
     }
 
   })
+}
 module.exports = {
   notify: notify()
 }
