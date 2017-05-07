@@ -13,9 +13,9 @@ const addressToGeo = function(teamInfo,msg,state){
       }]
   })
   slapp.action('address_geo', (msg, value) => {
-
-    console.log(msg.body)
-    msg.say(msg.body)
+    console.log('in address_geo callback')
+    console.log(msg.body.message)
+    msg.say(msg.body.message)
   })
 }
 
