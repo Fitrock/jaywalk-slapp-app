@@ -25,7 +25,6 @@ console.log testing area
 // console.log(res.statusCode)
 // console.log(body)
 // })
-console.log(process.env.fire_email)
 
 
 // attach Slapp to express server
