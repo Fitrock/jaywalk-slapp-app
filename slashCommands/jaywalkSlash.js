@@ -11,7 +11,7 @@ const routeFuncs = require('./routes/routesIndex.js')
 const yes = require('./routes/yes.js').yes
 const addressToGeo = require('./routes/addressToGeo.js').addressToGeo
 const appDl = require('./routes/appDlRoute.js').appDl
-const teamSettings = require('../teamSettings.js')
+const teamSettings = require('../teamSettings.js').teamSettings
 
 const notify = require('./notifySlash.js').notify
 
