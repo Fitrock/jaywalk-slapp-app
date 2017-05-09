@@ -3,6 +3,7 @@
 const express     = require('express')
 const request     = require('request')
 
+    console.log(process.env.FIRE_EMAIL)
 
 /******************************
 slack imports
