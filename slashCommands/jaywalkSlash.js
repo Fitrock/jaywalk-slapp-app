@@ -22,28 +22,8 @@ const firebase    = require('../firebaseSetup.js'),
       tags = firebase.tags,
       users = firebase.users,
       slackDb = firebase.slackDb
-      
-let jaywalk = function() {
-  let state = { requested: Date.now() }
-  let teamId = ''
-  let teamInfo = {}
-  let answer
 
-  slapp.command('/jaywalk', (msg, text) => {
-    teamInfo = slackDb
-      .child(msg.body.team_id)
-      .once("value")
-      .then(function(obj){
-        if(obj.val().lat){
-          return teamInfo = obj.val()
-        } else{
-          // might make condition to change buttons displayed?
-          // send to setup and add to db
-          return teamInfo.team_id = msg.body.team_id
-        }
-      })
-    msg
-      .say({
+let jayBtns={
         text: "",
         attachments: [{
           text: 'How can I help?',
@@ -77,7 +57,29 @@ let jaywalk = function() {
             }      
           ]
         }]
+      }
+      
+const jaywalk = function() {
+  let state = { requested: Date.now() }
+  let teamId = ''
+  let teamInfo = {}
+  let answer
+
+  slapp.command('/jaywalk', (msg, text) => {
+    teamInfo = slackDb
+      .child(msg.body.team_id)
+      .once("value")
+      .then(function(obj){
+        if(obj.val().lat){
+          return teamInfo = obj.val()
+        } else{
+          // might make condition to change buttons displayed?
+          // send to setup and add to db
+          return teamInfo.team_id = msg.body.team_id
+        }
       })
+    msg
+      .say(jayBtns)
       .route('requestToDatabase', state, 60)    
   })
 
@@ -127,6 +129,7 @@ let jaywalk = function() {
   })
 }
 module.exports = {
-  jaywalk:jaywalk()
+  jaywalk:jaywalk(),
+  jayBtns:jayBtns()
 }
 
