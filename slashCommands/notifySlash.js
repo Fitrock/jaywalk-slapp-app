@@ -23,7 +23,7 @@ let options = {
           body: {
               "method": "POST",
               "schedule": "",
-              "url":"https://hooks.slack.com/services/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,
+              "url":"https://hooks.slack.com/services/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",
               "payload":{
                 "text": ""
               }
