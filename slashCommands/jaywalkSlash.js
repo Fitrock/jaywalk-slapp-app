@@ -72,14 +72,14 @@ let jaywalk = function() {
       .say({
         text: "",
         attachments: [{
-          text: 'Where do you want to Jaywalk to?',
+          text: 'How can I help?',
           fallback: 'Where to today?',
           callback_id: 'jaywalk_callback',
           color: 'good',
           actions: [
             {
               name: 'answer',
-              text: 'address',
+              text: 'Find deals',
               type: 'button',
               value: 'address'
             },

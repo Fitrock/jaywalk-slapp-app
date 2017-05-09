@@ -8,5 +8,10 @@ config:
   - name: FIRE_PASS
     type: secret
     global: true
-
+  - name: PRIVATE_KEY_ID #for firebase
+    type: secret
+    global: true
+  - name: PRIVATE_KEY #for firebase
+    type: secret
+    global: true
 # To learn everything supported in the bot.yml file, visit https://beepboophq.com/docs/article/bot-yml
