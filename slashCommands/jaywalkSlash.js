@@ -54,6 +54,8 @@ let jaywalk = function() {
       config: {} },
   */
   slapp.command('/jaywalk', (msg, text) => {
+    console.log(process.env.FIRE_EMAIL)
+
     teamInfo = slackDb
       .child(msg.body.team_id)
       .once("value")
