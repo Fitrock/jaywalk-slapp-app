@@ -84,7 +84,7 @@ let bars = {
   team_id:"",
   incoming_webhook:""
 }
-console.log(process.env.fire_email)
+console.log(process.env.FIRE_EMAIL)
 
 // firebase.auth().signInWithEmailAndPassword(process.env.fire_email, process.env.fire_pass).catch(function(error) {
 //   // Handle Errors here.

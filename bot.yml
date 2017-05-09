@@ -2,11 +2,11 @@ name: jaywalk
 description: ☝️☝️ Check out the README ☝️☝️ in the repo for setup instructions. By the way, this is just the description in the bot.yml file - feel free to change it 😉
 avatar: .beepboop/avatar.png
 config: 
-  - name: fire_email
-    info: clay@jaywalk.me
+  - name: FIRE_EMAIL
     type: secret
-  - name: fire_pass
-    info: j47w41kf1r3
+    global: true
+  - name: FIRE_PASS
     type: secret
+    global: true
 
 # To learn everything supported in the bot.yml file, visit https://beepboophq.com/docs/article/bot-yml
