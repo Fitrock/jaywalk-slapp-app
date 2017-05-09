@@ -22,6 +22,12 @@ var config = {
       users   = db.ref("users"),
       slackDb = db.ref("slack"),
       notifications = db.ref("notifications")
+firebase.auth().signInWithEmailAndPassword(process.env.FIRE_EMAIL, process.env.FIRE_PASS).catch(function(error) {
+  // Handle Errors here.
+  var errorCode = error.code;
+  var errorMessage = error.message;
+});
+
 // setup for production (sign in to edit)
 //http://stackoverflow.com/questions/37403747/firebase-permission-denied
 
@@ -85,23 +91,7 @@ let bars = {
   incoming_webhook:""
 }
 
-// firebase.auth().signInWithEmailAndPassword(process.env.fire_email, process.env.fire_pass).catch(function(error) {
-//   // Handle Errors here.
-//   var errorCode = error.code;
-//   var errorMessage = error.message;
-// });
-// firebase.auth().onAuthStateChanged(function(user) {
-//   if (user) {
-//     // var thisUser = firebase.auth().currentUser;
-//     /*
-//       db request goes here
-//     */
 
-//   } else {
-//     // No user is signed in.
-//     console.log('not signed in', user)
-//   }
-// });
 
 // db.ref("notifications").child('coffee').child(coffee.team_id).set(coffee)
 // db.ref("notifications").child('lunch').child(lunch.team_id).set(lunch)
