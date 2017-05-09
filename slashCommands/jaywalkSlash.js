@@ -11,7 +11,8 @@ const ipGeo = require('./routes/ipGeoRoute.js')
 const routeFuncs = require('./routes/routesIndex.js')
 const yes = require('./routes/yes.js').yes
 const addressToGeo = require('./routes/addressToGeo.js').addressToGeo
-
+const appDl = require('./routes/appDlRoute.js').appDl
+const teamSettings = require('../teamSettings.js')
 
 const notify = require('./notifySlash.js').notify
 
@@ -28,31 +29,7 @@ let jaywalk = function() {
   let teamId = ''
   let teamInfo = {}
   let answer
-  /*
-  ifs to determine desktop v mobile
-  &&
-  browser v slack app
-  body.
-    token: '', // same as verify_token
-    team_id: '',
-    team_domain: '',
-    channel_id: '',
-    channel_name: '',
-    user_id: '',
-    user_name: ''
-  .meta: 
-    { app_token: '',
-      app_user_id: '',
-      app_bot_id: '',
-      bot_token: '',
-      bot_user_id: '',
-      bot_user_name: '',
-      team_name: '',
-      team_domain: '',
-      team_resource_id: '',
-      error: undefined,
-      config: {} },
-  */
+
   slapp.command('/jaywalk', (msg, text) => {
     teamInfo = slackDb
       .child(msg.body.team_id)
@@ -66,8 +43,6 @@ let jaywalk = function() {
           return teamInfo.team_id = msg.body.team_id
         }
       })
-    // console.log(msg._slapp.client.channel.team)
-    // console.log(msg.meta)
     msg
       .say({
         text: "",
@@ -106,36 +81,22 @@ let jaywalk = function() {
       })
       .route('requestToDatabase', state, 60)    
   })
+
 // slapp.action('jaywalk_callback', 'answer', (msg, value) => {
-//   msg.respond(msg.body.response_url, `${value} is a good choice!`)
-// })
 
   .route('requestToDatabase', (msg, state) => {
-    // console.log(msg.type)
-    // console.log(msg.body.token)
-    // console.log(msg.body.message_ts)
-    // console.log(msg.body.channel.id)
-    if(msg.body.actions==undefined){
+    if(msg.body.actions==undefined){      // try callback then remove this
       msg.route('requestToDatabase', state, 60)    
     }else{
       answer = msg.body.actions[0].value
       if(answer == 'app'){
-        return msg.respond({  
-          text: "",
-          attachments: [{
-            text: '<itms-apps://itunes.apple.com/us/app/jaywalk-walk-get-deals/id1171719157?mt=8|iPhone>',
-            color: 'good'
-          },{
-            text: '<market://play.google.com/store/apps/details?id=com.kinetise.appb3e241f4c2ebeba41965ba16c05b2eba&hl=en_GB|Android>',
-            color: 'good'
-          }]
-        })
+        appDl(teamInfo,msg,state)
       }else if(answer == 'address'){
         yes(teamInfo,msg,state)
         //https://jaywalk-geo.herokuapp.com/geoloc.htm
         // .route('handleGeoLoc', state, 60) 
       }else if(answer == 'settings'){
-        
+        teamSettings(teamInfo,msg,state)
       }else if(answer == 'notifications'){
         notify(teamInfo,msg,state)
       }else{ //handle error
@@ -146,8 +107,7 @@ let jaywalk = function() {
       }
     } //end else(actions undefined checker)
   }) //end .route('requestToDatabase')
-  .route('handleGeoLoc',(msg,state) =>{
-  }) //end .route( handleGeoLoc
+  // }) //end callback
   .route('relaventAsk', (msg,state) => {
     routeFuncs.relaventAsk(msg,state)
   })//end .route(relaventAsk)

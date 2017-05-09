@@ -1,10 +1,8 @@
 'use strict'
-
-const tinyurl = require('tinyurl');
  
-function appDl(){
-  return msg.say({  
-    text: "",      
+function appDl(teamInfo,msg,state){
+  return msg.respond({  
+    text: "",
     attachments: [{
       text: '<itms-apps://itunes.apple.com/us/app/jaywalk-walk-get-deals/id1171719157?mt=8|iPhone>',
       color: 'good'
