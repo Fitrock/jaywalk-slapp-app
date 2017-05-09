@@ -42,3 +42,4 @@ yarn.lock
 **/.env
 **/firebase-team-info.txt
 firebaseSeed.js
+serviceAccount.json
