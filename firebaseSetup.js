@@ -34,6 +34,7 @@ let teamObj = {
   lat:"",
   lng:"",
   slack_token: "", //given at auth
+  bot_token: "",
   webhook: "", //given at auth
   channel_id: "",
   channel_name: "",
@@ -71,7 +72,7 @@ let lunch = {
   team_id:"T24TZGPAN",
   incoming_webhook:""
 }
-let happy_hour = {
+let hh = {
   team_id:"T24TZGPAN",
   incoming_webhook:""
 }
@@ -83,14 +84,34 @@ let bars = {
   team_id:"",
   incoming_webhook:""
 }
+// firebase.auth().createUserWithEmailAndPassword("clay@jaywalk.me", "j47w41kf1r3").catch(function(error) {
+//   // Handle Errors here.
+//   var errorCode = error.code;
+//   var errorMessage = error.message;
+// });
+// firebase.auth().signInWithEmailAndPassword("clay@jaywalk.me", "j47w41kf1r3").catch(function(error) {
+//   // Handle Errors here.
+//   var errorCode = error.code;
+//   var errorMessage = error.message;
+// });
+// firebase.auth().onAuthStateChanged(function(user) {
+//   if (user) {
+//     // var thisUser = firebase.auth().currentUser;
+//     /*
+//       db request goes here
+//     */
 
+//   } else {
+//     // No user is signed in.
+//     console.log('not signed in', user)
+//   }
+// });
 
-
-db.ref("notifications").child('coffee').child(coffee.team_id).set(coffee)
-db.ref("notifications").child('lunch').child(lunch.team_id).set(lunch)
 // db.ref("notifications").child('coffee').child(coffee.team_id).set(coffee)
-// db.ref("notifications").child('coffee').child(coffee.team_id).set(coffee)
-// db.ref("notifications").child('coffee').child(coffee.team_id).set(coffee)
+// db.ref("notifications").child('lunch').child(lunch.team_id).set(lunch)
+// db.ref("notifications").child('dinner').child(coffee.team_id).set(dinner)
+// db.ref("notifications").child('hh').child(coffee.team_id).set(hh)
+// db.ref("notifications").child('bars').child(coffee.team_id).set(bars)
 // slackDb.child(teamObj.team_id).set(teamObj)
 
 module.exports={

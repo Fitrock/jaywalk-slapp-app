@@ -2,9 +2,9 @@ Building out Slackbot and Slash commands for jaywalk.
 
 Todo:
 ```
-- /jaywalk contains 
 - Notifications 
-	(subscribe button will add to db => another cron func will send from db)
+	- √√subscribe button will add to db 
+	- another cron func will send from db (heroku)
 	- ask user to respond "lunch" => if (around lunch time){ask if still at base location}
 	-if(yes){results}
 	-if(no){"Type your address, zip code, or current landmark"}

@@ -62,6 +62,7 @@ let jaywalk = function() {
           return teamInfo = obj.val()
         } else{
           // might make condition to change buttons displayed?
+          // send to setup and add to db
           return teamInfo.team_id = msg.body.team_id
         }
       })
