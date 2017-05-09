@@ -7,7 +7,6 @@ const where = require('node-where')
 
 // route functions
 const snapsByGeo = require('./routes/snapsByGeoRoute.js').snapsByGeo
-const ipGeo = require('./routes/ipGeoRoute.js')
 const routeFuncs = require('./routes/routesIndex.js')
 const yes = require('./routes/yes.js').yes
 const addressToGeo = require('./routes/addressToGeo.js').addressToGeo

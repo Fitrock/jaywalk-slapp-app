@@ -35,7 +35,7 @@ const newTeam = function(){
 	slapp.event('bb.team_added', (msg, text) => {
 
 
-	}
+	})
 }
 
 module.exports = {
