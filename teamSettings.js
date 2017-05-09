@@ -4,7 +4,7 @@
 const slapp       = require('./slackSetup.js').slapp
 const firebase    = require('./firebaseSetup.js')
 
-const jaywalk = require('./slashCommands/jaywalkSlack.js')
+const jaywalk = require('./slashCommands/jaywalkSlash.js')
 
 let teamSettings = function(teamInfo,msg,state){
 // console.log(msg.type)
