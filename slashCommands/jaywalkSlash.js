@@ -130,6 +130,6 @@ const jaywalk = function() {
 }
 module.exports = {
   jaywalk:jaywalk(),
-  jayBtns:jayBtns()
+  jayBtns:jayBtns
 }
 
