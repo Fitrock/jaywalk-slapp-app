@@ -45,7 +45,7 @@ let teamSettings = function(teamInfo,msg,state){
     }]
   })
   slapp.action('settings_callback', 'answer',(msg,value) => {
-  	if(answer=='back'){
+  	if(value=='back'){
   		msg.respond(jaywalk.jayBtns)
   	}
 
