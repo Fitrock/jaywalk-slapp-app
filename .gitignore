@@ -41,3 +41,4 @@ yarn.lock
 
 **/.env
 **/firebase-team-info.txt
+firebaseSeed.js

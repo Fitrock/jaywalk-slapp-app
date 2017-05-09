@@ -1,6 +1,6 @@
 name: jaywalk
-description: ☝️☝️ Check out the README ☝️☝️ in the repo for setup instructions. By the way, this is just the description in the bot.yml file - feel free to change it 😉
-avatar: .beepboop/avatar.png
+description: Hey, folks, I’m Jaywalk. I’m a robot to help y’all take more breaks outside. I’ll tell you cool places to go every few hours, especially around lunch time. Type "/jaywalk" to get started!
+avatar: .beepboop/jaywalkIcon2.jpeg
 config: 
   - name: FIRE_EMAIL
     type: secret
@@ -8,10 +8,5 @@ config:
   - name: FIRE_PASS
     type: secret
     global: true
-  - name: PRIVATE_KEY_ID #for firebase
-    type: secret
-    global: true
-  - name: PRIVATE_KEY #for firebase
-    type: secret
-    global: true
+
 # To learn everything supported in the bot.yml file, visit https://beepboophq.com/docs/article/bot-yml

@@ -8,7 +8,7 @@ const request     = require('request')
 slack imports
 *******************************/
 const slapp       = require('./slackSetup.js').slapp
-const slashCommands = require('./slashCommands/slashIndex.js')
+const index 			= require('./slashCommands/index.js')
 const botConvos   = require('./botConvos/convoIndex.js')
 
 /******************************

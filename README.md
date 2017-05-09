@@ -4,7 +4,7 @@ Todo:
 ```
 - Notifications 
 	- √√subscribe button will add to db 
-	- another cron func will send from db (heroku)
+	- √√another cron func will send from db (AWS)
 	- ask user to respond "lunch" => if (around lunch time){ask if still at base location}
 	-if(yes){results}
 	-if(no){"Type your address, zip code, or current landmark"}
