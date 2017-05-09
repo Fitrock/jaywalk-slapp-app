@@ -47,11 +47,11 @@ let teamSettings = function(teamInfo,msg,state){
   slapp.action('settings_callback', 'answer',(msg,value) => {
   	if(value=='back'){
   		msg.respond(jaywalk.jayBtns)
-  	}
-
-  	msg.respond({
-  		text:`${value}`
+  	}else{
+			msg.respond({
+  			text:`${value}`
   		})
+  	}
   })
 
 
