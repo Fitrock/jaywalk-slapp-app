@@ -52,6 +52,7 @@ let teamSettings = function(teamInfo,msg,state){
     }]
   })
   slapp.action('settings_callback', 'answer',(msg,value) => {
+  	slate.value=value
   	if(value=='notifications'){
       notify(teamInfo,msg,state)
   	}else if(value=='teamName'){
@@ -79,10 +80,10 @@ let teamSettings = function(teamInfo,msg,state){
   slapp.action('back_callback', 'answer',(msg,value) => {
   	msgAttachments.jayBtns(teamInfo,msg,state)
   })
-	.route('team_change', (msg,state,value)=>{
+	.route('team_change', (msg,state)=>{
 		var text = (msg.body.event && msg.body.event.text) || ''
 		console.log(text)
-		console.log(value)
+		console.log(state)
 		if(value =="teamName"){
 			teamDb.child(teamInfo.team_id).child('location_name').push(text)
 			back_callback()
