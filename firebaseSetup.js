@@ -2,7 +2,7 @@
 
 const express = require('express')
 const firebase = require('firebase')
-
+require('dotenv').config()
 /*
 Firebase
 */
