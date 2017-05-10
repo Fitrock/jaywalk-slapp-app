@@ -62,17 +62,17 @@ const jaywalk = function() {
       .child(msg.body.team_id)
       .once("value")
       .then(function(obj){
-        if(obj.val()==null){
-          console.log('!obj')
-          msg
-            .say({text:`Welcome to Jaywalk! To get better results, please enter your business address or name including city.`})
-            .route('new_address', state, 60)
-        } else{
+        // if(obj.val()==null){
+        //   console.log('!obj')
+        //   msg
+        //     .say({text:`Welcome to Jaywalk! To get better results, please enter your business address or name including city.`})
+        //     .route('new_address', state, 60)
+        // } else{
           teamInfo = obj.val()
             msg
               .say(jayBtns)
               .route('requestToDatabase', state, 60) 
-        }
+        // }
       })
       .then(function(stuff){
         console.log('stuff')
