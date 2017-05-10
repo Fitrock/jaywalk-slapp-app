@@ -53,9 +53,9 @@ let teamSettings = function(teamInfo,msg,state){
   })
   slapp.action('settings_callback', 'answer',(msg,value) => {
   	state.value=value
-  	if(state.value=='notifications'){
+  	if(value=='notifications'){
       notify(teamInfo,msg,state)
-  	}else if(state.value=='teamName'){
+  	}else if(value=='teamName'){
   		msg.respond({
 	  			text:"",
 	  			attachments:[{
@@ -82,12 +82,10 @@ let teamSettings = function(teamInfo,msg,state){
   })
 	.route('team_change', (msg,state)=>{
 		var text = (msg.body.event && msg.body.event.text) || ''
-		console.log(text)
-		console.log(state)
-		if(value =="teamName"){
+		if(state.value =="teamName"){
 			teamDb.child(teamInfo.team_id).child('location_name').push(text)
 			back_callback()
-		}else if(value=="teamLocation"){
+		}else if(state.value=="teamLocation"){
   		teamDb.child(teamInfo.team_id).child('address').set(text)
   		back_callback()
 		}
