@@ -64,11 +64,9 @@ const jaywalk = function() {
       .once("value")
       .then(function(obj){
         if(obj.val()==null){
-          jayBtns.attachments.actions = {name: 'answer',
-            text: 'Initial Setup',
-            type: 'button',
-            value: 'setup'}
-          return teamInfo.team_id = msg.body.team_id
+          teamInfo.team_id = msg.body.team_id
+          slackDb.child(teamInfo.team_id).set(teamInfo)
+          return teamInfo
         }else{
           return teamInfo = obj.val()
         }
