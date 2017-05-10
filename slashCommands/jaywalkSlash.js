@@ -78,19 +78,17 @@ const jaywalk = function() {
           return teamInfo.team_id = msg.body.team_id
         }
       })
-    msg.route('main', (msg, state) => {
-      msg
-        .respond(jayBtns)
-        .route('requestToDatabase', state, 60)
-    })
-
     msg
       .say(jayBtns)
       .route('requestToDatabase', state, 60)    
   })
 
 // slapp.action('jaywalk_callback', 'answer', (msg, value) => {
-
+  .route('main', (msg, state) => {
+        msg
+          .respond(jayBtns)
+          .route('requestToDatabase', state, 60)
+      })
   .route('requestToDatabase', (msg, state) => {
     if(msg.body.actions==undefined){      // try callback then remove this
       msg.route('requestToDatabase', state, 60)    
