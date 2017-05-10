@@ -58,21 +58,21 @@ const jaywalk = function() {
   let answer
 
   slapp.command('/jaywalk', (msg, text) => {
-    teamInfo = slackDb
-      .child(msg.body.team_id)
-      .once("value")
-      .then(function(obj){
-        if(obj.val()==null){
-          msg
-            .say({text:`Welcome to Jaywalk! To get better results, please enter the address or your buisness name and city.`})
-            .route('new_address', state, 60)
-        } else{
+    try{
+      teamInfo = slackDb
+        .child(msg.body.team_id)
+        .once("value")
+        .then(function(obj){
           teamInfo = obj.val()
             msg
               .say(jayBtns)
               .route('requestToDatabase', state, 60) 
-        }
-      })
+        })
+      }catch(err){
+          msg
+            .say({text:`Welcome to Jaywalk! To get better results, please enter the address or your buisness name and city.`})
+            .route('new_address', state, 60)
+      }
   })
 
 // slapp.action('jaywalk_callback', 'answer', (msg, value) => {
