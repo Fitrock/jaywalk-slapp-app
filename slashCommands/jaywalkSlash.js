@@ -68,16 +68,13 @@ const jaywalk = function() {
         //     .say({text:`Welcome to Jaywalk! To get better results, please enter your business address or name including city.`})
         //     .route('new_address', state, 60)
         // } else{
-          return (teamInfo = obj.val()
-            msg
-              .say(jayBtns)
-              .route('requestToDatabase', state, 60)
-              ) 
+          return teamInfo = obj.val() 
         // }
       })
       .then(function(stuff){
-        console.log('stuff')
-      })
+        msg
+          .say(jayBtns)
+          .route('requestToDatabase', state, 60)      })
   })
 
 // slapp.action('jaywalk_callback', 'answer', (msg, value) => {
