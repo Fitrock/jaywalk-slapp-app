@@ -4,6 +4,7 @@
 const slapp       = require('./slackSetup.js').slapp
 const firebase    = require('./firebaseSetup.js')
 let msgAttachments = require('./msgAttachments.js')
+let notify = require('./notifySlash.js').notify
 
 console.log(msgAttachments)
 
@@ -53,6 +54,8 @@ let teamSettings = function(teamInfo,msg,state){
     		.route('main',state,60)
   		  // .route('requestToDatabase', state, 60)    
 
+  	}else if(value=='notifications'){
+      notify(teamInfo,msg,state)
   	}else{
 			msg.respond({
   			text:`${value}`
