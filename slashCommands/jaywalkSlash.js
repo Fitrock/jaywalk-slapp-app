@@ -64,6 +64,7 @@ const jaywalk = function() {
       .once("value")
       .then(function(obj){
         if(obj.val()==null){
+          console.log(msg.body)
           let teamObj={  
             team_id: msg.body.team_id,
             team_name: msg.body.team_name,
