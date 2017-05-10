@@ -53,9 +53,9 @@ let teamSettings = function(teamInfo,msg,state){
   })
   slapp.action('settings_callback', 'answer',(msg,value) => {
   	state.value=value
-  	if(value=='notifications'){
+  	if(state.value=='notifications'){
       notify(teamInfo,msg,state)
-  	}else if(value=='teamName'){
+  	}else if(state.value=='teamName'){
   		msg.respond({
 	  			text:"",
 	  			attachments:[{
