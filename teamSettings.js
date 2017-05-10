@@ -83,10 +83,10 @@ let teamSettings = function(teamInfo,msg,state){
 	.route('team_change', (msg,state)=>{
 		var text = (msg.body.event && msg.body.event.text) || ''
 		if(state.value =="teamName"){
-			teamDb.child(teamInfo.team_id).update({"location_name":text})
+			teamDb.child(teamInfo.team_id).update({location_name:text})
 			back_callback()
 		}else if(state.value=="teamLocation"){
-  		teamDb.child(teamInfo.team_id).child('address').set(text)
+  		teamDb.child(teamInfo.team_id).update({address:text})
   		back_callback()
 		}
 	})

@@ -1,6 +1,10 @@
 name: jaywalk
 description: Hey, folks, I’m Jaywalk. I’m a robot to help y’all take more breaks outside. I’ll tell you cool places to go every few hours, especially around lunch time. Type "/jaywalk" to get started!
 avatar: .beepboop/jaywalkIcon2.jpeg
+slackscopes:
+  - bot
+  - commands
+  - incoming-webhooks
 config: 
   - name: FIRE_EMAIL
     type: secret
