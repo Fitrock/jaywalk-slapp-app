@@ -77,8 +77,8 @@ const jaywalk = function() {
             channel_id: "msg.body.channel_id",
             channel_name: "msg.body.cannel_name",}
           teamInfo.team_id = msg.body.team_id
-          slackDb.child(teamInfo.team_id).set(teamObj)
-          return teamInfo
+          slackDb.child(msg.body.team_id).set(teamObj)
+          // return teamInfo
         }else{
           return teamInfo = obj.val()
         }
