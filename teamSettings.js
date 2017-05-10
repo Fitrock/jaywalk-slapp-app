@@ -58,7 +58,6 @@ let teamSettings = function(teamInfo,msg,state){
 	  			text:"",
 	  			attachments:[{
 	  				text:"What would you like your business name to be?"		
-	  				}]
 	  			}]
 	  		})
 	  		.route('team_change',{text:text})
