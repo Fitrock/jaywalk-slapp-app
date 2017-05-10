@@ -52,7 +52,7 @@ let teamSettings = function(teamInfo,msg,state){
     }]
   })
   slapp.action('settings_callback', 'answer',(msg,value) => {
-  	slate.value=value
+  	state.value=value
   	if(value=='notifications'){
       notify(teamInfo,msg,state)
   	}else if(value=='teamName'){
