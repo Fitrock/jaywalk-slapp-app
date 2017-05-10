@@ -18,7 +18,7 @@ let teamSettings = function(teamInfo,msg,state){
   text: "",
     attachments: [{
     	pretext: `Click a button to change settings`,
-      text: `Your current team is located at ${teamInfo.address}.`,
+      text: `Your team is located at ${teamInfo.address}.`,
       title: `Team settings for ${teamInfo.location_name}.`,
       callback_id: 'settings_callback',
       color: 'info',
@@ -49,7 +49,7 @@ let teamSettings = function(teamInfo,msg,state){
   })
   slapp.action('settings_callback', 'answer',(msg,value) => {
   	if(value=='back'){
-  		msgAttachments.jayBtn(teamInfo,msg,state)
+  		msgAttachments.jayBtns(teamInfo,msg,state)
   	}else if(value=='notifications'){
       notify(teamInfo,msg,state)
   	}else{
