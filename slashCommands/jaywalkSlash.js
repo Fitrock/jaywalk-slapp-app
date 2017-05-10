@@ -69,7 +69,7 @@ const jaywalk = function() {
               .route('requestToDatabase', state, 60)  
         } else{
           msg
-          .respond({text:`Welcome to Jaywalk! To get better results, please enter the address or your buisness name and city.`})
+          .say({text:`Welcome to Jaywalk! To get better results, please enter the address or your buisness name and city.`})
           .route('new_address', state, 60)
         }
       })
