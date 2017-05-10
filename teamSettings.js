@@ -49,10 +49,7 @@ let teamSettings = function(teamInfo,msg,state){
   })
   slapp.action('settings_callback', 'answer',(msg,value) => {
   	if(value=='back'){
-  		msg
-    		.route('main',state,60)
-  		  // .route('requestToDatabase', state, 60)    
-
+  		msgAttachments.jayBtn(teamInfo,msg,state)
   	}else if(value=='notifications'){
       notify(teamInfo,msg,state)
   	}else{
