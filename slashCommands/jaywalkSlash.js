@@ -57,6 +57,7 @@ const jaywalk = function() {
   let teamInfo = {}
   let answer
 
+
   slapp.command('/jaywalk', (msg, text) => {
     teamInfo = slackDb
       .child(msg.body.team_id)
