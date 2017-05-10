@@ -10,6 +10,7 @@ slackscopes:
   - im:read
   - mpim:history
   - chat:write:user
+  - message
 config: 
   - name: FIRE_EMAIL
     type: secret
