@@ -1,5 +1,5 @@
 let jayBtns= function(teamInfo,msg,state){
-  msg.say({
+  msg.respond({
     text: "",
     attachments: [{
       text: 'How can I help?',
