@@ -69,6 +69,7 @@ const jaywalk = function() {
               .route('requestToDatabase', state, 60) 
         })
       }catch(err){
+        console.log(err)
           msg
             .say({text:`Welcome to Jaywalk! To get better results, please enter the address or your buisness name and city.`})
             .route('new_address', state, 60)
