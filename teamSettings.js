@@ -19,7 +19,7 @@ let teamSettings = function(teamInfo,msg,state){
     attachments: [{
     	pretext: `Click a button to change settings`,
       text: `Your team is located at ${teamInfo.address}.`,
-      title: `Team settings for ${teamInfo.location_name}.`,
+      title: `Team settings for ${teamInfo.name_name}.`,
       callback_id: 'settings_callback',
       color: 'info',
       actions: 
@@ -83,7 +83,7 @@ let teamSettings = function(teamInfo,msg,state){
 	.route('team_change', (msg,state)=>{
 		var text = (msg.body.event && msg.body.event.text) || ''
 		if(state.value =="teamName"){
-			teamDb.child(teamInfo.team_id).update({location_name:text})
+			teamDb.child(teamInfo.team_id).update({team_name:text})
 			back_callback()
 		}else if(state.value=="teamLocation"){
   		teamDb.child(teamInfo.team_id).update({address:text})

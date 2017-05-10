@@ -64,8 +64,20 @@ const jaywalk = function() {
       .once("value")
       .then(function(obj){
         if(obj.val()==null){
+          let teamObj={  
+            team_id: msg.body.team_id,
+            team_name: msg.body.team_name,
+            location:"",
+            location_name:msg.body.team_name,
+            lat:"",
+            lng:"",
+            slack_token: "msg.body.verify", //given at auth
+            bot_token: "",
+            webhook: "msg.body.incoming_webhook", //given at auth
+            channel_id: "msg.body.channel_id",
+            channel_name: "msg.body.cannel_name",}
           teamInfo.team_id = msg.body.team_id
-          slackDb.child(teamInfo.team_id).set(teamInfo)
+          slackDb.child(teamInfo.team_id).set(teamObj)
           return teamInfo
         }else{
           return teamInfo = obj.val()
