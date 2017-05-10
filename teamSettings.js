@@ -49,7 +49,7 @@ let teamSettings = function(teamInfo,msg,state){
   slapp.action('settings_callback', 'answer',(msg,value) => {
   	if(value=='back'){
   		msg
-  			.respond(msgAttachments.jayBtn)
+    		.route('main',state,60)
   		  // .route('requestToDatabase', state, 60)    
 
   	}else{

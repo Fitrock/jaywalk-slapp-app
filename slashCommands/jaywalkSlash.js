@@ -78,6 +78,12 @@ const jaywalk = function() {
           return teamInfo.team_id = msg.body.team_id
         }
       })
+    msg.route('main', (msg, state) => {
+      msg
+        .respond(jayBtns)
+        .route('requestToDatabase', state, 60)
+    }
+
     msg
       .say(jayBtns)
       .route('requestToDatabase', state, 60)    
