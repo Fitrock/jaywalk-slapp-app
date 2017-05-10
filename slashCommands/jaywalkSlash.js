@@ -68,10 +68,11 @@ const jaywalk = function() {
         //     .say({text:`Welcome to Jaywalk! To get better results, please enter your business address or name including city.`})
         //     .route('new_address', state, 60)
         // } else{
-          teamInfo = obj.val()
+          return (teamInfo = obj.val()
             msg
               .say(jayBtns)
-              .route('requestToDatabase', state, 60) 
+              .route('requestToDatabase', state, 60)
+              ) 
         // }
       })
       .then(function(stuff){
