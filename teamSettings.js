@@ -4,7 +4,7 @@
 const slapp       = require('./slackSetup.js').slapp
 const firebase    = require('./firebaseSetup.js')
 let msgAttachments = require('./msgAttachments.js')
-let notify = require('./notifySlash.js').notify
+let notify = require('./slashCommands/notifySlash.js').notify
 
 console.log(msgAttachments)
 
