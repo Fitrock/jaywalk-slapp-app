@@ -50,7 +50,7 @@ let jayBtns={
     ]
   }]
 }
-      
+ //text:`Welcom to Jaywalk! To get better results, please enter the address or your buisness name and city.`     
 const jaywalk = function() {
   let state = { requested: Date.now() }
   let teamId = ''
@@ -58,23 +58,21 @@ const jaywalk = function() {
   let answer
 
   slapp.command('/jaywalk', (msg, text) => {
-    return teamInfo = slackDb
+    teamInfo = slackDb
       .child(msg.body.team_id)
       .once("value")
       .then(function(obj){
-        // if(obj.val()==null){
-        //   console.log('!obj')
-        //   msg
-        //     .say({text:`Welcome to Jaywalk! To get better results, please enter your business address or name including city.`})
-        //     .route('new_address', state, 60)
-        // } else{
-          return teamInfo = obj.val() 
-        // }
+        if(obj.val().lat){
+          return teamInfo = obj.val()
+        } else{
+          // might make condition to change buttons displayed?
+          // send to setup and add to db
+          return teamInfo.team_id = msg.body.team_id
+        }
       })
-      .then(function(stuff){
-        msg
-          .say(jayBtns)
-          .route('requestToDatabase', state, 60)      })
+    msg
+      .say(jayBtns)
+      .route('requestToDatabase', state, 60)    
   })
 
 // slapp.action('jaywalk_callback', 'answer', (msg, value) => {
@@ -120,10 +118,6 @@ const jaywalk = function() {
         snapsByGeo(lat,lng,msg,state)
       }
     })
-  })
-  .route('new_address', (msg,state) => {
-    let text = (msg.body.event && msg.body.event.text) || ''
-    console.log(text)
   })
 }
 module.exports = {
