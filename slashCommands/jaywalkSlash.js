@@ -67,7 +67,8 @@ const jaywalk = function() {
         } else{
           // might make condition to change buttons displayed?
           // send to setup and add to db
-          return teamInfo.team_id = msg.body.team_id
+          msg.respond({text:`Welcom to Jaywalk! To get better results, please enter the address or your buisness name and city.`})
+          .route('new_address', state, 60)
         }
       })
     msg
@@ -118,6 +119,10 @@ const jaywalk = function() {
         snapsByGeo(lat,lng,msg,state)
       }
     })
+  })
+  .route('new_address', (msg,state) => {
+    let text = (msg.body.event && msg.body.event.text) || ''
+    console.log(text)
   })
 }
 module.exports = {
