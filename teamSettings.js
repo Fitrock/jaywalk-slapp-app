@@ -37,12 +37,13 @@ let teamSettings = function(teamInfo,msg,state){
         text: `Notifications`,
         type: 'button',
         value: 'notifications'
-      },{ 
-        name: 'answer',
-        text: `<Back`,
-        type: 'button',
-        value: 'back'
       }
+      // ,{ 
+      //   name: 'answer',
+      //   text: `<Back`,
+      //   type: 'button',
+      //   value: 'back'
+      // }
       ]
     }]
   })
