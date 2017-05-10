@@ -62,16 +62,14 @@ const jaywalk = function() {
       .child(msg.body.team_id)
       .once("value")
       .then(function(obj){
-        if(obj.val().lat){
-          return teamInfo = obj.val()
-        } else{
-          // might make condition to change buttons displayed?
-          // send to setup and add to db
+        if(obj.val()==null){
           jayBtns.attachments.actions.push({name: 'answer',
-        text: 'Initial Setup',
-        type: 'button',
-        value: 'setup'})
+            text: 'Initial Setup',
+            type: 'button',
+            value: 'setup'})
           return teamInfo.team_id = msg.body.team_id
+        }else{
+          return teamInfo = obj.val()
         }
       })
     msg
