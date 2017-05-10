@@ -67,6 +67,7 @@ const jaywalk = function() {
         } else{
           // might make condition to change buttons displayed?
           // send to setup and add to db
+          msg.say(text:'hey change stuff')
           return teamInfo.team_id = msg.body.team_id
         }
       })
