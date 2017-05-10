@@ -5,6 +5,7 @@ const slapp       = require('./slackSetup.js').slapp
 const firebase    = require('./firebaseSetup.js')
 let msgAttachments = require('./msgAttachments.js')
 let notify = require('./slashCommands/notifySlash.js').notify
+const where = require('node-where')
 
 let teamDb = firebase.slackDb
 
@@ -81,10 +82,10 @@ let teamSettings = function(teamInfo,msg,state){
 	.route('team_change', (msg,state,value)=>{
 		var text = (msg.body.event && msg.body.event.text) || ''
 		if(value =="teamName"){
-			teamDb.child(teamInfo.team_id).set(text)
+			teamDb.child(teamInfo.team_id).child('location_name').set(text)
 			back_callback()
 		}else if(value=="teamLocation"){
-  		teamDb.child(teamInfo.team_id).set(text)
+  		teamDb.child(teamInfo.team_id).child('address').set(text)
   		back_callback()
 		}
 	})
