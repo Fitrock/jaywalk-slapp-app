@@ -62,15 +62,15 @@ const jaywalk = function() {
       .child(msg.body.team_id)
       .once("value")
       .then(function(obj){
-        if(obj.val().lat){
+        if(!obj.val()){
+          msg
+            .say({text:`Welcome to Jaywalk! To get better results, please enter the address or your buisness name and city.`})
+            .route('new_address', state, 60)
+        } else{
           teamInfo = obj.val()
             msg
               .say(jayBtns)
-              .route('requestToDatabase', state, 60)  
-        } else{
-          msg
-          .say({text:`Welcome to Jaywalk! To get better results, please enter the address or your buisness name and city.`})
-          .route('new_address', state, 60)
+              .route('requestToDatabase', state, 60) 
         }
       })
   
