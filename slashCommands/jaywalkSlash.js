@@ -69,7 +69,7 @@ const jaywalk = function() {
          
         // }
       })
-    }catch{
+    }catch(err){
        msg.say({text:'hey change stuff'})
           // return teamInfo.team_id = msg.body.team_id
     }
