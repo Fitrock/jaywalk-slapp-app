@@ -58,22 +58,22 @@ const jaywalk = function() {
   let answer
 
   slapp.command('/jaywalk', (msg, text) => {
-    try{
     teamInfo = slackDb
       .child(msg.body.team_id)
       .once("value")
       .then(function(obj){
-        // if(obj.val().lat){
+        if(obj.val().lat){
           return teamInfo = obj.val()
-        // } else{
-         
-        // }
+        } else{
+          // might make condition to change buttons displayed?
+          // send to setup and add to db
+          jayBtns.attachments.actions.push({name: 'answer',
+        text: 'Initial Setup',
+        type: 'button',
+        value: 'setup'})
+          return teamInfo.team_id = msg.body.team_id
+        }
       })
-    }catch(err){
-      console.log(err)
-       msg.say({text:'hey change stuff'})
-          // return teamInfo.team_id = msg.body.team_id
-    }
     msg
       .say(jayBtns)
       .route('requestToDatabase', state, 60)    
