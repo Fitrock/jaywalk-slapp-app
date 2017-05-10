@@ -3,15 +3,15 @@
 */
 const slapp       = require('./slackSetup.js').slapp
 const firebase    = require('./firebaseSetup.js')
+let msgAttachments = require('./msgAttachments.js')
 
-const jaywalk = require('./slashCommands/jaywalkSlash.js')
+console.log(msgAttachments)
 
 let teamSettings = function(teamInfo,msg,state){
 // console.log(msg.type)
 // console.log(msg.body.token)
 // console.log(msg.body.message_ts)
 // console.log(msg.body.channel.id)
-  		console.log(jaywalk.jayBtns)
 
   msg.respond({
   text: "",
@@ -49,8 +49,8 @@ let teamSettings = function(teamInfo,msg,state){
   slapp.action('settings_callback', 'answer',(msg,value) => {
   	if(value=='back'){
   		msg
-  			.respond(jaywalk.jayBtns)
-  		  .route('requestToDatabase', state, 60)    
+  			.respond(msgAttachments)
+  		  // .route('requestToDatabase', state, 60)    
 
   	}else{
 			msg.respond({
