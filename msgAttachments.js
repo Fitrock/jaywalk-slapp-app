@@ -12,20 +12,12 @@ let jayBtns= function(teamInfo,msg,state){
           text: 'Find deals',
           type: 'button',
           value: 'address'
-        },
-        {
-          name: 'answer',
-          text: 'Notifications',
-          type: 'button',
-          value: 'notifications'
-        },
-        {
+        },{
           name: 'answer',
           text: 'Settings',
           type: 'button',
           value: 'settings'
-        },
-        {
+        },{
           name: 'answer',
           text: 'Download app',
           type: 'button',
