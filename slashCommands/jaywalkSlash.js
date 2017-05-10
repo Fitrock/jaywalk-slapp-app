@@ -63,17 +63,17 @@ const jaywalk = function() {
       .once("value")
       .then(function(obj){
         if(obj.val().lat){
-          return teamInfo = obj.val()
+          teamInfo = obj.val()
+            msg
+              .say(jayBtns)
+              .route('requestToDatabase', state, 60)  
         } else{
-          // might make condition to change buttons displayed?
-          // send to setup and add to db
-          msg.respond({text:`Welcom to Jaywalk! To get better results, please enter the address or your buisness name and city.`})
+          msg
+          .respond({text:`Welcome to Jaywalk! To get better results, please enter the address or your buisness name and city.`})
           .route('new_address', state, 60)
         }
       })
-    msg
-      .say(jayBtns)
-      .route('requestToDatabase', state, 60)    
+  
   })
 
 // slapp.action('jaywalk_callback', 'answer', (msg, value) => {
