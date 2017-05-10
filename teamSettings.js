@@ -60,7 +60,7 @@ let teamSettings = function(teamInfo,msg,state){
 	  				text:"What would you like your business name to be?"		
 	  			}]
 	  		})
-	  		.route('team_change',{text:text})
+	  		.route('team_change',(msg,state))
 
 
   		// teamDb.child(teamInfo.team_id).set(value)
