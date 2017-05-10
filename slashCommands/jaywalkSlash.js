@@ -82,7 +82,7 @@ const jaywalk = function() {
       msg
         .respond(jayBtns)
         .route('requestToDatabase', state, 60)
-    }
+    })
 
     msg
       .say(jayBtns)
