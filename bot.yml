@@ -5,6 +5,11 @@ slackscopes:
   - bot
   - commands
   - incoming-webhooks
+  - channels:history
+  - im:history
+  - im:read
+  - mpim:history
+  - chat:write:user
 config: 
   - name: FIRE_EMAIL
     type: secret
