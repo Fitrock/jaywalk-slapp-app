@@ -62,9 +62,8 @@ const jaywalk = function() {
       .child(msg.body.team_id)
       .once("value")
       .then(function(obj){
-        console.log('.then')
-
         if(!obj.val()){
+          console.log('!obj')
           msg
             .say({text:`Welcome to Jaywalk! To get better results, please enter the address or your buisness name and city.`})
             .route('new_address', state, 60)
