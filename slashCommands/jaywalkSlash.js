@@ -62,7 +62,7 @@ const jaywalk = function() {
       .child(msg.body.team_id)
       .once("value")
       .then(function(obj){
-        if(!obj.val()){
+        if(obj.val()==null){
           msg
             .say({text:`Welcome to Jaywalk! To get better results, please enter the address or your buisness name and city.`})
             .route('new_address', state, 60)
@@ -73,7 +73,6 @@ const jaywalk = function() {
               .route('requestToDatabase', state, 60) 
         }
       })
-  
   })
 
 // slapp.action('jaywalk_callback', 'answer', (msg, value) => {
