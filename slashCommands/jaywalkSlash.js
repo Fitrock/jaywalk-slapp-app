@@ -63,10 +63,10 @@ const jaywalk = function() {
       .once("value")
       .then(function(obj){
         if(obj.val()==null){
-          jayBtns.attachments.actions.push({name: 'answer',
+          jayBtns.attachments.actions = {name: 'answer',
             text: 'Initial Setup',
             type: 'button',
-            value: 'setup'})
+            value: 'setup'}
           return teamInfo.team_id = msg.body.team_id
         }else{
           return teamInfo = obj.val()
