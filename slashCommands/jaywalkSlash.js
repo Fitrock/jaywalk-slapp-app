@@ -58,6 +58,8 @@ const jaywalk = function() {
   let answer
 
   slapp.command('/jaywalk', (msg, text) => {
+    console.log(msg.body.team_id)
+    console.log(msg.body)
     return teamInfo = slackDb
       .child(msg.body.team_id)
       .once("value")
@@ -65,7 +67,7 @@ const jaywalk = function() {
         if(obj.val()==null){
           console.log('!obj')
           msg
-            .say({text:`Welcome to Jaywalk! To get better results, please enter the address or your buisness name and city.`})
+            .say({text:`Welcome to Jaywalk! To get better results, please enter your business address or name including city.`})
             .route('new_address', state, 60)
         } else{
           teamInfo = obj.val()
