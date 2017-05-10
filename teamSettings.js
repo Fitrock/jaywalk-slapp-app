@@ -41,6 +41,7 @@ let teamSettings = function(teamInfo,msg,state){
     	},{
     	text:"",
     	callback_id:"back_callback",
+    	color:"",
     	actions:{ 
         name: 'answer',
         text: `<Back`,
@@ -53,19 +54,21 @@ let teamSettings = function(teamInfo,msg,state){
   	if(value=='notifications'){
       notify(teamInfo,msg,state)
   	}else if(value=='teamName'){
-  		msg
-  			.respond({
+  		msg.respond({
 	  			text:"",
 	  			attachments:[{
 	  				text:"What would you like your business name to be?"		
 	  			}]
 	  		})
-	  		.route('team_change',(msg,state))
-
-
-  		// teamDb.child(teamInfo.team_id).set(value)
+	  		.route('team_change',(msg,state,value))
   	}else if(value=='teamLocation'){
-  		// teamDb.child(teamInfo.team_id).set(value)
+  		msg.respond({
+	  			text:"",
+	  			attachments:[{
+	  				text:"What is your business address?"		
+	  			}]
+	  		})
+	  		.route('team_change',(msg,state,value))
   	}else{
 			msg.respond({
   			text:`${value}`
@@ -75,9 +78,13 @@ let teamSettings = function(teamInfo,msg,state){
   slapp.action('back_callback', 'answer',(msg,value) => {
   	msgAttachments.jayBtns(teamInfo,msg,state)
   })
-	.route('team_change', (msg,state)=>{
+	.route('team_change', (msg,state,value)=>{
 		var text = (msg.body.event && msg.body.event.text) || ''
-		console.log(text)
+		if(value =="teamName"){
+			teamDb.child(teamInfo.team_id).set(value)
+		}else if(value=="teamLocation"){
+  		teamDb.child(teamInfo.team_id).set(value)
+		}
 	})
 
 
