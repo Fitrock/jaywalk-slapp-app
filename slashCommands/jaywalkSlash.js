@@ -59,34 +59,34 @@ const jaywalk = function() {
 
 
   slapp.command('/jaywalk', (msg, text) => {
-    msg.route('relaventAsk', state,60)
-    // teamInfo = slackDb
-    //   .child(msg.body.team_id)
-    //   .once("value")
-    //   .then(function(obj){
-    //     if(obj.val()==null){
-    //       // console.log(msg)
-    //       let teamObj={  
-    //         team_id: msg.body.team_id,
-    //         team_name: msg.body.team_domain,
-    //         location:"",
-    //         lat:"",
-    //         lng:"",
-    //         slack_token: msg.body.token, //given at auth
-    //         bot_token: "",
-    //         webhook: "msg.body.incoming_webhook", //given at auth
-    //         channel_id: "msg.body.channel_id",
-    //         channel_name: "msg.body.channel_name",}
-    //       teamInfo.team_id = msg.body.team_id
-    //       slackDb.child(msg.body.team_id).set(teamObj)
-    //       // return teamInfo
-    //     }else{
-    //       return teamInfo = obj.val()
-    //     }
-    //   })
-    // msg
-    //   .say(jayBtns)
-    //   .route('requestToDatabase', state, 60)    
+    teamInfo = slackDb
+      .child(msg.body.team_id)
+      .once("value")
+      .then(function(obj){
+        if(obj.val()==null){
+          // console.log(msg)
+          let teamObj={  
+            team_id: msg.body.team_id,
+            team_name: msg.body.team_domain,
+            location:"",
+            lat:"",
+            lng:"",
+            slack_token: msg.body.token, //given at auth
+            bot_token: "ahjsabjklsdbjkl",
+            webhook: "msg.body.incoming_webhook", //given at auth
+            channel_id: "msg.body.channel_id",
+            channel_name: "msg.body.channel_name",}
+          teamInfo.team_id = msg.body.team_id
+          slackDb.child(msg.body.team_id).set(teamObj)
+          return msg.route('relaventAsk', state,60)
+          // return teamInfo
+        }else{
+          return teamInfo = obj.val()
+        }
+      })
+    msg
+      .say(jayBtns)
+      .route('requestToDatabase', state, 60)    
   })
 
 // slapp.action('jaywalk_callback', 'answer', (msg, value) => {
