@@ -77,6 +77,13 @@ let oldTeamCallback = (msg,state)=>{
   .route('mainBtnAnswer', state, 30)  
 }
 
+let saveToDb = (lat,lng,msg,state)=>{
+
+  
+  msg
+  .respond({text: `lat:${lat} lng:${lng}`})
+}
+
 const jaywalk = function() {
   let state = { requested: Date.now() }
   let teamId = ''
@@ -140,9 +147,8 @@ const jaywalk = function() {
         console.log(lat,lng)
       // slackDb.child(msg.body.team_id).set(teamObj)
   //           oldTeamCallback(msg,state)
+        saveToDb(lat,lng,msg,state)
 
-        msg
-          .respond({text: `lat:${lat} lng:${lng}`})
       }
     })
   })//end .route(setup)
