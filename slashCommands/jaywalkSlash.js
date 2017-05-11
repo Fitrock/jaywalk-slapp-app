@@ -57,14 +57,11 @@ let newTeamCallback = (msg,state)=>{
   teamObj={  
     team_id: msg.body.team_id,
     team_name: msg.body.team_domain,
-    location:"",
     lat:"",
     lng:"",
     slack_token: msg.body.token, //given at auth
-    bot_token: "ahjsabjklsdbjkl",
-    webhook: "msg.body.incoming_webhook", //given at auth
-    channel_id: "msg.body.channel_id",
-    channel_name: "msg.body.channel_name"
+    bot_token: "",
+    webhook: msg.meta.incoming_webhook_url
   }
   // slackDb.child(msg.body.team_id).set(teamObj)
   msg
@@ -83,7 +80,7 @@ console.log('state',state)
 
 console.log(lat,lng)
   msg
-  .respond({text: `lat:${lat} lng:${lng}`})
+  .say({text: `lat:${lat} lng:${lng}`})
 }
 
 const jaywalk = function() {
