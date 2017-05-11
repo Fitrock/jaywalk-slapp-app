@@ -59,6 +59,7 @@ const jaywalk = function() {
 
 
   slapp.command('/jaywalk', (msg, text) => {
+    slapp.route('relaventAsk', state,60)
     teamInfo = slackDb
       .child(msg.body.team_id)
       .once("value")
