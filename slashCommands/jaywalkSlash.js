@@ -52,6 +52,12 @@ let jayBtns={
     ]
   }]
 }
+
+let newTeamCallback (newOld)=>{
+  msg.say({text:newOld})
+}
+
+
  //text:`Welcom to Jaywalk! To get better results, please enter the address or your buisness name and city.`     
 const jaywalk = function() {
   let state = { requested: Date.now() }
@@ -67,19 +73,22 @@ const jaywalk = function() {
       .then(function(obj){
         if(obj.val()==null){
           newTeam=true
+          newTeamCallback(newTeam)
         }else{
           newTeam=false
+          newTeamCallback(newTeam)
           teamInfo = obj.val()
         }
-      }).then(function(){ // wait for database check for new users
-        console.log('.then',newTeam)
-        if(newTeam==true){
-
-          slapp.route('setup', state,30)
-        }else if (newTeam==false){
-          slapp.route('main', state,30)          
-        }
       })
+      // .then(function(){ // wait for database check for new users
+      //   console.log('.then',newTeam)
+      //   if(newTeam==true){
+
+      //     msg.route('setup', state,30)
+      //   }else if (newTeam==false){
+      //     msg.route('main', state,30)          
+      //   }
+      // })
   })
 
 // slapp.action('jaywalk_callback', 'answer', (msg, value) => {
