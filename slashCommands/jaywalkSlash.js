@@ -88,9 +88,10 @@ const jaywalk = function() {
       .child(msg.body.team_id)
       .once("value")
       .then(function(obj){
+        console.log(obj.val())
         if(obj.val()==null){
           newTeamCallback(msg,state)
-        }else{
+        }else if(obj.val()){
           teamInfo = obj.val()
           oldTeamCallback(msg,state)
           teamInfo = obj.val()
