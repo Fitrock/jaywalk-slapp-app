@@ -15,6 +15,8 @@ const teamSettings = require('../teamSettings.js').teamSettings
 
 const notify = require('./notifySlash.js').notify
 
+const newTeam = false
+
 //db imports
 const firebase    = require('../firebaseSetup.js'),
       db = firebase.db,
@@ -59,22 +61,23 @@ const jaywalk = function() {
 
 
   slapp.command('/jaywalk', (msg, text) => {
-    console.time('jaycalled')
     teamInfo = slackDb
       .child(msg.body.team_id)
       .once("value")
       .then(function(obj){
         if(obj.val()==null){
-          console.timeEnd('jaycalled')
+          newTeam=true
+          console.log(newTeam)
           // console.log(msg)
           msg.route('setup', state,60)
           // return teamInfo
         }else{
-          console.timeEnd('jaycalled')
+          console.log(newTeam)
           msg.route('main', state,60)
           return teamInfo = obj.val()
         }
-      })  
+      })
+      console.log('after', newTeam)
   })
 
 // slapp.action('jaywalk_callback', 'answer', (msg, value) => {
