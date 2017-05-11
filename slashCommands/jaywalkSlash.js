@@ -75,9 +75,9 @@ const jaywalk = function() {
         console.log('.then',newTeam)
         if(newTeam==true){
 
-          msg.route('setup', state,30)
+          slapp.route('setup', state,30)
         }else if (newTeam==false){
-          msg.route('main', state,30)          
+          slapp.route('main', state,30)          
         }
       })
   })
