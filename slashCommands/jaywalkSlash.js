@@ -54,16 +54,7 @@ let jayBtns={
 }
 
 let newTeamCallback = (msg,state)=>{
-  teamObj={  
-    team_id: msg.body.team_id,
-    team_name: msg.body.team_domain,
-    lat:"",
-    lng:"",
-    slack_token: msg.body.token, //given at auth
-    bot_token: "",
-    webhook: msg.meta.incoming_webhook_url
-  }
-  // slackDb.child(msg.body.team_id).set(teamObj)
+
   msg
     .say({ text:`Welcome to Jaywalk! To get better results, please enter the address or your buisness name and city.`})    
     .route('setup', state)  
@@ -75,12 +66,19 @@ let oldTeamCallback = (msg,state)=>{
 }
 
 let saveToDb = (lat,lng,msg,state)=>{
-console.log('msg',msg)
-console.log('state',state)
-
-console.log(lat,lng)
+    teamObj={  
+    team_id: msg.body.team_id,
+    team_name: msg.body.team_domain,
+    lat:lat,
+    lng:lng,
+    slack_token: msg.body.token, //given at auth
+    bot_token: "",
+    webhook: msg.meta.incoming_webhook_url
+  }
+  slackDb.child(msg.body.team_id).set(teamObj)
   msg
-  .say({text: `lat:${lat} lng:${lng}`})
+  .say(jayBtns)
+  .route('mainBtnAnswer', state, 30)  
 }
 
 const jaywalk = function() {
@@ -143,7 +141,6 @@ const jaywalk = function() {
       if (result) {
         let lat = result.get('lat')
         let lng = result.get('lng')
-        console.log(lat,lng)
       // slackDb.child(msg.body.team_id).set(teamObj)
   //           oldTeamCallback(msg,state)
         saveToDb(lat,lng,msg,state)
