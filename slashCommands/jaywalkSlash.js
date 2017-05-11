@@ -84,9 +84,9 @@ const jaywalk = function() {
           return teamInfo = obj.val()
         }
       })
-    msg
-      .say(jayBtns)
-      .route('requestToDatabase', state, 60)    
+    // msg
+    //   .say(jayBtns)
+    //   .route('requestToDatabase', state, 60)    
   })
 
 // slapp.action('jaywalk_callback', 'answer', (msg, value) => {
