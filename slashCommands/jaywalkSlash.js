@@ -67,15 +67,17 @@ let newTeamCallback = (msg,state)=>{
     channel_name: "msg.body.channel_name"
   }
   slackDb.child(msg.body.team_id).set(teamObj)
-  msg.say({text:'setup mode goes here'})
+  msg
+    .say({ text:`Welcome to Jaywalk! To get better results, please enter the address or your buisness name and city.`     
+    .route('setup', state, 30)  
+  })
 }
 let oldTeamCallback = (msg,state)=>{
-      msg
-      .say(jayBtns)
-      .route('requestToDatabase', state, 30)  
+  msg
+  .say(jayBtns)
+  .route('requestToDatabase', state, 30)  
 }
 
- //text:`Welcom to Jaywalk! To get better results, please enter the address or your buisness name and city.`     
 const jaywalk = function() {
   let state = { requested: Date.now() }
   let teamId = ''
@@ -123,7 +125,11 @@ const jaywalk = function() {
     } //end else(actions undefined checker)
   }) //end .route('requestToDatabase')
   // }) //end callback
-
+  .route('setup', (msg,state) => {
+    let text = (msg.body.event && msg.body.event.text) || ''
+    state.newAddress = text
+    msg.say({text: `new address ${text}`})
+  })//end .route(setup)
   .route('relaventAsk', (msg,state) => {
     msg.say({text: 'relaventAsk'})
     routeFuncs.relaventAsk(msg,state)
