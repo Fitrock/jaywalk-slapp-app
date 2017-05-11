@@ -53,7 +53,7 @@ let jayBtns={
   }]
 }
 
-let newTeamCallback (newOld)=>{
+let newTeamCallback = (newOld)=>{
   msg.say({text:newOld})
 }
 
