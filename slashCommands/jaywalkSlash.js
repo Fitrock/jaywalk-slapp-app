@@ -15,7 +15,7 @@ const teamSettings = require('../teamSettings.js').teamSettings
 
 const notify = require('./notifySlash.js').notify
 
-let teamInfo
+let teamInfo,teamObj
 
 //db imports
 const firebase    = require('../firebaseSetup.js'),
@@ -54,9 +54,7 @@ let jayBtns={
 }
 
 let newTeamCallback = (msg,state)=>{
-
-
-  let teamObj={  
+  teamObj={  
     team_id: msg.body.team_id,
     team_name: msg.body.team_domain,
     location:"",
@@ -68,7 +66,7 @@ let newTeamCallback = (msg,state)=>{
     channel_id: "msg.body.channel_id",
     channel_name: "msg.body.channel_name"
   }
-  slackDb.child(msg.body.team_id).set(teamObj)
+  // slackDb.child(msg.body.team_id).set(teamObj)
   msg
     .say({ text:`Welcome to Jaywalk! To get better results, please enter the address or your buisness name and city.`})    
     .route('setup', state, 30)  
@@ -121,7 +119,7 @@ const jaywalk = function() {
         return msg
           .say("Whoops, you just have to pick a button...")
           .say('Click a button!')
-          .route('mainBtnAnswer', state, 60)
+          .route('mainBtnAnswer', state, 30)
       }
     } //end else(actions undefined checker)
   }) //end .route('mainBtnAnswer')
@@ -138,8 +136,12 @@ const jaywalk = function() {
       if (result) {
         let lat = result.get('lat')
         let lng = result.get('lng')
-    msg.respond({text: `lat:${lat} lng:${lng}`})
-        // snapsByGeo(lat,lng,msg,state)
+      // slackDb.child(msg.body.team_id).set(teamObj)
+//           oldTeamCallback(msg,state)
+
+        msg
+          .respond({text: `lat:${lat} lng:${lng}`})
+      
       }
     })
   })//end .route(setup)
