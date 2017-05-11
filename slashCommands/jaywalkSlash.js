@@ -78,7 +78,7 @@ const jaywalk = function() {
             channel_name: "msg.body.channel_name",}
           teamInfo.team_id = msg.body.team_id
           slackDb.child(msg.body.team_id).set(teamObj)
-          return msg.route('relaventAsk', state,60)
+          msg.route('relaventAsk', state,60)
           // return teamInfo
         }else{
           return teamInfo = obj.val()
