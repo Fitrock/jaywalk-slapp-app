@@ -55,7 +55,7 @@ let jayBtns={
 
 let newTeamCallback = (msg,state)=>{
 
-    
+
   let teamObj={  
     team_id: msg.body.team_id,
     team_name: msg.body.team_domain,
@@ -76,7 +76,7 @@ let newTeamCallback = (msg,state)=>{
 let oldTeamCallback = (msg,state)=>{
   msg
   .say(jayBtns)
-  .route('requestToDatabase', state, 30)  
+  .route('mainBtnAnswer', state, 30)  
 }
 
 const jaywalk = function() {
@@ -102,9 +102,9 @@ const jaywalk = function() {
 
 // slapp.action('jaywalk_callback', 'answer', (msg, value) => {
 
-  .route('requestToDatabase', (msg, state) => {
+  .route('mainBtnAnswer', (msg, state) => { //
     if(msg.body.actions==undefined){      // try callback then remove this
-      msg.route('requestToDatabase', state, 30)    
+      msg.route('mainBtnAnswer', state, 30)    
     }else{
       answer = msg.body.actions[0].value
       if(answer == 'app'){
@@ -121,10 +121,10 @@ const jaywalk = function() {
         return msg
           .say("Whoops, you just have to pick a button...")
           .say('Click a button!')
-          .route('requestToDatabase', state, 60)
+          .route('mainBtnAnswer', state, 60)
       }
     } //end else(actions undefined checker)
-  }) //end .route('requestToDatabase')
+  }) //end .route('mainBtnAnswer')
   // }) //end callback
   .route('setup', (msg,state) => {
     let text = (msg.body.event && msg.body.event.text) || ''
