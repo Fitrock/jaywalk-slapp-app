@@ -54,10 +54,8 @@ let jayBtns={
 }
 
 let newTeamCallback = (msg,state)=>{
-  msg
-    .say({ text:`Welcome to Jaywalk! To get better results, please enter the address or your buisness name and city.`})    
-    .route('setup', state, 30)  
-  })
+
+    
   let teamObj={  
     team_id: msg.body.team_id,
     team_name: msg.body.team_domain,
@@ -71,7 +69,9 @@ let newTeamCallback = (msg,state)=>{
     channel_name: "msg.body.channel_name"
   }
   slackDb.child(msg.body.team_id).set(teamObj)
-
+  msg
+    .say({ text:`Welcome to Jaywalk! To get better results, please enter the address or your buisness name and city.`})    
+    .route('setup', state, 30)  
 }
 let oldTeamCallback = (msg,state)=>{
   msg
