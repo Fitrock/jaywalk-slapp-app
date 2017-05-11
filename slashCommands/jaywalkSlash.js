@@ -54,7 +54,11 @@ let jayBtns={
 }
 
 let newTeamCallback = (newOld,msg,state)=>{
-  msg.say({text:newOld})
+  if(newTeam==true){
+    msg.route('setup', state,30)
+  }else if (newTeam==false){
+    msg.route('main', state,30)          
+  }
 }
 
 
@@ -82,12 +86,7 @@ const jaywalk = function() {
       })
       // .then(function(){ // wait for database check for new users
       //   console.log('.then',newTeam)
-      //   if(newTeam==true){
 
-      //     msg.route('setup', state,30)
-      //   }else if (newTeam==false){
-      //     msg.route('main', state,30)          
-      //   }
       // })
   })
 
