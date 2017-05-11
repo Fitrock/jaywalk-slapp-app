@@ -75,7 +75,9 @@ let saveToDb = (lat,lng,msg,state)=>{
     bot_token: "",
     webhook: msg.meta.incoming_webhook_url
   }
-  slackDb.child(msg.body.team_id).set(teamObj)
+  console.log(teamObj)
+  // slackDb.child(teamObj.team_name).set(teamObj)
+  // .then(function)
   msg
   .say(jayBtns)
   .route('mainBtnAnswer', state, 30)  
