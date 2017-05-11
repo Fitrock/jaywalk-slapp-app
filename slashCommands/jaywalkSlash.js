@@ -54,20 +54,20 @@ let jayBtns={
 }
 
 let newTeamCallback = (msg,state)=>{
-      let teamObj={  
-      team_id: msg.body.team_id,
-      team_name: msg.body.team_domain,
-      location:"",
-      lat:"",
-      lng:"",
-      slack_token: msg.body.token, //given at auth
-      bot_token: "ahjsabjklsdbjkl",
-      webhook: "msg.body.incoming_webhook", //given at auth
-      channel_id: "msg.body.channel_id",
-      channel_name: "msg.body.channel_name",}
-    teamInfo.team_id = msg.body.team_id
-    slackDb.child(msg.body.team_id).set(teamObj)
-    msg.say({text:'setup mode goes here'})
+  let teamObj={  
+    team_id: msg.body.team_id,
+    team_name: msg.body.team_domain,
+    location:"",
+    lat:"",
+    lng:"",
+    slack_token: msg.body.token, //given at auth
+    bot_token: "ahjsabjklsdbjkl",
+    webhook: "msg.body.incoming_webhook", //given at auth
+    channel_id: "msg.body.channel_id",
+    channel_name: "msg.body.channel_name"
+  }
+  slackDb.child(msg.body.team_id).set(teamObj)
+  msg.say({text:'setup mode goes here'})
 }
 let oldTeamCallback = (msg,state)=>{
       msg
@@ -88,13 +88,11 @@ const jaywalk = function() {
       .child(msg.body.team_id)
       .once("value")
       .then(function(obj){
-        console.log(obj.val())
         if(obj.val()==null){
           newTeamCallback(msg,state)
         }else if(obj.val()){
           teamInfo = obj.val()
           oldTeamCallback(msg,state)
-          teamInfo = obj.val()
         }
       })
   })
@@ -125,12 +123,7 @@ const jaywalk = function() {
     } //end else(actions undefined checker)
   }) //end .route('requestToDatabase')
   // }) //end callback
-  .route('main', (msg,state) => {
 
-  })//end .route(main)
-  .route('setup', (msg,state) => {
-
-  })//end .route(setup)
   .route('relaventAsk', (msg,state) => {
     msg.say({text: 'relaventAsk'})
     routeFuncs.relaventAsk(msg,state)
