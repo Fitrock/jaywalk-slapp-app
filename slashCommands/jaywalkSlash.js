@@ -129,7 +129,19 @@ const jaywalk = function() {
   .route('setup', (msg,state) => {
     let text = (msg.body.event && msg.body.event.text) || ''
     state.newAddress = text
-    msg.say({text: `new address ${text}`})
+        where.is(text,function(err,result){ 
+      /*
+        result.get('')=>
+        address,streetNumber, street,streetAddress,city,region,
+        regionCode, postalCode, country, countryCode, lat, lng
+      */
+      if (result) {
+        let lat = result.get('lat')
+        let lng = result.get('lng')
+    msg.respond({text: `lat:${lat} lng:${lng}`})
+        // snapsByGeo(lat,lng,msg,state)
+      }
+    })
   })//end .route(setup)
   .route('relaventAsk', (msg,state) => {
     msg.say({text: 'relaventAsk'})
