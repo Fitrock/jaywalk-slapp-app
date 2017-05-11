@@ -70,22 +70,21 @@ const jaywalk = function() {
         }else{
           teamInfo = obj.val()
         }
-      }).then(function(stuff){ // wait for database check for new users
-        console.log('.then',newTeam,stuff)
+      }).then(function(){ // wait for database check for new users
+        console.log('.then',newTeam)
         if(newTeam==true){
-          msg.route('setup', state,60)
-        }else{
-          msg.route('main', state,60)          
+          msg.route('setup', state,30)
+        }else if (newTeam==false){
+          return msg.route('main', state,30)          
         }
       })
-      console.log('after', newTeam)
   })
 
 // slapp.action('jaywalk_callback', 'answer', (msg, value) => {
 
   .route('requestToDatabase', (msg, state) => {
     if(msg.body.actions==undefined){      // try callback then remove this
-      msg.route('requestToDatabase', state, 60)    
+      msg.route('requestToDatabase', state, 30)    
     }else{
       answer = msg.body.actions[0].value
       if(answer == 'app'){
@@ -110,7 +109,7 @@ const jaywalk = function() {
   .route('main', (msg,state) => {
     msg
       .say(jayBtns)
-      .route('requestToDatabase', state, 60)  
+      .route('requestToDatabase', state, 30)  
   })//end .route(main)
   .route('setup', (msg,state) => {
     let teamObj={  
