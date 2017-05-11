@@ -116,6 +116,7 @@ const jaywalk = function() {
   }) //end .route('requestToDatabase')
   // }) //end callback
   .route('relaventAsk', (msg,state) => {
+    msg.say({text: 'relaventAsk'})
     routeFuncs.relaventAsk(msg,state)
   })//end .route(relaventAsk)
   .route('address_geo', (msg,state) => {
