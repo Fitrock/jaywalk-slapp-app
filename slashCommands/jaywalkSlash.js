@@ -59,15 +59,18 @@ const jaywalk = function() {
 
 
   slapp.command('/jaywalk', (msg, text) => {
+    console.time('jaycalled')
     teamInfo = slackDb
       .child(msg.body.team_id)
       .once("value")
       .then(function(obj){
         if(obj.val()==null){
+          console.timeEnd('jaycalled')
           // console.log(msg)
           msg.route('setup', state,60)
           // return teamInfo
         }else{
+          console.timeEnd('jaycalled')
           msg.route('main', state,60)
           return teamInfo = obj.val()
         }
