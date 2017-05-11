@@ -65,29 +65,13 @@ const jaywalk = function() {
       .then(function(obj){
         if(obj.val()==null){
           // console.log(msg)
-          // let teamObj={  
-          //   team_id: msg.body.team_id,
-          //   team_name: msg.body.team_domain,
-          //   location:"",
-          //   lat:"",
-          //   lng:"",
-          //   slack_token: msg.body.token, //given at auth
-          //   bot_token: "ahjsabjklsdbjkl",
-          //   webhook: "msg.body.incoming_webhook", //given at auth
-          //   channel_id: "msg.body.channel_id",
-          //   channel_name: "msg.body.channel_name",}
-          // teamInfo.team_id = msg.body.team_id
-          // slackDb.child(msg.body.team_id).set(teamObj)
           msg.route('setup', state,60)
           // return teamInfo
         }else{
           msg.route('main', state,60)
           return teamInfo = obj.val()
         }
-      })
-    // msg
-    //   .say(jayBtns)
-    //   .route('requestToDatabase', state, 60)    
+      })  
   })
 
 // slapp.action('jaywalk_callback', 'answer', (msg, value) => {
@@ -117,11 +101,26 @@ const jaywalk = function() {
   }) //end .route('requestToDatabase')
   // }) //end callback
   .route('main', (msg,state) => {
-    msg.say({text: 'main'})
-  })//end .route(relaventAsk)
+    msg
+      .say(jayBtns)
+      .route('requestToDatabase', state, 60)  
+  })//end .route(main)
   .route('setup', (msg,state) => {
-    msg.say({text: 'setup'})
-  })//end .route(relaventAsk)
+    let teamObj={  
+      team_id: msg.body.team_id,
+      team_name: msg.body.team_domain,
+      location:"",
+      lat:"",
+      lng:"",
+      slack_token: msg.body.token, //given at auth
+      bot_token: "ahjsabjklsdbjkl",
+      webhook: "msg.body.incoming_webhook", //given at auth
+      channel_id: "msg.body.channel_id",
+      channel_name: "msg.body.channel_name",}
+    teamInfo.team_id = msg.body.team_id
+    slackDb.child(msg.body.team_id).set(teamObj)
+    msg.say({text:'setup mode goes here'})
+  })//end .route(setup)
   .route('relaventAsk', (msg,state) => {
     msg.say({text: 'relaventAsk'})
     routeFuncs.relaventAsk(msg,state)
