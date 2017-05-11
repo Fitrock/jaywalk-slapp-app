@@ -78,8 +78,10 @@ let oldTeamCallback = (msg,state)=>{
 }
 
 let saveToDb = (lat,lng,msg,state)=>{
+console.log('msg',msg)
+console.log('state',state)
 
-  
+console.log(lat,lng)
   msg
   .respond({text: `lat:${lat} lng:${lng}`})
 }
