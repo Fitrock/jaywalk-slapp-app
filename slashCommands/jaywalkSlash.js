@@ -76,7 +76,7 @@ let saveToDb = (lat,lng,msg,state)=>{
     app_token: msg.meta.app_token,
     webhook: msg.meta.incoming_webhook_url
   }
-  console.log(teamObj)
+  teamInfo=teamObj
   slackDb.child(teamObj.team_id).set(teamObj)
   // .then(function)
   msg
