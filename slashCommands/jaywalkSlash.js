@@ -69,7 +69,7 @@ let newTeamCallback = (msg,state)=>{
   // slackDb.child(msg.body.team_id).set(teamObj)
   msg
     .say({ text:`Welcome to Jaywalk! To get better results, please enter the address or your buisness name and city.`})    
-    .route('setup', state, 30)  
+    .route('setup', state)  
 }
 let oldTeamCallback = (msg,state)=>{
   msg
@@ -126,8 +126,9 @@ const jaywalk = function() {
   // }) //end callback
   .route('setup', (msg,state) => {
     let text = (msg.body.event && msg.body.event.text) || ''
+    console.log(text)
     state.newAddress = text
-        where.is(text,function(err,result){ 
+      where.is(text,function(err,result){ 
       /*
         result.get('')=>
         address,streetNumber, street,streetAddress,city,region,
@@ -136,12 +137,12 @@ const jaywalk = function() {
       if (result) {
         let lat = result.get('lat')
         let lng = result.get('lng')
+        console.log(lat,lng)
       // slackDb.child(msg.body.team_id).set(teamObj)
-//           oldTeamCallback(msg,state)
+  //           oldTeamCallback(msg,state)
 
         msg
           .respond({text: `lat:${lat} lng:${lng}`})
-      
       }
     })
   })//end .route(setup)
