@@ -67,17 +67,16 @@ const jaywalk = function() {
       .then(function(obj){
         if(obj.val()==null){
           newTeam=true
-          console.log(newTeam)
-          // console.log(msg)
-          msg.route('setup', state,60)
-          // return teamInfo
         }else{
-          console.log(newTeam)
-          msg.route('main', state,60)
           return teamInfo = obj.val()
         }
-      }).then(function(stuff){
-        console.log('.then',newTeam)
+      }).then(function(stuff){ // wait for database check for new users
+        console.log('.then',newTeam,stuff)
+        if(newTeam==true){
+          msg.route('setup', state,60)
+        }else{
+          msg.route('main', state,60)          
+        }
       })
       console.log('after', newTeam)
   })
