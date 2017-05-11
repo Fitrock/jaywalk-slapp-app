@@ -66,7 +66,7 @@ let oldTeamCallback = (msg,state)=>{
 }
 
 let saveToDb = (lat,lng,msg,state)=>{
-    teamObj={  
+  teamObj={  
     team_id: msg.body.team_id,
     team_name: msg.meta.team_domain,
     lat:lat,
@@ -77,7 +77,7 @@ let saveToDb = (lat,lng,msg,state)=>{
     webhook: msg.meta.incoming_webhook_url
   }
   console.log(teamObj)
-  slackDb.child(teamObj.team_name).set(teamObj)
+  slackDb.child(teamObj.team_id).set(teamObj)
   // .then(function)
   msg
   .say(jayBtns)
