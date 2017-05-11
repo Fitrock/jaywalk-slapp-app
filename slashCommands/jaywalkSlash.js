@@ -15,7 +15,7 @@ const teamSettings = require('../teamSettings.js').teamSettings
 
 const notify = require('./notifySlash.js').notify
 
-const newTeam = false
+let newTeam = false
 
 //db imports
 const firebase    = require('../firebaseSetup.js'),
@@ -76,6 +76,8 @@ const jaywalk = function() {
           msg.route('main', state,60)
           return teamInfo = obj.val()
         }
+      }).then(function(stuff){
+        console.log('.then',newTeam)
       })
       console.log('after', newTeam)
   })
