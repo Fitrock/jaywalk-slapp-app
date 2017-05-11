@@ -68,7 +68,7 @@ const jaywalk = function() {
         if(obj.val()==null){
           newTeam=true
         }else{
-          return teamInfo = obj.val()
+          teamInfo = obj.val()
         }
       }).then(function(stuff){ // wait for database check for new users
         console.log('.then',newTeam,stuff)
