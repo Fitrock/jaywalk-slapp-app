@@ -53,7 +53,7 @@ let jayBtns={
   }]
 }
 
-let newTeamCallback = (newOld)=>{
+let newTeamCallback = (newOld,msg,state)=>{
   msg.say({text:newOld})
 }
 
@@ -73,10 +73,10 @@ const jaywalk = function() {
       .then(function(obj){
         if(obj.val()==null){
           newTeam=true
-          newTeamCallback(newTeam)
+          newTeamCallback(newTeam,msg)
         }else{
           newTeam=false
-          newTeamCallback(newTeam)
+          newTeamCallback(newTeam,msg,state)
           teamInfo = obj.val()
         }
       })
