@@ -55,7 +55,7 @@ let jayBtns={
 
 let newTeamCallback = (msg,state)=>{
   msg
-    .say({ text:`Welcome to Jaywalk! To get better results, please enter the address or your buisness name and city.`     
+    .say({ text:`Welcome to Jaywalk! To get better results, please enter the address or your buisness name and city.`})    
     .route('setup', state, 30)  
   })
   let teamObj={  
