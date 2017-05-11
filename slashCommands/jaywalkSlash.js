@@ -53,14 +53,27 @@ let jayBtns={
   }]
 }
 
-let newTeamCallback = (newOld,msg,state)=>{
-  if(newTeam==true){
-    msg.route('setup', state,30)
-  }else if (newTeam==false){
-    msg.route('main', state,30)          
-  }
+let newTeamCallback = (msg,state)=>{
+      let teamObj={  
+      team_id: msg.body.team_id,
+      team_name: msg.body.team_domain,
+      location:"",
+      lat:"",
+      lng:"",
+      slack_token: msg.body.token, //given at auth
+      bot_token: "ahjsabjklsdbjkl",
+      webhook: "msg.body.incoming_webhook", //given at auth
+      channel_id: "msg.body.channel_id",
+      channel_name: "msg.body.channel_name",}
+    teamInfo.team_id = msg.body.team_id
+    slackDb.child(msg.body.team_id).set(teamObj)
+    msg.say({text:'setup mode goes here'})
 }
-
+let oldTeamCallback = (msg,state)=>{
+      msg
+      .say(jayBtns)
+      .route('requestToDatabase', state, 30)  
+}
 
  //text:`Welcom to Jaywalk! To get better results, please enter the address or your buisness name and city.`     
 const jaywalk = function() {
@@ -76,18 +89,12 @@ const jaywalk = function() {
       .once("value")
       .then(function(obj){
         if(obj.val()==null){
-          newTeam=true
-          newTeamCallback(newTeam,msg)
+          newTeamCallback(msg,state)
         }else{
-          newTeam=false
-          newTeamCallback(newTeam,msg,state)
+          oldTeamCallback(msg,state)
           teamInfo = obj.val()
         }
       })
-      // .then(function(){ // wait for database check for new users
-      //   console.log('.then',newTeam)
-
-      // })
   })
 
 // slapp.action('jaywalk_callback', 'answer', (msg, value) => {
@@ -117,25 +124,10 @@ const jaywalk = function() {
   }) //end .route('requestToDatabase')
   // }) //end callback
   .route('main', (msg,state) => {
-    msg
-      .say(jayBtns)
-      .route('requestToDatabase', state, 30)  
+
   })//end .route(main)
   .route('setup', (msg,state) => {
-    let teamObj={  
-      team_id: msg.body.team_id,
-      team_name: msg.body.team_domain,
-      location:"",
-      lat:"",
-      lng:"",
-      slack_token: msg.body.token, //given at auth
-      bot_token: "ahjsabjklsdbjkl",
-      webhook: "msg.body.incoming_webhook", //given at auth
-      channel_id: "msg.body.channel_id",
-      channel_name: "msg.body.channel_name",}
-    teamInfo.team_id = msg.body.team_id
-    slackDb.child(msg.body.team_id).set(teamObj)
-    msg.say({text:'setup mode goes here'})
+
   })//end .route(setup)
   .route('relaventAsk', (msg,state) => {
     msg.say({text: 'relaventAsk'})
