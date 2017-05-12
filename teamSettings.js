@@ -14,6 +14,7 @@ let teamSettings = function(teamInfo,msg,state){
 // console.log(msg.body.token)
 // console.log(msg.body.message_ts)
 // console.log(msg.body.channel.id)
+state.teamInfo=teamInfo
   msg.respond({
   	text: "",
     attachments: [{
@@ -62,7 +63,7 @@ let teamSettings = function(teamInfo,msg,state){
 	  				text:"What would you like your business name to be?"		
 	  			}]
 	  		})
-	  		.route('team_change',(msg,state,value))
+	  		.route('name_change',state,30)
   	}else if(value=='teamLocation'){
   		msg.respond({
 	  			text:"",
@@ -70,7 +71,7 @@ let teamSettings = function(teamInfo,msg,state){
 	  				text:"What is your business address?"		
 	  			}]
 	  		})
-	  		.route('team_change',(msg,state,value))
+	  		.route('location_change',state,30)
   	}else{
 			msg.respond({
   			text:`${value}`
@@ -80,17 +81,24 @@ let teamSettings = function(teamInfo,msg,state){
   slapp.action('back_callback', 'answer',(msg,value) => {
   	msgAttachments.jayBtns(teamInfo,msg,state)
   })
-	.route('team_change', (msg,state)=>{
+	.route('name_change', (msg,state)=>{
 		var text = (msg.body.event && msg.body.event.text) || ''
-		if(state.value =="teamName"){
-			teamDb.child(teamInfo.team_id).update({team_name:text})
+		
+			teamDb.child(state.teamInfo.team_id).update({team_name:text})
 			back_callback()
-		}else if(state.value=="teamLocation"){
-  		teamDb.child(teamInfo.team_id).update({address:text})
-  		back_callback()
-		}
+	
 	})
-
+	.route('location_change', (msg,state)=>{
+		var text = (msg.body.event && msg.body.event.text) || ''
+		  if (result) {
+        let lat = result.get('lat')
+        let lng = result.get('lng')
+      // slackDb.child(msg.body.team_id).set(teamObj)
+  //           oldTeamCallback(msg,state)
+	  		teamDb.child(state.teamInfo.team_id).update({lat:lat,lng:lng})
+	  		back_callback()
+      }
+	})
 
 
 }
