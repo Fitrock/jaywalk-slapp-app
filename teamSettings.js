@@ -20,7 +20,7 @@ state.teamInfo=teamInfo
     attachments: [{
     	pretext: `Click a button to change settings`,
       text: `Your team is located at ${teamInfo.address}.`,
-      title: `Team settings for ${teamInfo.name_name}.`,
+      title: `Team settings for ${teamInfo.team_name}.`,
       callback_id: 'settings_callback',
       color: '#6b7f98',
       actions: 

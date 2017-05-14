@@ -9,9 +9,9 @@ const yes = function(teamInfo,msg,state){
   msg.respond({
   text: "",
     attachments: [{
-      text: `Are you still at ${location}?`,
+      text: `Are you still at ${team_name}?`,
       callback_id: 'yesno_callback',
-      color: 'good',
+      color: 'warning',
       actions: 
       [{ 
         name: 'answer',
