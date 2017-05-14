@@ -15,7 +15,7 @@ const firebase    = require('../../firebaseSetup.js'),
 let attachmentArr = []
 
 
-let callback = function(picUrl,snap,i){
+let callback = function(picUrl,snap,normalIndex){
   console.log('callback',i)
   let snapAttach={
     title: `${snap.description}`,
@@ -24,8 +24,8 @@ let callback = function(picUrl,snap,i){
     footer:`Jaywalk`
   }
   attachmentArr.push(snapAttach)
-  if(i==4){
-    msg.respont({
+  if(normalIndex==4){
+    msg.respond({
         text: '',
         attachments:[{
           color: 'warning',
@@ -37,6 +37,9 @@ let callback = function(picUrl,snap,i){
     }) //end msg.say
     .route('relaventAsk', (msg,state),60)
   }
+}
+let msgCallback = function(){
+
 }
 
 function snapsByGeo (lat,lng, msg, state){
@@ -59,11 +62,14 @@ function snapsByGeo (lat,lng, msg, state){
           } //end if (lng checker)
         }) //end foreach
         let len = (resultArr.length-1)
+        let normalIndex = 0;
+
         for(let i=len;i>(len-4);i--){ //last four
+          normalIndex ++
           let snap = resultArr[i]
           console.log(i,'first for')
           tinyurl.shorten(snap.picture, function(res) {
-            callback(res,snap,i)
+            callback(res,snap,i,normalIndex)
           })
         } //end for
 
