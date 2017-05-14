@@ -28,7 +28,7 @@ let callback = function(picUrl,snap,i){
         text: '',
         attachments:[{
           color: 'warning',
-          callback_id: "relaventAsk_callback"
+          callback_id: "relaventAsk_callback",
           author_name:"Jaywalk",
           author_link:"http://www.jaywalk.me",
           fields: attachmentArr
