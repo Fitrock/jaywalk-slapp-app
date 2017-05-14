@@ -39,7 +39,7 @@ function snapsByGeo (lat,lng, msg, state){
               text:"",
               attachments:[{
                 color: 'danger',
-                text: `Sorry, it looks like there are not any deals close to you right now.`
+                text: `Sorry, it looks like there are not any deals close to you right now.`,
                 footer:`Jaywalk`
               }]
             }).route('relaventAsk', (msg,state),60)
@@ -53,7 +53,7 @@ function snapsByGeo (lat,lng, msg, state){
                   title: `${snap.description}`,
                   color: 'warning',
                   image_url: `${picUrl}`,
-                  text: `${snap.address}`
+                  text: `${snap.address}`,
                   footer:`Jaywalk`
                 }]
             }) //end msg.say
