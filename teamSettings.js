@@ -41,7 +41,6 @@ state.teamInfo=teamInfo
         value: 'notifications'
       }]
     	},{
-    	text:"",
     	callback_id:"back_callback",
     	color:"",
     	actions:{ 
