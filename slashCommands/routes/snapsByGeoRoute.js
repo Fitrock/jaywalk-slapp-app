@@ -16,7 +16,7 @@ let attachmentArr = []
 
 
 let callback = function(picUrl,snap,normalIndex){
-  console.log('callback',i)
+  console.log('callback',normalIndex)
   let snapAttach={
     title: `${snap.description}`,
     image_url: `${picUrl}`,
@@ -69,7 +69,7 @@ function snapsByGeo (lat,lng, msg, state){
           let snap = resultArr[i]
           console.log(i,'first for')
           tinyurl.shorten(snap.picture, function(res) {
-            callback(res,snap,i,normalIndex)
+            callback(res,snap,normalIndex)
           })
         } //end for
 
