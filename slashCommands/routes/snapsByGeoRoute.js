@@ -72,13 +72,3 @@ function snapsByGeo (lat,lng, msg, state){
 module.exports = {
   snapsByGeo: snapsByGeo
 }
-
-
-
-
-let snapAttach={
-  title: `${snap.description}`,
-  image_url: `${picUrl}`,
-  text: `${snap.address}`,
-  footer:`Jaywalk`
-}
