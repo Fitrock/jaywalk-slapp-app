@@ -20,8 +20,10 @@ let callback = function(picUrl,snap,normalIndex,msg,state){
   let snapAttach={
     title: `${snap.description}`,
     image_url: `${picUrl}`,
+    value: `${picUrl}`,
     text: `${snap.address}`,
-    footer:`Jaywalk`
+    footer:`Jaywalk`,
+    short: true
   }
   attachmentArr.push(snapAttach)
   if(normalIndex==4){
