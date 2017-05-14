@@ -16,7 +16,7 @@ let attachmentArr = []
 
 
 let callback = function(picUrl,snap,normalIndex,msg,state){
-  console.log('callback',normalIndex)
+  console.log('callback',normalIndex,picUrl)
   let snapAttach={
     title: `${snap.description}`,
     image_url: `${picUrl}`,
