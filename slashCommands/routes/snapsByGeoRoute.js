@@ -12,6 +12,32 @@ const firebase    = require('../../firebaseSetup.js'),
       tags = firebase.tags,
       users = firebase.users
 
+let attachmentArr = []
+
+
+let callback = function(picUrl,snap,i){
+  let snapAttach={
+    title: `${snap.description}`,
+    image_url: `${picUrl}`,
+    text: `${snap.address}`,
+    footer:`Jaywalk`
+  }
+  attachmentArr.push(snapAttach)
+  if(i==4){
+    msg.respont({
+        text: '',
+        attachments:[{
+          color: 'warning',
+          callback_id: "relaventAsk_callback"
+          author_name:"Jaywalk",
+          author_link:"http://www.jaywalk.me",
+          fields: attachmentArr
+        }]
+    }) //end msg.say
+    .route('relaventAsk', (msg,state),60)
+  }
+}
+
 function snapsByGeo (lat,lng, msg, state){
     //firebase search by snap lat (start at bottom of circle, end at top)
     let radius = getRadius(lat,lng)
@@ -34,38 +60,25 @@ function snapsByGeo (lat,lng, msg, state){
         let len = (resultArr.length-1)
         for(let i=len;i>(len-4);i--){ //last four
           let snap = resultArr[i]
-          if(snap==undefined){
-            return msg.respond({
-              text:"",
-              attachments:[{
-                color: 'danger',
-                text: `Sorry, it looks like there are not any deals close to you right now.`,
-                footer:`Jaywalk`
-              }]
-            }).route('relaventAsk', (msg,state),60)
 
-          }
-          console.log(snap)
-          let callback = function(picUrl){
-            msg.say({
-                text: '',
-                attachments:[{
-                  title: `${snap.description}`,
-                  color: 'warning',
-                  image_url: `${picUrl}`,
-                  text: `${snap.address}`,
-                  footer:`Jaywalk`
-                }]
-            }) //end msg.say
-            .route('relaventAsk', (msg,state),60)
-          }
           tinyurl.shorten(snap.picture, function(res) {
-            callback(res)
+            callback(res,snap,i)
           })
         } //end for
+
       }) //end .then(snap)
 } // end snapsByGeo()
 
 module.exports = {
   snapsByGeo: snapsByGeo
+}
+
+
+
+
+let snapAttach={
+  title: `${snap.description}`,
+  image_url: `${picUrl}`,
+  text: `${snap.address}`,
+  footer:`Jaywalk`
 }
