@@ -34,6 +34,17 @@ function snapsByGeo (lat,lng, msg, state){
         let len = (resultArr.length-1)
         for(let i=len;i>(len-4);i--){ //last four
           let snap = resultArr[i]
+          if(snap==undefined){
+            return msg.respond({
+              text:"",
+              attachments:[{
+                color: 'danger',
+                text: `Sorry, it looks like there are not any deals close to you right now.`
+                footer:`Jaywalk`
+              }]
+            }).route('relaventAsk', (msg,state),60)
+
+          }
           console.log(snap)
           let callback = function(picUrl){
             msg.say({
@@ -43,10 +54,10 @@ function snapsByGeo (lat,lng, msg, state){
                   color: 'warning',
                   image_url: `${picUrl}`,
                   text: `${snap.address}`
-                  // footer:`Jaywalk: ${thisCount}`
+                  footer:`Jaywalk`
                 }]
             }) //end msg.say
-            // .route('relaventAsk', (msg,state),60)
+            .route('relaventAsk', (msg,state),60)
           }
           tinyurl.shorten(snap.picture, function(res) {
             callback(res)

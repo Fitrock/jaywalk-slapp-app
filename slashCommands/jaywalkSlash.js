@@ -116,12 +116,8 @@ const jaywalk = function() {
         appDl(teamInfo,msg,state)
       }else if(answer == 'address'){
         yes(teamInfo,msg,state)
-        //https://jaywalk-geo.herokuapp.com/geoloc.htm
-        // .route('handleGeoLoc', state, 60) 
       }else if(answer == 'settings'){
         teamSettings(teamInfo,msg,state)
-      }else if(answer == 'notifications'){
-        notify(teamInfo,msg,state)
       }else{ //handle error
         return msg
           .say("Whoops, you just have to pick a button...")
