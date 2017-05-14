@@ -22,7 +22,7 @@ state.teamInfo=teamInfo
       text: `Your team is located at ${teamInfo.address}.`,
       title: `Team settings for ${teamInfo.name_name}.`,
       callback_id: 'settings_callback',
-      color: 'info',
+      color: '#6b7f98',
       actions: 
       [{ 
         name: 'answer',
