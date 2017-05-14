@@ -12,38 +12,6 @@ const firebase    = require('../../firebaseSetup.js'),
       tags = firebase.tags,
       users = firebase.users
 
-let attachmentArr = []
-
-
-let callback = function(picUrl,snap,normalIndex,msg,state){
-  console.log('callback',normalIndex,picUrl)
-  let snapAttach={
-    title: `${snap.description}`,
-    image_url: `${picUrl}`,
-    value: `${picUrl}`,
-    text: `${snap.address}`,
-    footer:`Jaywalk`,
-    short: true
-  }
-  attachmentArr.push(snapAttach)
-  if(normalIndex==4){
-    msg.respond({
-        text: '',
-        attachments:[{
-          color: 'warning',
-          callback_id: "relaventAsk_callback",
-          author_name:"Jaywalk",
-          author_link:"http://www.jaywalk.me",
-          fields: attachmentArr
-        }]
-    }) //end msg.say
-    .route('relaventAsk', (msg,state),60)
-  }
-}
-let msgCallback = function(){
-
-}
-
 function snapsByGeo (lat,lng, msg, state){
     //firebase search by snap lat (start at bottom of circle, end at top)
     let radius = getRadius(lat,lng)
@@ -64,19 +32,44 @@ function snapsByGeo (lat,lng, msg, state){
           } //end if (lng checker)
         }) //end foreach
         let len = (resultArr.length-1)
-        let normalIndex = 0;
-
         for(let i=len;i>(len-4);i--){ //last four
-          normalIndex ++
           let snap = resultArr[i]
-          console.log(i,'first for')
+
+          console.log(snap)
+          let callback = function(picUrl){
+            msg.say({
+                text: '',
+                attachments:[{
+                  title: `${snap.description}`,
+                  color: 'warning',
+                  image_url: `${picUrl}`,
+                  text: `${snap.address}`,
+                  footer:`Jaywalk`,
+                  callback_id: "snap_callback"
+                  actions:[{
+                    name: 'answer',
+                    text: 'Directions',
+                    type: 'button',
+                    value: `directions`
+                  }
+                  }]
+                }]
+            }) //end msg.say
+          }
           tinyurl.shorten(snap.picture, function(res) {
-            callback(res,snap,normalIndex,msg,state)
+            callback(res)
           })
         } //end for
-
       }) //end .then(snap)
 } // end snapsByGeo()
+
+
+slapp.action('snap_callback', 'answer', (msg, value) => {
+  msg.say({
+    text: 'directions api here'
+  })
+}
+
 
 module.exports = {
   snapsByGeo: snapsByGeo
