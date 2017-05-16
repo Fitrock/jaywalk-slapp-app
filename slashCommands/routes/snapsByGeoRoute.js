@@ -12,7 +12,7 @@ const firebase    = require('../../firebaseSetup.js'),
       snaps = firebase.snaps,
       tags = firebase.tags,
       users = firebase.users
-let teamlat,teamLng
+let teamLat,teamLng
 function snapsByGeo (lat,lng, msg, state){
   teamLat = lat
   teamLng = lng
