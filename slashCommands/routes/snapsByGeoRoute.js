@@ -39,7 +39,6 @@ function snapsByGeo (lat,lng, msg, state){
           let snap = resultArr[i]
 
           let callback = function(picUrl,snap){
-            console.log(snap)
             msg.say({
                 text: '',
                 attachments:[{
@@ -67,34 +66,36 @@ function snapsByGeo (lat,lng, msg, state){
 
 
 slapp.action('snap_callback', 'answer', (msg, value) => {
-  console.log(value.lat,value.lng)
+  console.log('value',value)
   var start = `${teamLat},${teamLng}`
   console.log(start)
   var end = `39.73,-104.91`
   var mapsize = "500x400"
   var maptype = "roadmap"
   var markerParam = "&markers=color%3Ared%7Clabel%3Aa%7Cshadow%3Atrue%7C" + start
-  let mapUrl = getMap(start,end)
-  console.log(mapUrl)
-  msg.say({
-    text: 'directions api here',
-    "attachments": [
-      {
-        "fallback": "Required plain-text summary of the attachment.",
-        "color": "#36a64f",
-        "title_link": "https://www.google.com/maps/place/" + start,
-        "image_url": mapUrl
-        //"thumb_url": "http://example.com/path/to/thumb.png"
-         // "fields":[
-         //  {
-         //     "title": "Update your own location",
-         //     "value": host_app_url + "",
-         //     "short":false
-         //  }
-         // ]
-      }
-    ]
+  getMap(start,end).then(function(mapUrl){
+    msg.say({
+      text: 'directions api here',
+      "attachments": [
+        {
+          "fallback": "Required plain-text summary of the attachment.",
+          "color": "#36a64f",
+          "title_link": "https://www.google.com/maps/place/" + start,
+          "image_url": mapUrl
+          //"thumb_url": "http://example.com/path/to/thumb.png"
+           // "fields":[
+           //  {
+           //     "title": "Update your own location",
+           //     "value": host_app_url + "",
+           //     "short":false
+           //  }
+           // ]
+        }
+      ]
+    })    
   })
+  console.log(mapUrl)
+
 })
 
 
