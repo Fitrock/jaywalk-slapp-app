@@ -64,8 +64,32 @@ function snapsByGeo (lat,lng, msg, state){
 
 
 slapp.action('snap_callback', 'answer', (msg, value) => {
+  var start = `39.733543, -104.992554`
+  var mapsize = "500x400"
+  var maptype = "roadmap"
+  var markerParam += "&markers=color%3Ared%7Clabel%3Aa%7Cshadow%3Atrue%7C" + start
+
   msg.say({
-    text: 'directions api here'
+    text: 'directions api here',
+    "attachments": [
+      {
+        "fallback": "Required plain-text summary of the attachment.",
+        "color": "#36a64f",
+        "title_link": "https://www.google.com/maps/place/" + start,
+        "image_url": "https://maps.googleapis.com/maps/api/staticmap?" +
+               "size=" + mapsize +
+               "&maptype=" + maptype +
+               markerParam,
+        //"thumb_url": "http://example.com/path/to/thumb.png"
+         // "fields":[
+         //  {
+         //     "title": "Update your own location",
+         //     "value": host_app_url + "",
+         //     "short":false
+         //  }
+         // ]
+      }
+    ]
   })
 })
 

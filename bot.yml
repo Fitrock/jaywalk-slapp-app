@@ -18,7 +18,10 @@ config:
   - name: FIRE_PASS
     type: secret
     global: true
-  - name: MAP_KEY
+  - name: DIRECTIONS_KEY
     type: secret
     global: true
+  - name: MAP_KEY
+    type: secret
+    global: true    
 # To learn everything supported in the bot.yml file, visit https://beepboophq.com/docs/article/bot-yml
