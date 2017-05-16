@@ -1,6 +1,7 @@
 'use strict'
 const slapp = require('../../slackSetup.js').slapp
 const getRadius = require('../../radius.js').getRadius
+const getMap = require('../../directionsApi.js').getMap
 const tinyurl = require('tinyurl');
 const routeFuncs = require('./routesIndex.js')
 
@@ -11,8 +12,10 @@ const firebase    = require('../../firebaseSetup.js'),
       snaps = firebase.snaps,
       tags = firebase.tags,
       users = firebase.users
-
+let teamlat,teamLng
 function snapsByGeo (lat,lng, msg, state){
+  teamLat = lat
+  teamLng = lng
     //firebase search by snap lat (start at bottom of circle, end at top)
     let radius = getRadius(lat,lng)
     let resultArr = []
@@ -50,7 +53,7 @@ function snapsByGeo (lat,lng, msg, state){
                     name: 'answer',
                     text: 'Directions',
                     type: 'button',
-                    value: `directions`
+                    value: `${snap}`
                   }]
                 }]
             }) //end msg.say
@@ -64,11 +67,13 @@ function snapsByGeo (lat,lng, msg, state){
 
 
 slapp.action('snap_callback', 'answer', (msg, value) => {
-  var start = `39.733543, -104.992554`
+  console.log(value)
+  var start = `${teamlat},${teamLng}`
+  var end = `39.73,-104.91`
   var mapsize = "500x400"
   var maptype = "roadmap"
   var markerParam = "&markers=color%3Ared%7Clabel%3Aa%7Cshadow%3Atrue%7C" + start
-
+  console.log(getMap(start,end))
   msg.say({
     text: 'directions api here',
     "attachments": [
