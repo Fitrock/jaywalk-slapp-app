@@ -67,7 +67,7 @@ slapp.action('snap_callback', 'answer', (msg, value) => {
   msg.say({
     text: 'directions api here'
   })
-}
+})
 
 
 module.exports = {
