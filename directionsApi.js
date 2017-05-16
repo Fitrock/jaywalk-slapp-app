@@ -1,7 +1,7 @@
 var request = require('request')
 require('dotenv').config()
-start = `39.733543, -104.992554`
-end=`39.733543, -104.91`
+// start = `39.733543, -104.992554`
+// end=`39.733543, -104.91`
 
 
   // var latlng = new google.maps.LatLng(startd);
@@ -42,7 +42,6 @@ function getMap(start,end){
 		return mapUrl
 	})
 }
-getMap(start,end)
 
 module.exports={
 	getMap:getMap
