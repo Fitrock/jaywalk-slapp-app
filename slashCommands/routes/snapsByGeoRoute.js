@@ -51,7 +51,6 @@ function snapsByGeo (lat,lng, msg, state){
                     text: 'Directions',
                     type: 'button',
                     value: `directions`
-                  }
                   }]
                 }]
             }) //end msg.say
