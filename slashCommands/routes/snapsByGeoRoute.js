@@ -38,7 +38,6 @@ function snapsByGeo (lat,lng, msg, state){
         for(let i=len;i>(len-4);i--){ //last four
           let snap = resultArr[i]
 
-          // console.log(snap)
           let callback = function(picUrl,snap){
             console.log(snap)
             msg.say({
@@ -54,7 +53,7 @@ function snapsByGeo (lat,lng, msg, state){
                     name: 'answer',
                     text: 'Directions',
                     type: 'button',
-                    value: snap
+                    value: `${snap.lat},${snap.lng}`
                   }]
                 }]
             }) //end msg.say
