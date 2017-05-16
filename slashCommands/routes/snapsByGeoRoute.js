@@ -66,10 +66,9 @@ function snapsByGeo (lat,lng, msg, state){
 
 
 slapp.action('snap_callback', 'answer', (msg, value) => {
-  console.log('value',value)
   var start = `${teamLat},${teamLng}`
   console.log(start)
-  var end = `39.73,-104.91`
+  var end = answer
   var mapsize = "500x400"
   var maptype = "roadmap"
   var markerParam = "&markers=color%3Ared%7Clabel%3Aa%7Cshadow%3Atrue%7C" + start
