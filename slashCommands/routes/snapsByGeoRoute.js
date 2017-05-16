@@ -38,7 +38,7 @@ function snapsByGeo (lat,lng, msg, state){
         for(let i=len;i>(len-4);i--){ //last four
           let snap = resultArr[i]
 
-          let callback = function(picUrl,snap){
+          let callback = function(picUrl){
             msg.say({
                 text: '',
                 attachments:[{
@@ -58,7 +58,7 @@ function snapsByGeo (lat,lng, msg, state){
             }) //end msg.say
           }
           tinyurl.shorten(snap.picture, function(res) {
-            callback(res,snap)
+            callback(res)
           })
         } //end for
       }) //end .then(snap)
