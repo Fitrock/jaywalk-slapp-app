@@ -76,10 +76,7 @@ slapp.action('snap_callback', 'answer', (msg, value) => {
         "fallback": "Required plain-text summary of the attachment.",
         "color": "#36a64f",
         "title_link": "https://www.google.com/maps/place/" + start,
-        "image_url": "https://maps.googleapis.com/maps/api/staticmap?" +
-               "size=" + mapsize +
-               "&maptype=" + maptype +
-               markerParam,
+        "image_url": "https://maps.googleapis.com/maps/api/staticmap?size=500x400&maptype=roadmap&markers=color%3Ared%7Clabel%3Aa%7Cshadow%3Atrue%7C39.733543,%20-104.992554"
         //"thumb_url": "http://example.com/path/to/thumb.png"
          // "fields":[
          //  {
@@ -97,3 +94,7 @@ slapp.action('snap_callback', 'answer', (msg, value) => {
 module.exports = {
   snapsByGeo: snapsByGeo
 }
+
+// "https://maps.googleapis.com/maps/api/staticmap?size=500x400&maptype=roadmap&markers=color%3Ared%7Clabel%3Aa%7Cshadow%3Atrue%7C39.733543,-104.992554"
+
+
