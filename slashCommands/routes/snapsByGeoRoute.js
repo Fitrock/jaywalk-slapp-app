@@ -39,7 +39,8 @@ function snapsByGeo (lat,lng, msg, state){
           let snap = resultArr[i]
 
           // console.log(snap)
-          let callback = function(picUrl){
+          let callback = function(picUrl,snap){
+            console.log(snap)
             msg.say({
                 text: '',
                 attachments:[{
@@ -59,7 +60,7 @@ function snapsByGeo (lat,lng, msg, state){
             }) //end msg.say
           }
           tinyurl.shorten(snap.picture, function(res) {
-            callback(res)
+            callback(res,snap)
           })
         } //end for
       }) //end .then(snap)
@@ -69,6 +70,7 @@ function snapsByGeo (lat,lng, msg, state){
 slapp.action('snap_callback', 'answer', (msg, value) => {
   console.log(value.lat,value.lng)
   var start = `${teamLat},${teamLng}`
+  console.log(start)
   var end = `39.73,-104.91`
   var mapsize = "500x400"
   var maptype = "roadmap"
