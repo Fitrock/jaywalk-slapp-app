@@ -39,6 +39,7 @@ function getMap(start,end){
 		var route =JSON.parse(body).routes[0].overview_polyline.points
 		// console.log(route)
 		let mapUrl =`${googUrl}staticmap?size=600x400&origin=${start}&destination=${end}&path=enc%3A${route}&key=${process.env.DIRECTIONS_KEY}`
+		console.log('directionsapi:',mapUrl)
 		return mapUrl
 	})
 }

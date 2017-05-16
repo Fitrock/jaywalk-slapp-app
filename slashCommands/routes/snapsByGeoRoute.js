@@ -38,7 +38,7 @@ function snapsByGeo (lat,lng, msg, state){
         for(let i=len;i>(len-4);i--){ //last four
           let snap = resultArr[i]
 
-          console.log(snap)
+          // console.log(snap)
           let callback = function(picUrl){
             msg.say({
                 text: '',
@@ -53,7 +53,7 @@ function snapsByGeo (lat,lng, msg, state){
                     name: 'answer',
                     text: 'Directions',
                     type: 'button',
-                    value: `${snap}`
+                    value: snap
                   }]
                 }]
             }) //end msg.say
@@ -67,13 +67,14 @@ function snapsByGeo (lat,lng, msg, state){
 
 
 slapp.action('snap_callback', 'answer', (msg, value) => {
-  console.log(value)
+  console.log(value.lat,value.lng)
   var start = `${teamLat},${teamLng}`
   var end = `39.73,-104.91`
   var mapsize = "500x400"
   var maptype = "roadmap"
   var markerParam = "&markers=color%3Ared%7Clabel%3Aa%7Cshadow%3Atrue%7C" + start
-  console.log(getMap(start,end))
+  let mapUrl = getMap(start,end)
+  console.log(mapUrl)
   msg.say({
     text: 'directions api here',
     "attachments": [
@@ -81,7 +82,7 @@ slapp.action('snap_callback', 'answer', (msg, value) => {
         "fallback": "Required plain-text summary of the attachment.",
         "color": "#36a64f",
         "title_link": "https://www.google.com/maps/place/" + start,
-        "image_url": "https://maps.googleapis.com/maps/api/staticmap?size=500x400&maptype=roadmap&markers=color%3Ared%7Clabel%3Aa%7Cshadow%3Atrue%7C39.733543,%20-104.992554"
+        "image_url": mapUrl
         //"thumb_url": "http://example.com/path/to/thumb.png"
          // "fields":[
          //  {
