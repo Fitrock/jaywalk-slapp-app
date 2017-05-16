@@ -68,10 +68,10 @@ function snapsByGeo (lat,lng, msg, state){
 slapp.action('snap_callback', 'answer', (msg, value) => {
   var start = `${teamLat},${teamLng}`
   console.log(start)
-  var end = answer
-  var mapsize = "500x400"
-  var maptype = "roadmap"
-  var markerParam = "&markers=color%3Ared%7Clabel%3Aa%7Cshadow%3Atrue%7C" + start
+  var end = value
+  // var mapsize = "500x400"
+  // var maptype = "roadmap"
+  // var markerParam = "&markers=color%3Ared%7Clabel%3Aa%7Cshadow%3Atrue%7C" + start
   getMap(start,end).then(function(mapUrl){
     msg.say({
       text: 'directions api here',
@@ -79,7 +79,7 @@ slapp.action('snap_callback', 'answer', (msg, value) => {
         {
           "fallback": "Required plain-text summary of the attachment.",
           "color": "#36a64f",
-          "title_link": "https://www.google.com/maps/place/" + start,
+          // "title_link": "https://www.google.com/maps/place/" + start,
           "image_url": mapUrl
           //"thumb_url": "http://example.com/path/to/thumb.png"
            // "fields":[

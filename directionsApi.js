@@ -34,7 +34,7 @@ require('dotenv').config()
 
 function getMap(start,end){
 	var googUrl = `https://maps.googleapis.com/maps/api/`
-	console.log(`${googUrl}directions/json?origin=${start}&destination=${end}&mode=walking&key=${process.env.MAP_KEY}`)
+	// console.log(`${googUrl}directions/json?origin=${start}&destination=${end}&mode=walking&key=${process.env.MAP_KEY}`)
 	request(`${googUrl}directions/json?origin=${start}&destination=${end}&mode=walking&key=${process.env.MAP_KEY}`,function(error,success,body){
 		var route =JSON.parse(body).routes[0].overview_polyline.points
 		// console.log(route)
