@@ -20,24 +20,23 @@ end=`39.733543, -104.91`
   //     title:"You are here! (at least within a "+position.coords.accuracy+" meter radius)"
   // });
 
-function getDirects(start,end){
-	request(`https://maps.googleapis.com/maps/api/directions/json?origin=${start}&destination=${end}&mode=walking&key=${process.env.MAP_KEY}`,function(error,success,body){
-		// switch(succ){
+// function getDirects(start,end){
+// 	request(`https://maps.googleapis.com/maps/api/directions/json?origin=${start}&destination=${end}&mode=walking&key=${process.env.MAP_KEY}`,function(error,success,body){
+// 		// switch(succ){
 
-		// }
-		// console.log(success)
-		var jsonB = JSON.parse(body)
-		console.log(jsonB.routes[0].legs)
-	})
-}
+// 		// }
+// 		// console.log(success)
+// 		var jsonB = JSON.parse(body)
+// 		console.log(jsonB.routes[0].legs)
+// 	})
+// }
 // getDirects(start,end)
 
 function getMap(start,end){
 	var googUrl = `https://maps.googleapis.com/maps/api/`
 	// console.log(`https://maps.googleapis.com/maps/api/directions/json?origin=${start}&destination=${end}&mode=walking&key=${process.env.MAP_KEY}`)
 	request(`${googUrl}directions/json?origin=${start}&destination=${end}&mode=walking&key=${process.env.MAP_KEY}`,function(error,success,body){
-		var jsonB = JSON.parse(body)
-		var route =jsonB.routes[0].overview_polyline.points
+		var route =JSON.parse(body).routes[0].overview_polyline.points
 		// console.log(route)
 		let mapUrl =`${googUrl}staticmap?size=600x400&origin=${start}&destination=${end}&path=enc%3A${route}&key=${process.env.DIRECTIONS_KEY}`
 		return mapUrl
