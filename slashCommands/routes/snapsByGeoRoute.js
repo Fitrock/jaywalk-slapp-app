@@ -72,28 +72,8 @@ slapp.action('snap_callback', 'answer', (msg, value) => {
   // var mapsize = "500x400"
   // var maptype = "roadmap"
   // var markerParam = "&markers=color%3Ared%7Clabel%3Aa%7Cshadow%3Atrue%7C" + start
-  var mapUrl = getMap(start,end)
-    msg.say({
-      text: 'directions api here',
-      "attachments": [
-        {
-          "fallback": "Required plain-text summary of the attachment.",
-          "color": "#36a64f",
-          // "title_link": "https://www.google.com/maps/place/" + start,
-          "image_url": "https://maps.googleapis.com/maps/api/staticmap?size=600x400&origin=40.018689,-105.279993&destination=40.0294339,-105.2588454&path=enc%3AqcgsFhpqaSu@PGk@k@gEs@qG{@gGeBeOs@{FE@GECOBIBCq@qFyAsLWqBk@oFy@eGq@eGQ}AQgAKc@EYAIs@DMAeCj@aATe@Ds@@m@I{@SeAi@iAy@y@WUEHW@UEQWg@s@wAcBCsBGeAEuHEAgB@aC?gBCM?GAQ@qDBs@&key=AIzaSyDWj01d54tvQZcMQFLoZne85SOX0HhKqXY"
-          //"thumb_url": "http://example.com/path/to/thumb.png"
-           // "fields":[
-           //  {
-           //     "title": "Update your own location",
-           //     "value": host_app_url + "",
-           //     "short":false
-           //  }
-           // ]
-        }
-      ]
-    
-  })
-  console.log(mapUrl)
+  getMap(start,end,msg)
+
 
 })
 

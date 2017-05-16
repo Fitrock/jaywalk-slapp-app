@@ -32,7 +32,7 @@ require('dotenv').config()
 // }
 // getDirects(start,end)
 
-function getMap(start,end){
+function getMap(start,end,msg){
 	var googUrl = `https://maps.googleapis.com/maps/api/`
 	// console.log(`${googUrl}directions/json?origin=${start}&destination=${end}&mode=walking&key=${process.env.MAP_KEY}`)
 	request(`${googUrl}directions/json?origin=${start}&destination=${end}&mode=walking&key=${process.env.MAP_KEY}`,function(error,success,body){
@@ -40,7 +40,26 @@ function getMap(start,end){
 		// console.log(route)
 		let mapUrl =`${googUrl}staticmap?size=600x400&origin=${start}&destination=${end}&path=enc%3A${route}&key=${process.env.DIRECTIONS_KEY}`
 		console.log('directionsapi:',mapUrl)
-		return mapUrl
+		 msg.say({
+      text: '',
+      "attachments": [
+        {
+          "fallback": "Required plain-text summary of the attachment.",
+          "color": "#36a64f",
+          // "title_link": "https://www.google.com/maps/place/" + start,
+          "image_url": `${mapUrl}`
+          //"thumb_url": "http://example.com/path/to/thumb.png"
+           // "fields":[
+           //  {
+           //     "title": "Update your own location",
+           //     "value": host_app_url + "",
+           //     "short":false
+           //  }
+           // ]
+        }
+      ]
+    
+  })
 	})
 }
 
