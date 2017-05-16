@@ -72,7 +72,7 @@ slapp.action('snap_callback', 'answer', (msg, value) => {
   // var mapsize = "500x400"
   // var maptype = "roadmap"
   // var markerParam = "&markers=color%3Ared%7Clabel%3Aa%7Cshadow%3Atrue%7C" + start
-  getMap(start,end).then(function(mapUrl){
+  var mapUrl = getMap(start,end)
     msg.say({
       text: 'directions api here',
       "attachments": [
@@ -91,7 +91,7 @@ slapp.action('snap_callback', 'answer', (msg, value) => {
            // ]
         }
       ]
-    })    
+    
   })
   console.log(mapUrl)
 
