@@ -45,7 +45,7 @@ function snapsByGeo (lat,lng, msg, state){
                   image_url: `${picUrl}`,
                   text: `${snap.address}`,
                   footer:`Jaywalk`,
-                  callback_id: "snap_callback"
+                  callback_id: "snap_callback",
                   actions:[{
                     name: 'answer',
                     text: 'Directions',
