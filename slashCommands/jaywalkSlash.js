@@ -48,7 +48,12 @@ let jayBtns={
         text: 'Download app',
         type: 'button',
         value: 'app'
-      }      
+      },{
+        name: 'answer',
+        text: 'testing new db',
+        type: 'button',
+        value: 'testing'
+      }     
     ]
   }]
 }
@@ -119,10 +124,13 @@ const jaywalk = function() {
         yes(teamInfo,msg,state)
       }else if(answer == 'settings'){
         teamSettings(teamInfo,msg,state)
+      }else if(answer == 'testing'){
+        request("https://dev.jaywalk.me/api/spots/?page=1&page_size=3",function(res){
+
+        }
       }else{ //handle error
         return msg
           .say("Whoops, you just have to pick a button...")
-          .say('Click a button!')
           .route('mainBtnAnswer', state, 30)
       }
     } //end else(actions undefined checker)
@@ -171,12 +179,15 @@ const jaywalk = function() {
 }
 
 slapp.action('notification_callback', 'answer', (msg, value) => {
-  teamInfo = slackDb
-  .child(msg.body.team_id)
-  .once("value")
-  .then(function(obj){
-    teamInfo = obj.val()
-    yes(teamInfo,msg,state)
+  // teamInfo = slackDb
+  // .child(msg.body.team_id)
+  // .once("value")
+  // .then(function(obj){
+  //   teamInfo = obj.val()
+  //   yes(teamInfo,msg,state)
+  // })
+  msg.say({
+    text: msg.body
   })
 })
 module.exports = {
