@@ -135,17 +135,18 @@ const jaywalk = function() {
           };
           request(options, function (error, response, body) {
             let res = JSON.parse(body)
+            console.log(res)
             if (error) throw new Error(error);
             msg.respond({
               text:``,
               attachments:{
                 text:`search by lat/lng:${res}`,
                 color: `danger`,
-                image_url:`${res[0].image_original}`,
+                image_url:`${body[0].image_original}`,
                 fields:{
                   short:true,
-                  title:`From:${res[0].user.username}`,
-                  value:`${res[0].tags}`
+                  title:`From:${body[0].user.username}`,
+                  value:`${body[0].tags}`
                 }
               }
             })
