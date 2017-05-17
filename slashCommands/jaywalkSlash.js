@@ -128,7 +128,7 @@ const jaywalk = function() {
         var options = {
           method: 'GET',
           url: 'https://dev.jaywalk.me/api/spots/',
-          qs: { page: '1', page_size: '3' },
+          qs: { page: '1',lat: 40.70960676488003000,lng:-73.98554774293002000 },//lat: `${teamInfo.lat}`,lng:`${teamInfo.lng}`
           headers: 
            { 'cache-control': 'no-cache',
              'content-type': 'application/json' }
@@ -136,9 +136,9 @@ const jaywalk = function() {
           request(options, function (error, response, body) {
             if (error) throw new Error(error);
             msg.respond({
-              text:`${body}${response}`
+              text:`search by lat/lng:${body.results}`
             })
-          });
+          })
       }else{ //handle error
         return msg
           .say("Whoops, you just have to pick a button...")
