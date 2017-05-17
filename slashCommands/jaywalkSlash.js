@@ -126,8 +126,10 @@ const jaywalk = function() {
         teamSettings(teamInfo,msg,state)
       }else if(answer == 'testing'){
         request("https://dev.jaywalk.me/api/spots/?page=1&page_size=3",function(res){
-
-        }
+          msg.respond({
+            text:`${res.results}`
+          })
+        })
       }else{ //handle error
         return msg
           .say("Whoops, you just have to pick a button...")
