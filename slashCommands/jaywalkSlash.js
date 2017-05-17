@@ -134,7 +134,7 @@ const jaywalk = function() {
              'content-type': 'application/json' }
           };
           request(options, function (error, response, body) {
-            let res = JSON.parse(body)
+            let res = JSON.parse(body).results
             console.log(res)
             if (error) throw new Error(error);
             msg.respond({
