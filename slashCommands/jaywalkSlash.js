@@ -134,9 +134,20 @@ const jaywalk = function() {
              'content-type': 'application/json' }
           };
           request(options, function (error, response, body) {
+            let res = JSON.parse(body)
             if (error) throw new Error(error);
             msg.respond({
-              text:`search by lat/lng:${body}`
+              text:``,
+              attachments:{
+                text:`search by lat/lng:${res}`,
+                color: `danger`,
+                image_url:`${res[0].image_original}`,
+                fields:{
+                  short:true,
+                  title:`From:${res[0].user.username}`,
+                  value:`${res[0].tags}`
+                }
+              }
             })
           })
       }else{ //handle error
