@@ -139,7 +139,7 @@ const jaywalk = function() {
               text:`${body.results}`
             })
           });
-        })
+        }
       }else{ //handle error
         return msg
           .say("Whoops, you just have to pick a button...")
