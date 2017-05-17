@@ -139,7 +139,7 @@ const jaywalk = function() {
             if (error) throw new Error(error);
             msg.respond({
               text:``,
-              attachments:{
+              attachments:[{
                 text:`search by lat/lng:${res}`,
                 color: `danger`,
                 image_url:`${res[0].image_original}`,
@@ -148,7 +148,7 @@ const jaywalk = function() {
                   title:`From:${res[0].user.username}`,
                   value:`${res[0].tags}`
                 }
-              }
+              }]
             })
           })
       }else{ //handle error
