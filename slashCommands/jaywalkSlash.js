@@ -169,6 +169,14 @@ const jaywalk = function() {
     })
   })
 }
+
+slapp.action('notification_callback', 'answer', (msg, value) => {
+  msg.say({
+    text:`button works! ${value}`
+  })
+
+
+})
 module.exports = {
   jaywalk:jaywalk(),
   jayBtns:jayBtns
