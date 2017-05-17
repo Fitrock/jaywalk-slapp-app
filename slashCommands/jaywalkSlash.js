@@ -142,11 +142,11 @@ const jaywalk = function() {
               attachments:{
                 text:`search by lat/lng:${res}`,
                 color: `danger`,
-                image_url:`${body[0].image_original}`,
+                image_url:`${res[0].image_original}`,
                 fields:{
                   short:true,
-                  title:`From:${body[0].user.username}`,
-                  value:`${body[0].tags}`
+                  title:`From:${res[0].user.username}`,
+                  value:`${res[0].tags}`
                 }
               }
             })
