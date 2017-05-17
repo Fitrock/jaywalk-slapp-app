@@ -171,11 +171,13 @@ const jaywalk = function() {
 }
 
 slapp.action('notification_callback', 'answer', (msg, value) => {
-  msg.respond({
-    text:`button works! ${value}`
+  teamInfo = slackDb
+  .child(msg.body.team_id)
+  .once("value")
+  .then(function(obj){
+    teamInfo = obj.val()
+    yes(teamInfo,msg,state)
   })
-
-
 })
 module.exports = {
   jaywalk:jaywalk(),
