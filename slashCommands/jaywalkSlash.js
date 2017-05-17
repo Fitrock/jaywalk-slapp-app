@@ -171,7 +171,7 @@ const jaywalk = function() {
 }
 
 slapp.action('notification_callback', 'answer', (msg, value) => {
-  msg.say({
+  msg.respond({
     text:`button works! ${value}`
   })
 
