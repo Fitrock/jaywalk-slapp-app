@@ -125,10 +125,20 @@ const jaywalk = function() {
       }else if(answer == 'settings'){
         teamSettings(teamInfo,msg,state)
       }else if(answer == 'testing'){
-        request("https://dev.jaywalk.me/api/spots/?page=1&page_size=3",function(res){
-          msg.respond({
-            text:`${res.results}`
-          })
+        var options = {
+          method: 'GET',
+          url: 'https://dev.jaywalk.me/api/spots/',
+          qs: { page: '1', page_size: '3' },
+          headers: 
+           { 'cache-control': 'no-cache',
+             'content-type': 'application/json' }
+          };
+          request(options, function (error, response, body) {
+            if (error) throw new Error(error);
+            msg.respond({
+              text:`${body.results}`
+            })
+          });
         })
       }else{ //handle error
         return msg
