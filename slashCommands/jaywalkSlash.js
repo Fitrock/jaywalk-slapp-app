@@ -136,7 +136,7 @@ const jaywalk = function() {
           request(options, function (error, response, body) {
             if (error) throw new Error(error);
             msg.respond({
-              text:`${body.results}`
+              text:`${body}${response}`
             })
           });
       }else{ //handle error
