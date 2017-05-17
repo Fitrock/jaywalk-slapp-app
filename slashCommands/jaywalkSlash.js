@@ -136,7 +136,7 @@ const jaywalk = function() {
           request(options, function (error, response, body) {
             if (error) throw new Error(error);
             msg.respond({
-              text:`search by lat/lng:${body.results}`
+              text:`search by lat/lng:${body}`
             })
           })
       }else{ //handle error
