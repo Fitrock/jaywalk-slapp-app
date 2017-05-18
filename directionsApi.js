@@ -34,10 +34,13 @@ require('dotenv').config()
 
 function getMap(start,end,msg){
 	var googUrl = `https://maps.googleapis.com/maps/api/`
-	// console.log(`${googUrl}directions/json?origin=${start}&destination=${end}&mode=walking&key=${process.env.MAP_KEY}`)
+  //request to google to get route from user location to snap
 	request(`${googUrl}directions/json?origin=${start}&destination=${end}&mode=walking&key=${process.env.MAP_KEY}`,function(error,success,body){
-		var route =JSON.parse(body).routes[0].overview_polyline.points
-		// console.log(route)
+		console.log(JSON.parse(body))
+    //route is the directions line to overlay on
+    var route =JSON.parse(body).routes[0].overview_polyline.points
+    
+    // adds directions to a static map
 		let mapUrl =`${googUrl}staticmap?size=600x400&origin=${start}&destination=${end}&path=enc%3A${route}&key=${process.env.DIRECTIONS_KEY}`
 		console.log('directionsapi:',mapUrl)
 		 msg.say({
