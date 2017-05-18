@@ -212,16 +212,17 @@ const jaywalk = function() {
 }
 
 slapp.action('notification_callback', 'answer', (msg, value) => {
-  // teamInfo = slackDb
-  // .child(msg.body.team_id)
-  // .once("value")
-  // .then(function(obj){
-  //   teamInfo = obj.val()
-  //   yes(teamInfo,msg,state)
-  // })
   let state={}
   state = { requested: Date.now() }
-  console.log(msg)
+  teamInfo = slackDb
+  .child(msg.meta.team_id)
+  .once("value")
+  .then(function(obj){
+    state.teamInfo = obj.val()
+    yes(msg,state)
+  })
+
+
   // msg.respond({
   //   text: value
   // })
