@@ -101,6 +101,7 @@ const jaywalk = function() {
 
 
   slapp.command('/jaywalk', (msg, state) => {
+  state={}
   state = { requested: Date.now() }
   state.channel_name= msg.body.channel_name
   teamId = ''
@@ -113,7 +114,7 @@ const jaywalk = function() {
         if(obj.val()==null){
           newTeamCallback(msg,state)
         }else if(obj.val()){
-          
+
           state.teamInfo = obj.val()
           oldTeamCallback(msg,state)
         }
