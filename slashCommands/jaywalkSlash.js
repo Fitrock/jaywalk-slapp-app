@@ -97,7 +97,12 @@ const jaywalk = function() {
   let answer
 
 
-  slapp.command('/jaywalk', (msg, text) => {
+  slapp.command('/jaywalk', (msg, state) => {
+  state = { requested: Date.now() }
+  teamId = ''
+  teamInfo = {}
+  answer
+    console.log(msg)
     teamInfo = slackDb
       .child(msg.body.team_id)
       .once("value")

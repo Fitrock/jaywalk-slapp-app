@@ -129,7 +129,7 @@ let notify  = function(teamInfo,msg,state) {
       let time = "mon-fri @ 4:30pm gmt"
       // setCron(options,value,time,msg)
     }else if(value == 'Local Bar'){
-      notifications.child('bar').child(team.team_id).set(team)
+      notifications.child('bars').child(team.team_id).set(team)
       // options.body.schedule = "0 02 * * 0,5,6 *" // thurs-sat @ 8:00pm gmt
       let time = "mon-fri @ 8:00pm gmt"
       // setCron(options,value,time,msg)
