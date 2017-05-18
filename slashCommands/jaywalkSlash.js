@@ -81,7 +81,7 @@ let saveToDb = (lat,lng,address,msg,state)=>{
     bot_token: msg.meta.bot_token,
     app_token: msg.meta.app_token,
     webhook: msg.meta.incoming_webhook_url,
-    channel_name:msg.body.channel_name,
+    channel_name:msg.body.channel_name
   }
   teamInfo=teamObj
   slackDb.child(teamObj.team_id).set(teamObj)
