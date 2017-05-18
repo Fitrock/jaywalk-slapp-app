@@ -21,15 +21,15 @@ function snapsByGeo (lat,lng, msg, state){
     let resultArr = []
     let snapLat = snaps
       .orderByChild('lat')
-      .startAt(radius[1].lat + "-") // "-"makes a string: required for query
-      .endAt(radius[5].lat + "-")
+      .startAt(radius[5].lat + "-") // "-"makes a string: required for query
+      .endAt(radius[1].lat + "-")
       .once('value')
       .then(function(snapObj) {
         let count = 0
         snapObj.forEach(function(data) {
           let snap = data.val()
           //if returns lng within radius (east/west)
-          if (snap.lng <= radius[0].lng && snap.lng >= radius[3].lng) {
+          if ((snap.lng <= radius[0].lng) && (snap.lng >= radius[3].lng)) {
             console.log(snap.lng,'<',radius[0].lng)
             console.log(snap.lng,'>',radius[3].lng)
             count ++
