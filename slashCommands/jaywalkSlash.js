@@ -210,7 +210,7 @@ slapp.action('notification_callback', 'answer', (msg, value) => {
   //   yes(teamInfo,msg,state)
   // })
   msg.say({
-    text: msg.meta
+    text: msg
   })
 })
 module.exports = {

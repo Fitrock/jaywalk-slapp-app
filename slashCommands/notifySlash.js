@@ -83,10 +83,11 @@ let notify  = function(teamInfo,msg,state) {
   slapp.action('scheduler_callback', 'answer', (msg, value) => {
     let team = {
       team_id:teamInfo.team_id,
-      webhook:teamInfo.webhook,
+      // webhook:teamInfo.webhook,
       bot_token: msg.meta.bot_token,
       lat:teamInfo.lat,
-      lng:teamInfo.lng
+      // lng:teamInfo.lng,
+      // channel:msg.meta.channel.name
     }
     // msg.respond(msg.body.response_url, `${value} is a good choice!`)
     // user may not have typed text as their next action, ask again and re-route
