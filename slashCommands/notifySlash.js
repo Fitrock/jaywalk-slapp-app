@@ -83,8 +83,9 @@ let notify  = function(msg,state) {
   })
   slapp.action('scheduler_callback', 'answer', (msg, value) => {
     console.log('ti:',teamInfo)
-    console.log('s:'state)
+    console.log('s:',state)
     console.log("s.ti:",state.teamInfo)
+    console.log("val:",value)
     let team = {
       team_id:teamInfo.team_id,
       // webhook:teamInfo.webhook,
