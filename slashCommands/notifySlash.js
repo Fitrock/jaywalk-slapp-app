@@ -41,55 +41,57 @@ function setCron(options,answer,time,msg){
 
 let notify  = function(msg,state) {
   teamInfo=state.teamInfo
-      msg
-      .respond({
-        text: '',
-        attachments: [{
-          text: 'What notifications do you want on this channel?',
-          fallback: 'Set timed events.',
-          callback_id: 'scheduler_callback',
-          actions: [{
-              name: 'answer',
-              text: 'Coffee Spots',
-              type: 'button',
-              value: 'Breakfast'
-            },
-            {
-              name: 'answer',
-              text: 'Lunch',
-              type: 'button',
-              value: 'Lunch'
-            },
-            {
-              name: 'answer',
-              text: 'Dinner',
-              type: 'button',
-              value: 'Dinner'
-            },
-            {
-              name: 'answer',
-              text: 'Happy Hour',
-              type: 'button',
-              value: 'Happy Hour'
-            },
-            {
-              name: 'answer',
-              text: 'Weekend fun',
-              type: 'button',
-              value: 'Local Bar'
-            }            
-          ]
-        }]
-      })
+  msg
+  .respond({
+    text: '',
+    attachments: [{
+      text: 'What notifications do you want on this channel?',
+      fallback: 'Set timed events.',
+      callback_id: 'scheduler_callback',
+      actions: [{
+          name: 'answer',
+          text: 'Coffee Spots',
+          type: 'button',
+          value: 'Breakfast'
+        },
+        {
+          name: 'answer',
+          text: 'Lunch',
+          type: 'button',
+          value: 'Lunch'
+        },
+        {
+          name: 'answer',
+          text: 'Dinner',
+          type: 'button',
+          value: 'Dinner'
+        },
+        {
+          name: 'answer',
+          text: 'Happy Hour',
+          type: 'button',
+          value: 'Happy Hour'
+        },
+        {
+          name: 'answer',
+          text: 'Weekend fun',
+          type: 'button',
+          value: 'Local Bar'
+        }            
+      ]
+    }]
+  })
   slapp.action('scheduler_callback', 'answer', (msg, value) => {
-    console.log(msg.meta)
+    console.log('ti:',teamInfo)
+    console.log('s:'state)
+    console.log("s.ti:",state.teamInfo)
     let team = {
       team_id:teamInfo.team_id,
       // webhook:teamInfo.webhook,
       bot_token: teamInfo.bot_token,
       lat:teamInfo.lat,
       lng:teamInfo.lng,
-      channel:teamInfo.channelName
+      channel:state.teamInfo.channelName
     }
     // msg.respond(msg.body.response_url, `${value} is a good choice!`)
     // user may not have typed text as their next action, ask again and re-route
