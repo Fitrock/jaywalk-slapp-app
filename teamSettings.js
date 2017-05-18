@@ -14,7 +14,7 @@ let teamSettings = function(teamInfo,msg,state){
 // console.log(msg.body.token)
 // console.log(msg.body.message_ts)
 // console.log(msg.body.channel.id)
-state.teamInfo=teamInfo
+teamInfo=teamInfo
   msg.respond({
   	text: "",
     attachments: [{

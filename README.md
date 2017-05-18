@@ -12,7 +12,15 @@ Todo:
 	- √√ display map directions for each snap
 	- text directions for each snap
 	- teamsettings to change db
+	- AWS error notifications for each cron(might be why they are not sending)
+	- setting multiple at the same time notifications and give feedback when successful
+```
+
+
+
+```
 ## later
+- AWS notifications based on time zone instead of Denver only
 - adds walking weather to / command
 - Voting Feature
 - Determine if user is on desktop or mobile
