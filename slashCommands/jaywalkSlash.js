@@ -114,8 +114,8 @@ const jaywalk = function() {
         }else if(obj.val()){
                     newTeamCallback(msg,state)
 
-          teamInfo = obj.val()
-          oldTeamCallback(msg,state)
+          // teamInfo = obj.val()
+          // oldTeamCallback(msg,state)
         }
       })
   })
