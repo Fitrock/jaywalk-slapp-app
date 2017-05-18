@@ -102,7 +102,7 @@ const jaywalk = function() {
   state = { requested: Date.now() }
   teamId = ''
   teamInfo = {}
-    console.log(msg)
+    console.log(msg.body)
     teamInfo = slackDb
       .child(msg.body.team_id)
       .once("value")
@@ -110,10 +110,8 @@ const jaywalk = function() {
         if(obj.val()==null){
           newTeamCallback(msg,state)
         }else if(obj.val()){
-                    newTeamCallback(msg,state)
-
-          // teamInfo = obj.val()
-          // oldTeamCallback(msg,state)
+          teamInfo = obj.val()
+          oldTeamCallback(msg,state)
         }
       })
   })
