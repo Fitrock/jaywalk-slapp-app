@@ -83,7 +83,7 @@ let saveToDb = (lat,lng,address,msg,state)=>{
     bot_token: msg.meta.bot_token,
     app_token: msg.meta.app_token,
     webhook: msg.meta.incoming_webhook_url,
-    channel_name:msg.body.channel_name
+    channel_name:state.channel_name
   }
   teamInfo=teamObj
   slackDb.child(teamObj.team_id).set(teamObj)
@@ -102,6 +102,7 @@ const jaywalk = function() {
 
   slapp.command('/jaywalk', (msg, state) => {
   state = { requested: Date.now() }
+  state.channel_name= msg.body.channel_name
   teamId = ''
   teamInfo = {}
     // console.log(msg.body)
@@ -112,7 +113,7 @@ const jaywalk = function() {
         if(obj.val()==null){
           newTeamCallback(msg,state)
         }else if(obj.val()){
-                    newTeamCallback(msg,state)
+          newTeamCallback(msg,state)
 
           // teamInfo = obj.val()
           // oldTeamCallback(msg,state)
