@@ -39,7 +39,8 @@ function setCron(options,answer,time,msg){
   });
 }
 
-let notify  = function(teamInfo,msg,state) {
+let notify  = function(msg,state) {
+  teamInfo=state.teamInfo
       msg
       .respond({
         text: '',

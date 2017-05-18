@@ -9,12 +9,12 @@ const where = require('node-where')
 
 let teamDb = firebase.slackDb
 
-let teamSettings = function(teamInfo,msg,state){
+let teamSettings = function(msg,state){
 // console.log(msg.type)
 // console.log(msg.body.token)
 // console.log(msg.body.message_ts)
 // console.log(msg.body.channel.id)
-teamInfo=teamInfo
+teamInfo=state.teamInfo
   msg.respond({
   	text: "",
     attachments: [{
@@ -56,7 +56,7 @@ teamInfo=teamInfo
   slapp.action('settings_callback', 'answer',(msg,value) => {
   	state.value=value
   	if(value=='notifications'){
-      notify(teamInfo,msg,state)
+      notify(msg,state)
   	}else if(value=='teamName'){
   		msg.respond({
 	  			text:"",
@@ -80,7 +80,7 @@ teamInfo=teamInfo
   	}
   })
   slapp.action('back_callback', 'answer',(msg,value) => {
-  	msgAttachments.jayBtns(teamInfo,msg,state)
+  	msgAttachments.jayBtns(msg,state)
   })
 	.route('name_change', (msg,state)=>{
 		var text = (msg.body.event && msg.body.event.text) || ''

@@ -1,4 +1,4 @@
-let jayBtns= function(teamInfo,msg,state){
+let jayBtns= function(msg,state){
   msg.respond({
     text: "",
     attachments: [{

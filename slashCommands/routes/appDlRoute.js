@@ -1,6 +1,6 @@
 'use strict'
  
-function appDl(teamInfo,msg,state){
+function appDl(msg,state){
   return msg.respond({  
     text: "",
     attachments: [{

@@ -15,7 +15,7 @@ const teamSettings = require('../teamSettings.js').teamSettings
 
 const notify = require('./notifySlash.js').notify
 
-let teamInfo,teamObj
+let teamObj
 
 //db imports
 const firebase    = require('../firebaseSetup.js'),
@@ -85,7 +85,7 @@ let saveToDb = (lat,lng,address,msg,state)=>{
     webhook: msg.meta.incoming_webhook_url,
     channel_name:state.channel_name
   }
-  teamInfo=teamObj
+  state.teamInfo=teamObj
   slackDb.child(teamObj.team_id).set(teamObj)
   // .then(function)
   msg
@@ -113,9 +113,9 @@ const jaywalk = function() {
         if(obj.val()==null){
           newTeamCallback(msg,state)
         }else if(obj.val()){
-          newTeamCallback(msg,state)
+                    newTeamCallback(msg,state)
 
-          // teamInfo = obj.val()
+          // state.teamInfo = obj.val()
           // oldTeamCallback(msg,state)
         }
       })
@@ -129,11 +129,11 @@ const jaywalk = function() {
     }else{
       answer = msg.body.actions[0].value
       if(answer == 'app'){
-        appDl(teamInfo,msg,state)
+        appDl(msg,state)
       }else if(answer == 'address'){
-        yes(teamInfo,msg,state)
+        yes(msg,state)
       }else if(answer == 'settings'){
-        teamSettings(teamInfo,msg,state)
+        teamSettings(msg,state)
       }else if(answer == 'testing'){
         var options = {
           method: 'GET',

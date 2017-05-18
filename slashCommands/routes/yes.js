@@ -1,9 +1,9 @@
 const slapp = require('../../slackSetup.js').slapp
 
-const yes = function(teamInfo,msg,state){
+const yes = function(msg,state){
   const snapsByGeo = require('./snapsByGeoRoute.js').snapsByGeo
   const addressToGeo  = require('./addressToGeo.js').addressToGeo
-
+teamInfo=state.teamInfo
     let location = teamInfo.location_name
 
   msg.respond({
