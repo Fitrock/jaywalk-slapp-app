@@ -84,7 +84,7 @@ let notify  = function(teamInfo,msg,state) {
     let team = {
       team_id:teamInfo.team_id,
       webhook:teamInfo.webhook,
-      bot_token: msg.meta.bot_token
+      bot_token: msg.meta.bot_token,
       lat:teamInfo.lat,
       lng:teamInfo.lng
     }
