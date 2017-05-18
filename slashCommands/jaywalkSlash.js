@@ -219,6 +219,8 @@ slapp.action('notification_callback', 'answer', (msg, value) => {
   //   teamInfo = obj.val()
   //   yes(teamInfo,msg,state)
   // })
+  let state={}
+  state = { requested: Date.now() }
   console.log(msg)
   // msg.respond({
   //   text: value
