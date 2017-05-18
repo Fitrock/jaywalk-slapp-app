@@ -221,7 +221,7 @@ slapp.action('notification_callback', 'answer', (msg, value) => {
   // })
   console.log(msg)
   msg.respond({
-    text: msg.body
+    text: value
   })
 })
 module.exports = {
