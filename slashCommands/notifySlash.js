@@ -92,7 +92,7 @@ let notify  = function(msg,state) {
       bot_token: teamInfo.bot_token,
       lat:teamInfo.lat,
       lng:teamInfo.lng,
-      channel:state.teamInfo.channelName
+      channel:teamInfo.channel_name
     }
     // msg.respond(msg.body.response_url, `${value} is a good choice!`)
     // user may not have typed text as their next action, ask again and re-route
