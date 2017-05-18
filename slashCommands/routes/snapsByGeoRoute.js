@@ -21,8 +21,8 @@ function snapsByGeo (lat,lng, msg, state){
     let resultArr = []
     let snapLat = snaps
       .orderByChild('lat')
-      .startAt(radius[5].lat + "-") // "-"makes a string: required for query
-      .endAt(radius[1].lat + "-")
+      .startAt(radius[1].lat + "-") // "-"makes a string: required for query
+      .endAt(radius[5].lat + "-")
       .once('value')
       .then(function(snapObj) {
         let count = 0
