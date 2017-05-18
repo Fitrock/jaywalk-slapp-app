@@ -82,14 +82,13 @@ let notify  = function(teamInfo,msg,state) {
       })
   slapp.action('scheduler_callback', 'answer', (msg, value) => {
     console.log(msg)
-    let channelName = (msg.meta.incoming_webhook_channel).slice(1)
     let team = {
       team_id:teamInfo.team_id,
       // webhook:teamInfo.webhook,
       bot_token: msg.meta.bot_token,
       lat:teamInfo.lat,
       lng:teamInfo.lng,
-      channel:channelName
+      channel:msg.meta.incoming_webhook_channel
     }
     // msg.respond(msg.body.response_url, `${value} is a good choice!`)
     // user may not have typed text as their next action, ask again and re-route
@@ -111,27 +110,27 @@ let notify  = function(teamInfo,msg,state) {
         year 2016-9999
       */
       notifications.child('coffee').child(team.team_id).set(team)
-      options.body.schedule = "0 13 * * 1-5 *" // mon-fri @ 7:00am gmt
+      // options.body.schedule = "0 13 * * 1-5 *" // mon-fri @ 7:00am gmt
       let time = "mon-fri @ 7:00am gmt"
       // setCron(options,value,time,msg)
     }else if(value == 'Lunch'){
       notifications.child('lunch').child(team.team_id).set(team)
-      options.body.schedule = "30 17 * * 1-5 *" // mon-fri @ 11:30am gmt
+      // options.body.schedule = "30 17 * * 1-5 *" // mon-fri @ 11:30am gmt
       let time = "mon-fri @ 11:30am gmt"
       // setCron(options,value,time,msg)
     }else if(value == 'Dinner'){
       notifications.child('dinner').child(team.team_id).set(team)
-      options.body.schedule = "30 23 * * 1-5 *" // mon-fri @ 5:30pm gmt
+      // options.body.schedule = "30 23 * * 1-5 *" // mon-fri @ 5:30pm gmt
       let time = "mon-fri @ 5:30pm gmt"
       // setCron(options,value,time,msg)
     }else if(value == 'Happy Hour'){
       notifications.child('hh').child(team.team_id).set(team)
-      options.body.schedule = "30 22 * * 1-5 *" // mon-fri @ 4:30pm gmt
+      // options.body.schedule = "30 22 * * 1-5 *" // mon-fri @ 4:30pm gmt
       let time = "mon-fri @ 4:30pm gmt"
       // setCron(options,value,time,msg)
     }else if(value == 'Local Bar'){
       notifications.child('bar').child(team.team_id).set(team)
-      options.body.schedule = "0 02 * * 0,5,6 *" // thurs-sat @ 8:00pm gmt
+      // options.body.schedule = "0 02 * * 0,5,6 *" // thurs-sat @ 8:00pm gmt
       let time = "mon-fri @ 8:00pm gmt"
       // setCron(options,value,time,msg)
     }else{ //handle error

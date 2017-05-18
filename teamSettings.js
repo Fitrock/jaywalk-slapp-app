@@ -24,17 +24,19 @@ state.teamInfo=teamInfo
       callback_id: 'settings_callback',
       color: '#6b7f98',
       actions: 
-      [{ 
-        name: 'answer',
-        text: `New Name`,
-        type: 'button',
-        value: 'teamName'
-      },{ 
-        name: 'answer',
-        text: `New Location`,
-        type: 'button',
-        value: 'teamLocation'
-      },{ 
+      [
+      // { 
+      //   name: 'answer',
+      //   text: `New Name`,
+      //   type: 'button',
+      //   value: 'teamName'
+      // },{ 
+      //   name: 'answer',
+      //   text: `New Location`,
+      //   type: 'button',
+      //   value: 'teamLocation'
+      // },
+      { 
         name: 'answer',
         text: `Notifications`,
         type: 'button',
