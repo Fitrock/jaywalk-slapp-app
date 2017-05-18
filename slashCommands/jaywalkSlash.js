@@ -80,7 +80,8 @@ let saveToDb = (lat,lng,address,msg,state)=>{
     slack_token: msg.meta.verify_token, //given at auth
     bot_token: msg.meta.bot_token,
     app_token: msg.meta.app_token,
-    webhook: msg.meta.incoming_webhook_url
+    webhook: msg.meta.incoming_webhook_url,
+    channel_name:msg.body.channel_name,
   }
   teamInfo=teamObj
   slackDb.child(teamObj.team_id).set(teamObj)
@@ -101,7 +102,6 @@ const jaywalk = function() {
   state = { requested: Date.now() }
   teamId = ''
   teamInfo = {}
-  answer
     console.log(msg)
     teamInfo = slackDb
       .child(msg.body.team_id)
@@ -110,8 +110,10 @@ const jaywalk = function() {
         if(obj.val()==null){
           newTeamCallback(msg,state)
         }else if(obj.val()){
-          teamInfo = obj.val()
-          oldTeamCallback(msg,state)
+                    newTeamCallback(msg,state)
+
+          // teamInfo = obj.val()
+          // oldTeamCallback(msg,state)
         }
       })
   })
