@@ -4,12 +4,16 @@ Todo:
 ```
 - Notifications 
 	- √√subscribe button will add to db 
+		- rebuild to add team lat/lng to notification db table
 	- √√another cron func will send from db (AWS)
-	- ask user to respond "lunch" => if (around lunch time){ask if still at base location}
-	-if(yes){results}
-	-if(no){"Type your address, zip code, or current landmark"}
-- Voting Feature
+	- build notification callback to ask if they are interested in __ deals -> still at __? -> results
+	-√√if(yes){results}
+	-√√if(no){"Type your address, zip code, or current landmark"}
+	-√√ display map directions for each snap
+	-text directions for each snap
 ## later
+- adds walking weather to / command
+- Voting Feature
 - Determine if user is on desktop or mobile
 	- if on desktop: determine if on browser or slack app
   - if mobile: do they have Jaywalk app?--might be able to store this info in db
