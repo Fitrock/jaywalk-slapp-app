@@ -228,7 +228,6 @@ slapp.action('notification_callback', 'answer', (msg, value) => {
   // })
 
   //add lat/lng and team info to state
-  yes(msg,state)
 
 })
 module.exports = {
