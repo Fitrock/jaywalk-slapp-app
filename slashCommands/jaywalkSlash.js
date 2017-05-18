@@ -71,6 +71,8 @@ let oldTeamCallback = (msg,state)=>{
 }
 
 let saveToDb = (lat,lng,address,msg,state)=>{
+  console.log(msg.body)
+  console.log(msg.meta)
   teamObj={  
     team_id: msg.body.team_id,
     team_name: msg.meta.team_domain,
@@ -102,7 +104,7 @@ const jaywalk = function() {
   state = { requested: Date.now() }
   teamId = ''
   teamInfo = {}
-    console.log(msg.body)
+    // console.log(msg.body)
     teamInfo = slackDb
       .child(msg.body.team_id)
       .once("value")
@@ -110,6 +112,8 @@ const jaywalk = function() {
         if(obj.val()==null){
           newTeamCallback(msg,state)
         }else if(obj.val()){
+                    newTeamCallback(msg,state)
+
           teamInfo = obj.val()
           oldTeamCallback(msg,state)
         }
