@@ -220,9 +220,13 @@ slapp.action('notification_callback', 'answer', (msg, value) => {
   //   yes(teamInfo,msg,state)
   // })
   console.log(msg)
-  msg.respond({
-    text: value
-  })
+  // msg.respond({
+  //   text: value
+  // })
+
+  //add lat/lng and team info to state
+  yes(msg,state)
+
 })
 module.exports = {
   jaywalk:jaywalk(),
