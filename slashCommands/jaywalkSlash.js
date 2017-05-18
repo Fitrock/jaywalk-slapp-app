@@ -105,10 +105,8 @@ const jaywalk = function() {
         if(obj.val()==null){
           newTeamCallback(msg,state)
         }else if(obj.val()){
-                    newTeamCallback(msg,state)
-
-          // teamInfo = obj.val()
-          // oldTeamCallback(msg,state)
+          teamInfo = obj.val()
+          oldTeamCallback(msg,state)
         }
       })
   })
@@ -211,6 +209,7 @@ slapp.action('notification_callback', 'answer', (msg, value) => {
   //   teamInfo = obj.val()
   //   yes(teamInfo,msg,state)
   // })
+  console.log(msg)
   msg.say({
     text: msg.meta
   })
