@@ -220,8 +220,8 @@ slapp.action('notification_callback', 'answer', (msg, value) => {
   //   yes(teamInfo,msg,state)
   // })
   console.log(msg)
-  msg.say({
-    text: msg.meta
+  msg.respond({
+    text: msg.body
   })
 })
 module.exports = {
