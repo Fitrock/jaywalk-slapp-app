@@ -71,7 +71,7 @@ slapp.action('snap_callback', 'answer', (msg, value) => {
   var start = `${teamLat},${teamLng}`
   console.log(start)
   var end = value
-    msg.say(state)
+    msg.say(value)
   // getMap(start,end,msg,state)
 
 
