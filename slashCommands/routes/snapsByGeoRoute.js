@@ -69,7 +69,7 @@ function snapsByGeo (lat,lng, msg, state){
 
 slapp.action('snap_callback', 'answer', (msg, value) => {
   var start = `${teamLat},${teamLng}`
-  console.log(start)
+  console.log(value)
   var end = value
     msg.say(value)
   // getMap(start,end,msg,state)
