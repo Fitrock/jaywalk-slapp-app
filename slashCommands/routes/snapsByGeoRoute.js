@@ -54,7 +54,7 @@ function snapsByGeo (lat,lng, msg, state){
                     name: 'answer',
                     text: 'Directions',
                     type: 'button',
-                    value: `${snap.lat},${snap.lng}`
+                    value: `${state}`
                   }]
                 }]
             }) //end msg.say
@@ -71,10 +71,8 @@ slapp.action('snap_callback', 'answer', (msg, value) => {
   var start = `${teamLat},${teamLng}`
   console.log(start)
   var end = value
-  // var mapsize = "500x400"
-  // var maptype = "roadmap"
-  // var markerParam = "&markers=color%3Ared%7Clabel%3Aa%7Cshadow%3Atrue%7C" + start
-  getMap(start,end,msg,state)
+    msg.say(state)
+  // getMap(start,end,msg,state)
 
 
 })

@@ -8,13 +8,13 @@ function getMap(start,end,msg,state){
   //request to google to get route from user location to snap
   console.log(`${googUrl}directions/json?origin=${start}&destination=${end}&mode=walking&key=${process.env.MAP_KEY}`)
 	request(`${googUrl}directions/json?origin=${start}&destination=${end}&mode=walking&key=${process.env.MAP_KEY}`,function(error,success,body){
-		let body = console.log(JSON.parse(body))
+		body = console.log(JSON.parse(body))
     //route is the directions line to overlay on
     let route =JSON.parse(body).routes[0].overview_polyline.points
 
     // adds directions to a static map
 		let mapUrl =`${googUrl}staticmap?size=600x400&origin=${start}&destination=${end}&path=enc%3A${route}&key=${process.env.DIRECTIONS_KEY}`
-		console.log('directionsapi:',mapUrl)
+		// console.log('directionsapi:',mapUrl)
 		 msg.respond({
       text: '',
       "attachments": [
