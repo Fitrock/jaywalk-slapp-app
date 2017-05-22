@@ -39,11 +39,12 @@ function snapsByGeo (lat,lng, msg, state){
         }) //end foreach
         let len = (resultArr.length-1)
         for(let i=len;i>(len-4);i--){ //last four
+          let randomizer = (Math.floor(Math.random() * resultArr.length))
           let snap = resultArr[i]
 
           let callback = function(picUrl){
             msg.say({
-                text: '',
+                text: randomizer,
                 attachments:[{
                   title: `${snap.description}`,
                   color: 'warning',

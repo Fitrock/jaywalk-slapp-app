@@ -64,7 +64,7 @@ let newTeamCallback = (msg,state)=>{
     .route('setup', state)  
 }
 let oldTeamCallback = (msg,state)=>{
-  jayBtns.attachments.text = state.climate.weather
+  jayBtns.text = state.climate.weather
   msg
   .say(jayBtns)
   .route('mainBtnAnswer', state, 30)  
