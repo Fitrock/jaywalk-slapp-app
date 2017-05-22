@@ -64,6 +64,7 @@ let newTeamCallback = (msg,state)=>{
     .route('setup', state)  
 }
 let oldTeamCallback = (msg,state)=>{
+  jayBtns.attachments.text = state.climate.weather
   msg
   .say(jayBtns)
   .route('mainBtnAnswer', state, 30)  
@@ -87,6 +88,7 @@ let saveToDb = (lat,lng,address,msg,state)=>{
   state.teamInfo=teamObj
   slackDb.child(teamObj.team_id).set(teamObj)
   // .then(function)
+  jayBtns.attachments.text = state.climate.weather
   msg
   .respond(jayBtns)
   .route('mainBtnAnswer', state, 30)  
