@@ -28,7 +28,7 @@ const firebase    = require('../firebaseSetup.js'),
 let jayBtns={
   text: "",
   attachments: [{
-    text: `Current walking conditions: ${state.climate.weather}`,
+    text: `Current walking conditions: `,
     title: "Where to today?",
     callback_id: 'jaywalk_callback',
     color: 'good',
