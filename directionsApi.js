@@ -5,15 +5,35 @@ const where = require('node-where')
 
 function getMap(start,end,msg,state){
 	var googUrl = `https://maps.googleapis.com/maps/api/`
-  //request to google to get route from user location to snap
+
+
+  // var address
+  // //request to google to get route from user location to snap
+  //   where.is(text,function(err,result){ 
+    
+  //     result.get('')=>
+  //     address,streetNumber, street,streetAddress,city,region,
+  //     regionCode, postalCode, country, countryCode, lat, lng
+    
+  //   if (result) {
+  //     address = result.get('address')
+  //     let lng = result.get('lng')
+  //     snapsByGeo(lat,lng,msg,state)
+  //   }
+  // })
+
+
   console.log(`${googUrl}directions/json?origin=${start}&destination=${end}&mode=walking&key=${process.env.MAP_KEY}`)
 	request(`${googUrl}directions/json?origin=${start}&destination=${end}&mode=walking&key=${process.env.MAP_KEY}`,function(error,success,body){
 		body = console.log(JSON.parse(body))
-    //route is the directions line to overlay on
-    let route =body.routes[0].overview_polyline.points
+    let route = body.routes[0]
+    console.log(route)
+
+    //routeLine is the directions line to overlay on
+    let routeLine =route.overview_polyline.points
 
     // adds directions to a static map
-		let mapUrl =`${googUrl}staticmap?size=600x400&origin=${start}&destination=${end}&path=enc%3A${route}&key=${process.env.DIRECTIONS_KEY}`
+		let mapUrl =`${googUrl}staticmap?size=600x400&origin=${start}&destination=${end}&path=enc%3A${routeLine}&key=${process.env.DIRECTIONS_KEY}`
 		// console.log('directionsapi:',mapUrl)
 		 msg.respond({
       text: '',

@@ -13,7 +13,10 @@ const firebase    = require('../../firebaseSetup.js'),
       tags = firebase.tags,
       users = firebase.users
 let teamLat,teamLng
+var state
+
 function snapsByGeo (lat,lng, msg, state){
+  state = this.state
   teamLat = lat
   teamLng = lng
     //firebase search by snap lat (start at bottom of circle, end at top)
@@ -54,7 +57,7 @@ function snapsByGeo (lat,lng, msg, state){
                     name: 'answer',
                     text: 'Directions',
                     type: 'button',
-                    value: `${state}`
+                    value: `${snap.lat},${snap.lng}`
                   }]
                 }]
             }) //end msg.say
@@ -68,13 +71,10 @@ function snapsByGeo (lat,lng, msg, state){
 
 
 slapp.action('snap_callback', 'answer', (msg, value) => {
-  var start = `${teamLat},${teamLng}`
-  console.log(value)
-  var end = value
-    msg.say(value)
-  // getMap(start,end,msg,state)
-
-
+  let start = `${teamLat},${teamLng}`
+  console.log(start)
+  let end = value
+  getMap(start,end,msg,state)
 })
 
 

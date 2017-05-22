@@ -101,6 +101,8 @@ const jaywalk = function() {
 
 
   slapp.command('/jaywalk', (msg, state) => {
+
+
   state={}
   state = { requested: Date.now() }
   state.channel_name= msg.body.channel_name
@@ -114,8 +116,10 @@ const jaywalk = function() {
         if(obj.val()==null){
           newTeamCallback(msg,state)
         }else if(obj.val()){
-
           state.teamInfo = obj.val()
+          request(`api.openweathermap.org/data/2.5/weather?lat=${state.teamInfo.lat}&lon=${state.teamInfo.lng}`,function(res){
+            console.log(JSON.parse(res),'put this in state?')
+          }
           oldTeamCallback(msg,state)
         }
       })
