@@ -13,6 +13,7 @@ Todo:
 	- setting multiple at the same time notifications and give feedback when successful
 	- back button!
 	- https://openweathermap.org/ credit in description?
+	- msg.response => "loading" for snap deals page
 
 ```
 

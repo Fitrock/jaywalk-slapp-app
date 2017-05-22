@@ -28,8 +28,8 @@ const firebase    = require('../firebaseSetup.js'),
 let jayBtns={
   text: "",
   attachments: [{
-    text: 'How can I help?',
-    fallback: 'Where to today?',
+    text: `Current walking conditions: ${state.climate.weather}`,
+    title: "Where to today?"
     callback_id: 'jaywalk_callback',
     color: 'good',
     actions: [
@@ -59,7 +59,6 @@ let jayBtns={
 }
 
 let newTeamCallback = (msg,state)=>{
-
   msg
     .say({ text:`Welcome to Jaywalk! To get better results, please enter the address or your buisness name and city.`})    
     .route('setup', state)  
@@ -89,7 +88,7 @@ let saveToDb = (lat,lng,address,msg,state)=>{
   slackDb.child(teamObj.team_id).set(teamObj)
   // .then(function)
   msg
-  .say(jayBtns)
+  .respond(jayBtns)
   .route('mainBtnAnswer', state, 30)  
 }
 
@@ -101,13 +100,15 @@ const jaywalk = function() {
 
 
   slapp.command('/jaywalk', (msg, state) => {
-
-
-  state={}
-  state = { requested: Date.now() }
-  state.channel_name= msg.body.channel_name
-  teamId = ''
-  teamInfo = {}
+    state={}
+    state = { requested: Date.now() }
+    state.channel_name= msg.body.channel_name
+    teamId = ''
+    teamInfo = {}
+  request(`api.openweathermap.org/data/2.5/weather?lat=${state.teamInfo.lat}&lon=${state.teamInfo.lng}&APPID=${process.env.WEATHER_KEY}`, function(res){
+    console.log(res,'put this in state?')
+    state.climate=res
+  })
     // console.log(msg.body)
     teamInfo = slackDb
       .child(msg.body.team_id)
@@ -117,10 +118,6 @@ const jaywalk = function() {
           newTeamCallback(msg,state)
         }else if(obj.val()){
           state.teamInfo = obj.val()
-          request(`api.openweathermap.org/data/2.5/weather?lat=${state.teamInfo.lat}&lon=${state.teamInfo.lng}&APPID=${process.env.WEATHER_KEY}
-`,function(res){
-            console.log(res,'put this in state?')
-          })
           oldTeamCallback(msg,state)
         }
       })
