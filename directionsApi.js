@@ -25,7 +25,7 @@ function getMap(start,end,msg,state){
 
   console.log(`${googUrl}directions/json?origin=${start}&destination=${end}&mode=walking&key=${process.env.MAP_KEY}`)
 	request(`${googUrl}directions/json?origin=${start}&destination=${end}&mode=walking&key=${process.env.MAP_KEY}`,function(error,success,body){
-		body = console.log(JSON.parse(body))
+		body = JSON.parse(body)
     let route = body.routes[0]
     console.log(route)
 
