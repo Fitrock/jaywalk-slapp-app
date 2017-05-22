@@ -44,7 +44,7 @@ function snapsByGeo (lat,lng, msg, state){
 
           let callback = function(picUrl){
             msg.say({
-                text: randomizer,
+                text: '',
                 attachments:[{
                   title: `${snap.description}`,
                   color: 'warning',
