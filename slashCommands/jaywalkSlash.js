@@ -117,10 +117,21 @@ const jaywalk = function() {
           newTeamCallback(msg,state)
         }else if(obj.val()){
           state.teamInfo = obj.val()
-          request(`api.openweathermap.org/data/2.5/weather?lat=${state.teamInfo.lat}&lon=${state.teamInfo.lng}&APPID=${process.env.WEATHER_KEY}`, function(res){
-            console.log(res,'put this in state?')
-            state.climate=res
-          })
+          var options = { method: 'GET',
+            url: 'http://api.openweathermap.org/data/2.5/weather',
+            qs: 
+             { lat: state.teamInfo.lat,
+               lon: state.teamInfo.lng,
+               APPID: process.env.WEATHER_KEY },
+            headers: 
+             { 'cache-control': 'no-cache',
+               'content-type': 'application/json' } };
+
+          request(options, function (error, response, body) {
+            if (error) throw new Error(error);
+
+            console.log(body);
+          });
           oldTeamCallback(msg,state)
         }
       })
