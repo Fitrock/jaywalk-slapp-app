@@ -119,7 +119,7 @@ const jaywalk = function() {
           state.teamInfo = obj.val()
           request(`api.openweathermap.org/data/2.5/weather?lat=${state.teamInfo.lat}&lon=${state.teamInfo.lng}`,function(res){
             console.log(JSON.parse(res),'put this in state?')
-          }
+          })
           oldTeamCallback(msg,state)
         }
       })
