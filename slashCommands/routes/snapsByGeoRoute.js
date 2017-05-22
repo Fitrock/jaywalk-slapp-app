@@ -40,7 +40,7 @@ function snapsByGeo (lat,lng, msg, state){
         let len = (resultArr.length-1)
         for(let i=len;i>(len-4);i--){ //last four
           let randomizer = (Math.floor(Math.random() * resultArr.length))
-          let snap = resultArr[i]
+          let snap = resultArr[randomizer]
 
           let callback = function(picUrl){
             msg.say({
