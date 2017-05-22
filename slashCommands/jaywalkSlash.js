@@ -107,10 +107,7 @@ const jaywalk = function() {
     state.channel_name= msg.body.channel_name
     teamId = ''
     teamInfo = {}
-  request(`api.openweathermap.org/data/2.5/weather?lat=${state.teamInfo.lat}&lon=${state.teamInfo.lng}&APPID=${process.env.WEATHER_KEY}`, function(res){
-    console.log(res,'put this in state?')
-    state.climate=res
-  })
+
     // console.log(msg.body)
     teamInfo = slackDb
       .child(msg.body.team_id)
@@ -120,6 +117,10 @@ const jaywalk = function() {
           newTeamCallback(msg,state)
         }else if(obj.val()){
           state.teamInfo = obj.val()
+          request(`api.openweathermap.org/data/2.5/weather?lat=${state.teamInfo.lat}&lon=${state.teamInfo.lng}&APPID=${process.env.WEATHER_KEY}`, function(res){
+            console.log(res,'put this in state?')
+            state.climate=res
+          })
           oldTeamCallback(msg,state)
         }
       })
