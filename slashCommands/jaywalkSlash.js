@@ -95,7 +95,8 @@ let saveToDb = (lat,lng,address,msg,state)=>{
 }
 
 const jaywalk = function() {
-  let state = { requested: Date.now() }
+  var state = {}
+  state = { requested: Date.now() }
   let teamId = ''
   let teamInfo = {}
   let answer
