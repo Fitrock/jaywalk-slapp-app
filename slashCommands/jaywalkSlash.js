@@ -129,10 +129,10 @@ const jaywalk = function() {
 
           request(options, function (error, response, body) {
             if (error) throw new Error(error);
-
+            state.climate.body
             console.log(body);
+            oldTeamCallback(msg,state)
           });
-          oldTeamCallback(msg,state)
         }
       })
   })
