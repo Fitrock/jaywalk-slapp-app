@@ -29,7 +29,7 @@ let jayBtns={
   text: "",
   attachments: [{
     text: `Current walking conditions: ${state.climate.weather}`,
-    title: "Where to today?"
+    title: "Where to today?",
     callback_id: 'jaywalk_callback',
     color: 'good',
     actions: [
