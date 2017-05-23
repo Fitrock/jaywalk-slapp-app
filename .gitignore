@@ -39,7 +39,7 @@ jspm_packages
 yarn.lock
 
 
-**/.env
+.env
 **/firebase-team-info.txt
 firebaseSeed.js
 serviceAccount.json
